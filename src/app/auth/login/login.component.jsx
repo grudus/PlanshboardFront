@@ -2,15 +2,28 @@ import React, { Component } from "react"
 import { Card, RaisedButton, TextField } from "material-ui";
 import "./login.css"
 import { connect } from "react-redux";
-import { loginAction } from "../auth.actions";
+import { tryToLoginAction } from "../auth.actions";
 
 class Login extends Component {
+    state = {username: "", password: ""};
 
-    loginButton = (e) => {
+    updateUsername = e => {
+        this.setState({username: e.target.value})
+    };
+
+    updatePassword = e => {
+        this.setState({password: e.target.value})
+    };
+
+    loginButton = async (e) => {
         e.preventDefault();
-        console.log("Login");
-        this.props.loginAction("some secret token");
-        this.props.history.push("/")
+        try {
+            await this.props.tryToLoginAction(this.state.username, this.state.password);
+            this.props.history.push("/")
+        } catch (exc) {
+            console.error(exc)
+            this.setState({username: "", password: ""})
+        }
     };
 
 
@@ -22,11 +35,15 @@ class Login extends Component {
                         <TextField
                             floatingLabelText="Username"
                             fullWidth={true}
+                            value={this.state.username}
+                            onChange={this.updateUsername}
                         />
                         <TextField
                             floatingLabelText="Password"
                             fullWidth={true}
                             type="password"
+                            onChange={this.updatePassword}
+                            value={this.state.password}
                         />
                         <RaisedButton type="submit" primary={true} label="LOG IN" fullWidth={true}
                                       onClick={this.loginButton} className="login-button"/>
@@ -42,7 +59,7 @@ const mapStateToProps = (state) => (
 );
 
 const mapDispatchToProps = {
-    loginAction
+    tryToLoginAction
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

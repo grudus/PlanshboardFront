@@ -11,7 +11,7 @@ import { BrowserRouter } from "react-router-dom";
 
 const store = createStore(
     reducer,
-    applyMiddleware(logger, thunk)
+    applyMiddleware(thunk, logger)
 );
 
 render(<Provider store={store}>
