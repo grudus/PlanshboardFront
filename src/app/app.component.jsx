@@ -1,14 +1,14 @@
 import React from "react"
 import { connect } from "react-redux";
-import { Route, Switch, withRouter } from "react-router-dom";
-import Login from "./auth/login/login.component";
+import { Switch, withRouter } from "react-router-dom";
 import PrivateRoute from "./private-route.component";
 import User from "./users/users.component"
+import AuthRouters from "./auth/auth.routes";
 
 const App = (props) => {
     return (
         <Switch>
-            <Route path="/auth/login" component={Login}/>
+            {AuthRouters}
             <PrivateRoute path="/" isLogged={props.auth.isLogged} component={User}/>
         </Switch>
     )

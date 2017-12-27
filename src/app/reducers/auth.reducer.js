@@ -2,7 +2,7 @@ import { LOGIN } from "./auth.actions";
 
 const initialState = {
     token: "",
-    isLogged: true,
+    isLogged: false,
 };
 
 export default (state = initialState, action) => {
