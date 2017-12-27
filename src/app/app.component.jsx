@@ -1,22 +1,20 @@
 import React from "react"
 import { connect } from "react-redux";
-import Auth from "./auth/auth.component"
-import { Route, Redirect } from "react-router-dom";
+import { Route, Switch, withRouter } from "react-router-dom";
+import Login from "./auth/login/login.component";
+import PrivateRoute from "./private-route.component";
+import User from "./users/users.component"
 
 const App = (props) => {
-    console.log("Dupa");
     return (
-        <div>
-            <Auth/>
-            <Route exact path="/" render={() =>
-                !props.auth.isLogged
-                    ? <Redirect to="/auth/login"/>
-                    : <div>Dupa</div>}/>
-        </div>
+        <Switch>
+            <Route path="/auth/login" component={Login}/>
+            <PrivateRoute path="/" isLogged={props.auth.isLogged} component={User}/>
+        </Switch>
     )
 };
 
 const mapStateToProps = (state) => ({auth: state.auth});
 
-export default connect(mapStateToProps)(App);
+export default withRouter(connect(mapStateToProps)(App));
 

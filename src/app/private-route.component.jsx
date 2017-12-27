@@ -1,0 +1,17 @@
+import React, { Component } from "react"
+import { Redirect, Route } from "react-router-dom";
+
+const PrivateRoute = ({ component: Component, isLogged, ...rest }) => (
+    <Route {...rest} render={props => (
+        isLogged ? (
+            <Component {...props}/>
+        ) : (
+            <Redirect to={{
+                pathname: '/auth/login',
+                state: { from: props.location }
+            }}/>
+        )
+    )}/>
+);
+
+export default PrivateRoute;
