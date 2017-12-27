@@ -1,13 +1,17 @@
 import React, { Component } from "react"
 import { Card, RaisedButton, TextField } from "material-ui";
 import "./login.css"
+import { connect } from "react-redux";
+import { loginAction } from "../auth.actions";
 
 class Login extends Component {
 
-    loginButton(e) {
-        e.preventDefault()
+    loginButton = (e) => {
+        e.preventDefault();
         console.log("Login");
-    }
+        this.props.loginAction("some secret token");
+        this.props.history.push("/")
+    };
 
 
     render() {
@@ -16,7 +20,7 @@ class Login extends Component {
                 <Card className="login-card">
                     <form onSubmit={this.loginButton} className="login-form">
                         <TextField
-                            floatingLabelText="Login"
+                            floatingLabelText="Username"
                             fullWidth={true}
                         />
                         <TextField
@@ -33,5 +37,12 @@ class Login extends Component {
     }
 }
 
+const mapStateToProps = (state) => (
+    {auth: state.auth}
+);
 
-export default Login;
+const mapDispatchToProps = {
+    loginAction
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

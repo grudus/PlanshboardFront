@@ -1,4 +1,4 @@
-import { LOGIN } from "./auth.actions";
+import { LOGIN } from "./auth.actions.types";
 
 const initialState = {
     token: "",
