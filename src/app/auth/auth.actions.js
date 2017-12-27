@@ -1,6 +1,6 @@
 import { LOGIN, TRY_TO_LOGIN } from "./auth.actions.types";
-
-const backendUrl = process.env.REACT_APP_BACKEND_URL;
+import { AUTH_HEADER } from "../commons/constants";
+import { fetchErr } from "../commons/http-wrapper";
 
 export const loginAction = (token) => ({
     type: LOGIN,
@@ -10,16 +10,15 @@ export const loginAction = (token) => ({
 export const tryToLoginAction = (username, password) => (dispatch) => {
     dispatch(tryToLogin());
 
-    return fetch(`${backendUrl}/api/auth/login`, {
+    return fetchErr(`/api/auth/login`, {
         method: 'POST',
         body: searchParams({username: username, password: password}),
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
         }
     }).then(response => {
-        if (response.ok)
-            dispatch(loginAction(response.headers.get("X-AUTH-TOKEN")));
-        else throw Error()
+        window.localStorage.setItem(AUTH_HEADER, response.headers.get(AUTH_HEADER));
+        dispatch(loginAction(response.headers.get(AUTH_HEADER)));
     })
 };
 

@@ -21,7 +21,6 @@ class Login extends Component {
             await this.props.tryToLoginAction(this.state.username, this.state.password);
             this.props.history.push("/")
         } catch (exc) {
-            console.error(exc)
             this.setState({username: "", password: ""})
         }
     };

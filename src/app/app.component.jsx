@@ -1,7 +1,7 @@
 import React from "react"
 import { connect } from "react-redux";
 import { Switch, withRouter } from "react-router-dom";
-import PrivateRoute from "./private-route.component";
+import PrivateRoute from "./commons/private-route.component";
 import User from "./users/users.component"
 import AuthRouters from "./auth/auth.routes";
 import { MuiThemeProvider } from "material-ui";
