@@ -1,8 +1,8 @@
 import React, { Component } from "react"
-import { Card, RaisedButton, TextField } from "material-ui";
 import "./login.css"
 import { connect } from "react-redux";
 import { tryToLoginAction } from "../auth.actions";
+import LoginForm from "./login.form.component";
 
 class Login extends Component {
     state = {username: "", password: ""};
@@ -29,25 +29,9 @@ class Login extends Component {
     render() {
         return (
             <section className="login-wrapper">
-                <Card className="login-card">
-                    <form onSubmit={this.loginButton} className="login-form">
-                        <TextField
-                            floatingLabelText="Username"
-                            fullWidth={true}
-                            value={this.state.username}
-                            onChange={this.updateUsername}
-                        />
-                        <TextField
-                            floatingLabelText="Password"
-                            fullWidth={true}
-                            type="password"
-                            value={this.state.password}
-                            onChange={this.updatePassword}
-                        />
-                        <RaisedButton type="submit" primary={true} label="LOG IN" fullWidth={true}
-                                      onClick={this.loginButton} className="login-button"/>
-                    </form>
-                </Card>
+                <h1 className="login-header">Welcome again</h1>
+                <LoginForm loginButton={this.loginButton} username={this.state.username} password={this.state.password}
+                           updatePassword={this.updatePassword} updateUsername={this.updateUsername}/>
             </section>
         )
     }

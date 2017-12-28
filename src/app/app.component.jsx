@@ -7,7 +7,7 @@ import { MuiThemeProvider } from "material-ui";
 import muiTheme from "./mui-theme";
 import { tryResolveCurrentUser } from "./users/users.actions";
 import { loginCurrentUser } from "./auth/auth.actions";
-
+import "./app.css"
 
 class App extends Component {
 
@@ -15,7 +15,6 @@ class App extends Component {
         try {
             await this.props.resolveCurrentUser();
             this.props.loginCurrentUser();
-            this.props.history.push("/")
         } catch (e) {
             this.props.history.push("/auth/login")
         }
