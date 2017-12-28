@@ -14,6 +14,5 @@ export const tryResolveCurrentUser = () => (dispatch) => {
     dispatch(tryToGetCurrentUser());
 
     return api("/api/users/current")
-        .then(res => res.json())
         .then(json => dispatch(saveCurrentUser(json)))
 };

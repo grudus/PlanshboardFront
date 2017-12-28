@@ -2,23 +2,25 @@ import React from "react"
 import { Card, RaisedButton, TextField } from "material-ui";
 
 const LoginForm = (props) => (
-    <Card className="login-card">
-        <form onSubmit={props.loginButton} className="login-form">
+    <Card className="auth">
+        <form onSubmit={props.loginButton} className="auth-form">
             <TextField
-                floatingLabelText="Username"
+                floatingLabelText="Nazwa użytkownika"
                 fullWidth={true}
+                name="username"
                 value={props.username}
-                onChange={props.updateUsername}
+                onChange={props.handleChange}
             />
             <TextField
-                floatingLabelText="Password"
+                floatingLabelText="Hasło"
                 fullWidth={true}
                 type="password"
+                name="password"
                 value={props.password}
-                onChange={props.updatePassword}
+                onChange={props.handleChange}
             />
-            <RaisedButton type="submit" primary={true} label="LOG IN" fullWidth={true}
-                          onClick={props.loginButton} className="login-button"/>
+            <RaisedButton type="submit" primary={true} label="ZALOGUJ" fullWidth={true}
+                          onClick={props.loginButton} className="auth-button"/>
         </form>
     </Card>
 );

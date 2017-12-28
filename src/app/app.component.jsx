@@ -1,12 +1,12 @@
-import React, { Component } from "react"
+import React, { Component, Fragment } from "react"
 import { connect } from "react-redux";
-import { Route, Switch, withRouter } from "react-router-dom";
+import { Route, withRouter } from "react-router-dom";
 import User from "./users/users.component"
 import AuthRouters from "./auth/auth.routes";
 import { MuiThemeProvider } from "material-ui";
 import muiTheme from "./mui-theme";
 import { tryResolveCurrentUser } from "./users/users.actions";
-import { loginCurrentUser } from "./auth/auth.actions";
+import { loginCurrentUser } from "./auth/login/login.actions";
 import "./app.css"
 
 class App extends Component {
@@ -23,10 +23,10 @@ class App extends Component {
     render() {
         return (
             <MuiThemeProvider muiTheme={muiTheme}>
-                <Switch>
+                <Fragment>
                     {AuthRouters}
-                    <Route path="/" component={User}/>
-                </Switch>
+                    <Route path="/users" component={User}/>
+                </Fragment>
             </MuiThemeProvider>
         )
     }

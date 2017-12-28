@@ -1,6 +1,6 @@
-import { LOGIN, LOGIN_CURRENT_USER, TRY_TO_LOGIN } from "./auth.actions.types";
-import { AUTH_HEADER } from "../commons/constants";
-import { fetchErr } from "../commons/http-wrapper";
+import { LOGIN, LOGIN_CURRENT_USER, TRY_TO_LOGIN } from "../auth.actions.types";
+import { AUTH_HEADER } from "../../commons/constants";
+import { fetchErr } from "../../commons/http-wrapper";
 
 export const loginAction = (token) => ({
     type: LOGIN,

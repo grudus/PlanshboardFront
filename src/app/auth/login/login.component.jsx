@@ -1,37 +1,44 @@
 import React, { Component } from "react"
 import "./login.css"
 import { connect } from "react-redux";
-import { tryToLoginAction } from "../auth.actions";
+import { tryToLoginAction } from "./login.actions";
 import LoginForm from "./login.form.component";
+import { Link } from "react-router-dom";
 
 class Login extends Component {
-    state = {username: "", password: ""};
-
-    updateUsername = e => {
-        this.setState({username: e.target.value})
+    state = {
+        form: {
+            username: "",
+            password: ""
+        }
     };
 
-    updatePassword = e => {
-        this.setState({password: e.target.value})
+    handleChange = (event) => {
+        const {form} = this.state;
+        form[event.target.name] = event.target.value;
+        this.setState({form});
     };
 
     loginButton = async (e) => {
         e.preventDefault();
+        const {username, password} = this.state.form;
         try {
-            await this.props.tryToLoginAction(this.state.username, this.state.password);
+            await this.props.tryToLoginAction(username, password);
             this.props.history.push("/")
         } catch (exc) {
-            this.setState({username: "", password: ""})
+            this.setState({form: {username: "", password: ""}})
         }
     };
 
 
     render() {
         return (
-            <section className="login-wrapper">
-                <h1 className="login-header">Welcome again</h1>
-                <LoginForm loginButton={this.loginButton} username={this.state.username} password={this.state.password}
-                           updatePassword={this.updatePassword} updateUsername={this.updateUsername}/>
+            <section className="auth-wrapper">
+                <h1 className="auth-header">Witaj ponownie</h1>
+                <LoginForm loginButton={this.loginButton} username={this.state.form.username} password={this.state.form.password}
+                           handleChange={this.handleChange}/>
+                <p>Nie masz jeszcze konta?</p>
+                <Link to="/auth/registration">Zarejestruj się</Link>
             </section>
         )
     }
