@@ -1,4 +1,5 @@
 import React from "react"
+import PropTypes from "prop-types";
 import { Card, RaisedButton, TextField } from "material-ui";
 
 const LoginForm = (props) => (
@@ -24,5 +25,12 @@ const LoginForm = (props) => (
         </form>
     </Card>
 );
+
+LoginForm.propTypes = {
+    loginButton: PropTypes.func.isRequired,
+    username: PropTypes.string.isRequired,
+    handleChange: PropTypes.func.isRequired,
+    password: PropTypes.string.isRequired,
+};
 
 export default LoginForm;

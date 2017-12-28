@@ -35,7 +35,8 @@ class Login extends Component {
         return (
             <section className="auth-wrapper">
                 <h1 className="auth-header">Witaj ponownie</h1>
-                <LoginForm loginButton={this.loginButton} username={this.state.form.username} password={this.state.form.password}
+                <LoginForm loginButton={this.loginButton} username={this.state.form.username}
+                           password={this.state.form.password}
                            handleChange={this.handleChange}/>
                 <p>Nie masz jeszcze konta?</p>
                 <Link to="/auth/registration">Zarejestruj się</Link>
