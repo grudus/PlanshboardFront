@@ -12,6 +12,7 @@ export const fetchErr = (url, options = {}) => fetch(`${backendUrl}${url}`, opti
 
 export const api = (url, options = {}) => {
     const authOptions = {...options};
-    authOptions[AUTH_HEADER] = window.localStorage[AUTH_HEADER];
+    authOptions.headers = {...authOptions.headers};
+    authOptions.headers[AUTH_HEADER] = window.localStorage.getItem(AUTH_HEADER);
     return fetchErr(url, authOptions);
 };

@@ -1,4 +1,4 @@
-import { LOGIN, TRY_TO_LOGIN } from "./auth.actions.types";
+import { LOGIN, LOGIN_CURRENT_USER, TRY_TO_LOGIN } from "./auth.actions.types";
 import { AUTH_HEADER } from "../commons/constants";
 import { fetchErr } from "../commons/http-wrapper";
 
@@ -6,6 +6,11 @@ export const loginAction = (token) => ({
     type: LOGIN,
     token: token
 });
+
+export const loginCurrentUser = () => {
+    const token = window.localStorage.getItem(AUTH_HEADER);
+    return {type: LOGIN_CURRENT_USER, token}
+};
 
 export const tryToLoginAction = (username, password) => (dispatch) => {
     dispatch(tryToLogin());

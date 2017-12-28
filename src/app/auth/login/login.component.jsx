@@ -41,8 +41,8 @@ class Login extends Component {
                             floatingLabelText="Password"
                             fullWidth={true}
                             type="password"
-                            onChange={this.updatePassword}
                             value={this.state.password}
+                            onChange={this.updatePassword}
                         />
                         <RaisedButton type="submit" primary={true} label="LOG IN" fullWidth={true}
                                       onClick={this.loginButton} className="login-button"/>
