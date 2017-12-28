@@ -10,13 +10,17 @@ class Login extends Component {
         form: {
             username: "",
             password: ""
-        }
+        },
+        error: ""
     };
 
     handleChange = (event) => {
         const {form} = this.state;
         form[event.target.name] = event.target.value;
         this.setState({form});
+
+        if (this.state.error)
+            this.setState({error: ""});
     };
 
     loginButton = async (e) => {
@@ -26,7 +30,7 @@ class Login extends Component {
             await this.props.tryToLoginAction(username, password);
             this.props.history.push("/")
         } catch (exc) {
-            this.setState({form: {username: "", password: ""}})
+            this.setState({form: {username: "", password: ""}, error: "Wprowadzono niepoprawne dane"})
         }
     };
 
@@ -37,7 +41,8 @@ class Login extends Component {
                 <h1 className="auth-header">Witaj ponownie</h1>
                 <LoginForm loginButton={this.loginButton} username={this.state.form.username}
                            password={this.state.form.password}
-                           handleChange={this.handleChange}/>
+                           handleChange={this.handleChange}
+                           error={this.state.error}/>
                 <p>Nie masz jeszcze konta?</p>
                 <Link to="/auth/registration">Zarejestruj się</Link>
             </section>

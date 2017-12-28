@@ -11,6 +11,7 @@ const LoginForm = (props) => (
                 name="username"
                 value={props.username}
                 onChange={props.handleChange}
+                errorText={props.error}
             />
             <TextField
                 floatingLabelText="Hasło"
@@ -19,6 +20,7 @@ const LoginForm = (props) => (
                 name="password"
                 value={props.password}
                 onChange={props.handleChange}
+                errorText={props.error}
             />
             <RaisedButton type="submit" primary={true} label="ZALOGUJ" fullWidth={true}
                           onClick={props.loginButton} className="auth-button"/>
@@ -31,6 +33,7 @@ LoginForm.propTypes = {
     username: PropTypes.string.isRequired,
     handleChange: PropTypes.func.isRequired,
     password: PropTypes.string.isRequired,
+    error: PropTypes.string.isRequired,
 };
 
 export default LoginForm;
