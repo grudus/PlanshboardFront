@@ -4,6 +4,7 @@ import { AppBar, FlatButton, Tab, Tabs, ToolbarGroup } from "material-ui";
 import { Link } from "react-router-dom";
 import { logoutAction } from "../../auth/login/login.actions";
 import { connect } from "react-redux";
+import "./topbar.css"
 
 class TopBar extends Component {
 
@@ -12,19 +13,21 @@ class TopBar extends Component {
     };
 
     render() {
-        const logoutButton = <FlatButton label="LOGOUT" onClick={this.logout} containerElement={<Link to="/auth/login"/>}/>;
+        const logoutButton = <FlatButton label="LOGOUT" onClick={this.logout}
+                                         containerElement={<Link to="/auth/login"/>}/>;
 
         return (<AppBar iconElementLeft={
             <ToolbarGroup>
                 <Tabs>
-                    <Tab style={{color: 'white', padding: '8px 48px'}} label="Użytkownik"
-                         containerElement={<Link to="/users"/>}>
-                    </Tab>
-                    <Tab style={{color: 'white', padding: '8px 48px'}} label="Gry"
+                    <Tab className="tab" label="Gry"
                          containerElement={<Link to="/games"/>}
                     />
-                    <Tab style={{color: 'white', padding: '8px 48px'}} label="Statystyki"
-                         containerElement={<Link to="/stats"/>}/>
+                    <Tab className="tab" label="Statystyki"
+                         containerElement={<Link to="/stats"/>}
+                    />
+                    <Tab className="tab" label="Użytkownik"
+                         containerElement={<Link to="/user"/>}
+                    />
                 </Tabs>
             </ToolbarGroup>
         }

@@ -1,4 +1,5 @@
 import { AUTH_HEADER } from "./constants";
+import { HttpError } from "./http-error";
 
 const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
@@ -6,7 +7,7 @@ export const fetchErr = (url, options = {}) => fetch(`${backendUrl}${url}`, opti
     .then(res => {
         console.log(res);
         if (!res.ok)
-            throw Error(`Response status: ${res.status}`);
+            throw HttpError(res.status);
         return res
     });
 

@@ -30,7 +30,13 @@ class Login extends Component {
             await this.props.tryToLoginAction(username, password);
             this.props.history.push("/")
         } catch (exc) {
-            this.setState({form: {username: "", password: ""}, error: "Wprowadzono niepoprawne dane"})
+            if (exc.code === 403) {
+                this.setState({form: {username: "", password: ""}, error: "Wprowadzono niepoprawne dane"})
+            }
+            else {
+                //todo remove when production
+                this.setState({error: JSON.stringify(exc)})
+            }
         }
     };
 
