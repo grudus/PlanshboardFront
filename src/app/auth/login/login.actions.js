@@ -1,4 +1,4 @@
-import { LOGIN, LOGIN_CURRENT_USER, TRY_TO_LOGIN } from "../auth.actions.types";
+import { LOGIN, LOGIN_CURRENT_USER, LOGOUT, TRY_TO_LOGIN } from "../auth.actions.types";
 import { AUTH_HEADER } from "../../commons/constants";
 import { fetchErr } from "../../commons/http-wrapper";
 
@@ -34,3 +34,11 @@ const tryToLogin = () => ({
 const searchParams = (params) => Object.keys(params).map((key) => {
     return encodeURIComponent(key) + '=' + encodeURIComponent(params[key]);
 }).join('&');
+
+
+export const logoutAction = () => (dispatch) => {
+    window.localStorage.removeItem(AUTH_HEADER);
+    dispatch(logout());
+};
+
+const logout = () => ({type: LOGOUT});

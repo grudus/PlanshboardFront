@@ -1,4 +1,4 @@
-import { LOGIN, LOGIN_CURRENT_USER, TRY_TO_LOGIN } from "./auth.actions.types";
+import { LOGIN, LOGIN_CURRENT_USER, LOGOUT, TRY_TO_LOGIN } from "./auth.actions.types";
 
 const initialState = {
     token: "",
@@ -14,6 +14,9 @@ export default (state = initialState, action) => {
             return {...state, isTryingToLogin: true};
         case LOGIN_CURRENT_USER:
             return {...state, isTryingToLogin: false, isLogged: true, token: action.token};
+        case LOGOUT: {
+            return {...state, isLogged: false, token: ""}
+        }
         default:
             return state
     }
