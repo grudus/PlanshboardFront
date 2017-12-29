@@ -28,7 +28,7 @@ class Login extends Component {
         const {username, password} = this.state.form;
         try {
             await this.props.tryToLoginAction(username, password);
-            this.props.history.push("/content")
+            this.props.history.push("/")
         } catch (exc) {
             this.setState({form: {username: "", password: ""}, error: "Wprowadzono niepoprawne dane"})
         }

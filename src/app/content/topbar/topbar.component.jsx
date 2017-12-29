@@ -18,13 +18,13 @@ class TopBar extends Component {
             <ToolbarGroup>
                 <Tabs>
                     <Tab style={{color: 'white', padding: '8px 48px'}} label="Użytkownik"
-                         containerElement={<Link to="/content/users"/>}>
+                         containerElement={<Link to="/users"/>}>
                     </Tab>
                     <Tab style={{color: 'white', padding: '8px 48px'}} label="Gry"
-                         containerElement={<Link to="/content/games"/>}
+                         containerElement={<Link to="/games"/>}
                     />
                     <Tab style={{color: 'white', padding: '8px 48px'}} label="Statystyki"
-                         containerElement={<Link to="/content/stats"/>}/>
+                         containerElement={<Link to="/stats"/>}/>
                 </Tabs>
             </ToolbarGroup>
         }

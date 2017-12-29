@@ -7,7 +7,7 @@ import Route from "react-router-dom/es/Route";
 const Content = () => (
     <Fragment>
         <TopBar/>
-        <Route path="/content/users" component={User}/>
+        <Route path="/users" component={User}/>
     </Fragment>
 );
 export default Content;
