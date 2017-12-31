@@ -17,7 +17,7 @@ class App extends Component {
             await this.props.resolveCurrentUser();
             this.props.loginCurrentUser();
         } catch (e) {
-            this.props.history.push("/auth/login")
+            // this.props.history.push("/auth/login")
         }
     }
 

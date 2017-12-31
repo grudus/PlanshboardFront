@@ -13,7 +13,7 @@ class TopBar extends Component {
     };
 
     render() {
-        const logoutButton = <FlatButton label="LOGOUT" onClick={this.logout}
+        const logoutButton = <FlatButton label="Wyloguj" onClick={this.logout}
                                          containerElement={<Link to="/auth/login"/>}/>;
 
         return (<AppBar iconElementLeft={
