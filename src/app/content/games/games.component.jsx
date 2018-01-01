@@ -1,12 +1,18 @@
 import React, { Component } from "react"
 import BoardGameList from "./board-games/board-games-list.component";
 import { connect } from "react-redux";
-import { changeCurrentGame, getAllGames } from "./games.actions";
+import { addNewBoardGame, changeCurrentBoardGame, getAllBoardGames } from "./games.actions";
+import "./games.css";
+import AddBoardGame from "./board-games/add-board-game.component";
 
 class Games extends Component {
 
     selectGame = (game) => {
         this.props.changeCurrentGame(game);
+    };
+
+    addNewGame = (name) => {
+        this.props.addNewBoardGame(name);
     };
 
     async componentDidMount() {
@@ -19,7 +25,8 @@ class Games extends Component {
     render() {
         return (
             <div style={{display: 'flex', marginTop: '54px', marginLeft: '24px'}}>
-                <article style={{padding: '16px'}}>
+                <article className="game-list">
+                    <AddBoardGame onAddNewGame={this.addNewGame}/>
                     <BoardGameList games={this.props.games} onSelect={this.selectGame}/>
                 </article>
             </div>
@@ -32,8 +39,9 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = {
-    changeCurrentGame,
-    getAllGames,
+    changeCurrentGame: changeCurrentBoardGame,
+    getAllGames: getAllBoardGames,
+    addNewBoardGame,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Games);

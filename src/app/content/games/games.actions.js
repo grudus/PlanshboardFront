@@ -1,15 +1,28 @@
-import { CHANGE_CURRENT_GAME, GET_ALL_GAMES, TRY_TO_GET_ALL_GAMES } from "./games.actions.types";
+import {
+    ADD_NEW_BOARD_GAME, CHANGE_CURRENT_BOARD_GAME, GET_ALL_BOARD_GAMES,
+    TRY_TO_GET_ALL_BOARD_GAMES
+} from "./games.actions.types";
 import { api } from "../../commons/http-wrapper";
 
-export const changeCurrentGame = (game) => ({type: CHANGE_CURRENT_GAME, currentGame: game});
+export const changeCurrentBoardGame = (game) => ({type: CHANGE_CURRENT_BOARD_GAME, currentGame: game});
 
-export const getAllGames = () => (dispatch) => {
-    console.log("GET ALL GAMES ACTIOn");
-    dispatch(tryToGetGames());
+export const getAllBoardGames = () => (dispatch) => {
+    dispatch(tryToGetBoardGames());
 
     return api("/api/board-games")
-        .then(res => dispatch(getGames(res)));
+        .then(res => dispatch(getBoardGames(res)));
 };
 
-const tryToGetGames = () => ({type: TRY_TO_GET_ALL_GAMES});
-const getGames = (games) => ({type: GET_ALL_GAMES, games: games});
+//todo get from server
+export const addNewBoardGame = (name) => {
+    return (doAddNewBoardGame(name, Math.random() * 1000));
+};
+
+const tryToGetBoardGames = () => ({type: TRY_TO_GET_ALL_BOARD_GAMES});
+const getBoardGames = (games) => ({type: GET_ALL_BOARD_GAMES, games: games});
+
+const doAddNewBoardGame = (name, id) => ({
+    name,
+    id,
+    type: ADD_NEW_BOARD_GAME,
+});
