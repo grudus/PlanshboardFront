@@ -1,3 +1,5 @@
+import { CHANGE_CURRENT_GAME } from "./games.actions.types";
+
 const mockGames = [
     {id: 1, name: "Agricola"},
     {id: 2, name: "Pędzące żółwie"},
@@ -5,10 +7,15 @@ const mockGames = [
 ];
 
 const initialState = {
-  allGames: mockGames,
-  currentGame: {},
+    allGames: mockGames,
+    currentGame: {},
 };
 
 export default (state = initialState, action) => {
-    return state;
+    switch (action.type) {
+        case CHANGE_CURRENT_GAME:
+            return {...state, currentGame: {...action.currentGame}};
+        default:
+            return state;
+    }
 }
