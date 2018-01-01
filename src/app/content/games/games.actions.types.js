@@ -1,1 +1,3 @@
 export const CHANGE_CURRENT_GAME = "CHANGE_CURRENT_GAME";
+export const GET_ALL_GAMES = "GET_ALL_GAMES";
+export const TRY_TO_GET_ALL_GAMES = "GET_ALL_GAMES";

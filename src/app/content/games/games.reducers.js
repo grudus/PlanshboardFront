@@ -1,4 +1,4 @@
-import { CHANGE_CURRENT_GAME } from "./games.actions.types";
+import { CHANGE_CURRENT_GAME, GET_ALL_GAMES } from "./games.actions.types";
 
 const mockGames = [
     {id: 1, name: "Agricola"},
@@ -14,7 +14,9 @@ const initialState = {
 export default (state = initialState, action) => {
     switch (action.type) {
         case CHANGE_CURRENT_GAME:
-            return {...state, currentGame: {...action.currentGame}};
+            return {...state, currentGame: action.currentGame};
+        case GET_ALL_GAMES:
+            return {...state, allGames: action.games};
         default:
             return state;
     }

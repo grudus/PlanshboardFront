@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import BoardGameList from "./board-games/board-games-list.component";
 import { connect } from "react-redux";
-import { changeCurrentGame } from "./games.actions";
+import { changeCurrentGame, getAllGames } from "./games.actions";
 
 class Games extends Component {
 
@@ -9,7 +9,8 @@ class Games extends Component {
         this.props.changeCurrentGame(game);
     };
 
-    componentDidMount() {
+    async componentDidMount() {
+        await this.props.getAllGames();
         const {games} = this.props;
         if (games && games.length > 0)
             this.selectGame(games[0]);
@@ -32,6 +33,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
     changeCurrentGame,
+    getAllGames,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Games);
