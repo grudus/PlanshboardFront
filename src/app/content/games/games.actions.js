@@ -13,9 +13,9 @@ export const getAllBoardGames = () => (dispatch) => {
         .then(res => dispatch(getBoardGames(res)));
 };
 
-//todo get from server
-export const addNewBoardGame = (name) => {
-    return (doAddNewBoardGame(name, Math.random() * 1000));
+export const addNewBoardGame = (name) => (dispatch) => {
+    return api("/api/board-games", {method: 'POST', body: JSON.stringify({name: name})})
+        .then(res => dispatch(doAddNewBoardGame(name, res.id)));
 };
 
 const tryToGetBoardGames = () => ({type: TRY_TO_GET_ALL_BOARD_GAMES});

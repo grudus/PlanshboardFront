@@ -11,6 +11,7 @@ export const fetchErr = (url, options = {}) => fetch(`${backendUrl}${url}`, opti
         return res
     });
 
+//todo add clean 'post' method
 export const api = (url, options = {}) => {
     const authOptions = {...options};
     authOptions.headers = {...authOptions.headers};

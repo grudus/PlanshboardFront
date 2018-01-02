@@ -1,4 +1,4 @@
-import React, { Component } from "react"
+import React, { Component, Fragment } from "react"
 import BoardGameList from "./board-games/board-games-list.component";
 import { connect } from "react-redux";
 import { addNewBoardGame, changeCurrentBoardGame, getAllBoardGames } from "./games.actions";
@@ -23,11 +23,13 @@ class Games extends Component {
     }
 
     render() {
+        const {games} = this.props;
+        const list = games && games.length > 0 ? <BoardGameList games={games} onSelect={this.selectGame}/> : <Fragment/>
         return (
             <div style={{display: 'flex', marginTop: '54px', marginLeft: '24px'}}>
                 <article className="game-list">
                     <AddBoardGame onAddNewGame={this.addNewGame}/>
-                    <BoardGameList games={this.props.games} onSelect={this.selectGame}/>
+                    {list}
                 </article>
             </div>
         )

@@ -6,7 +6,8 @@ import { Card, ListItem } from "material-ui";
 const BoardGameList = (props) => {
 
     const children = props.games
-        ? props.games.map((game, index) => (<ListItem primaryText={game.name} value={index} key={index}/>))
+        ? props.games.map((game, index) => (
+            <ListItem primaryText={game.name} value={index} key={index} className="game-list-item"/>))
         : <Fragment/>;
 
     const selectItem = (index) => {
