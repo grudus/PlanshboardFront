@@ -11,7 +11,6 @@ export const fetchErr = (url, options = {}) => fetch(`${backendUrl}${url}`, opti
         return res
     });
 
-//todo add clean 'post' method
 export const api = (url, options = {}) => {
     const authOptions = {...options};
     authOptions.headers = {...authOptions.headers};
@@ -19,4 +18,12 @@ export const api = (url, options = {}) => {
     authOptions.headers['Accept'] = 'application/json';
     authOptions.headers[AUTH_HEADER] = window.localStorage.getItem(AUTH_HEADER);
     return fetchErr(url, authOptions).then(res => res.json())
+};
+
+export const postApi = (url, body = {}) => {
+    const options = {
+        method: 'POST',
+        body: JSON.stringify(body),
+    };
+    return api(url, options)
 };

@@ -2,7 +2,7 @@ import {
     ADD_NEW_BOARD_GAME, CHANGE_CURRENT_BOARD_GAME, GET_ALL_BOARD_GAMES,
     TRY_TO_GET_ALL_BOARD_GAMES
 } from "./games.actions.types";
-import { api } from "../../commons/http-wrapper";
+import { api, postApi } from "../../commons/http-wrapper";
 
 export const changeCurrentBoardGame = (game) => ({type: CHANGE_CURRENT_BOARD_GAME, currentGame: game});
 
@@ -14,7 +14,7 @@ export const getAllBoardGames = () => (dispatch) => {
 };
 
 export const addNewBoardGame = (name) => (dispatch) => {
-    return api("/api/board-games", {method: 'POST', body: JSON.stringify({name: name})})
+    return postApi("/api/board-games", {name})
         .then(res => dispatch(doAddNewBoardGame(name, res.id)));
 };
 

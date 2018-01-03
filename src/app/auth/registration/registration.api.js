@@ -1,8 +1,6 @@
-import { api } from "../../commons/http-wrapper";
+import { api, postApi } from "../../commons/http-wrapper";
 
 export const usernameExists = (username) => api(`/api/auth/register/exists?username=${username}`);
 
-export const registerUser = (username, password) => api("/api/auth/register", {
-    method: 'POST',
-    body: JSON.stringify({username: username, password: password})
-});
+export const registerUser = (username, password) =>
+    postApi("/api/auth/register", {username, password});
