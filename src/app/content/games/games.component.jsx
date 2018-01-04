@@ -24,9 +24,9 @@ class Games extends Component {
 
     render() {
         const {games} = this.props;
-        const list = games && games.length > 0 ? <BoardGameList games={games} onSelect={this.selectGame}/> : <Fragment/>
+        const list = games && games.length > 0 ? <BoardGameList games={games} onSelect={this.selectGame}/> : <Fragment/>;
         return (
-            <div style={{display: 'flex', marginTop: '54px', marginLeft: '24px'}}>
+            <div className="board-game-list-wrapper">
                 <article className="game-list">
                     <AddBoardGame onAddNewGame={this.addNewGame}/>
                     {list}

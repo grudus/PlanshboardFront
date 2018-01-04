@@ -5,7 +5,6 @@ const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
 export const fetchErr = (url, options = {}) => fetch(`${backendUrl}${url}`, options)
     .then(res => {
-        console.log(res);
         if (!res.ok)
             throw HttpError(res.status);
         return res

@@ -32,7 +32,7 @@ class TopBar extends Component {
             <ToolbarGroup>
                 <Tabs value={currentTabId}>
                     {tabs.map((tab, index) =>
-                        <Tab className="tab" label={tab.label} value={index}
+                        <Tab className="tab" label={tab.label} value={index} key={index}
                              containerElement={<Link to={tab.path}/>}/>
                     )}
                 </Tabs>

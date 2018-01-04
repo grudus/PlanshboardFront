@@ -9,3 +9,9 @@
     white-space: nowrap;
     overflow: hidden;
 }
+
+.board-game-list-wrapper {
+    display: flex;
+    margin-top: 54px;
+    margin-left: 24px;
+}
