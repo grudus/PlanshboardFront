@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react"
 import BoardGameList from "./board-games/board-games-list.component";
 import { connect } from "react-redux";
-import { addNewBoardGame, changeCurrentBoardGame, getAllBoardGames } from "./games.actions";
+import { addNewBoardGame, changeCurrentBoardGame, getAllBoardGames } from "./board-games/board-games.actions";
 import "./games.css";
 import AddBoardGame from "./board-games/add-board-game.component";
 
@@ -37,7 +37,7 @@ class Games extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    games: state.games.allGames
+    games: state.boardGames.allGames
 });
 
 const mapDispatchToProps = {

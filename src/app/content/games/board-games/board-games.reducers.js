@@ -1,4 +1,4 @@
-import { ADD_NEW_BOARD_GAME, CHANGE_CURRENT_BOARD_GAME, GET_ALL_BOARD_GAMES } from "./games.actions.types";
+import { ADD_NEW_BOARD_GAME, CHANGE_CURRENT_BOARD_GAME, GET_ALL_BOARD_GAMES } from "./board-games.actions.types";
 
 const mockGames = [
     {id: 1, name: "Agricola"},

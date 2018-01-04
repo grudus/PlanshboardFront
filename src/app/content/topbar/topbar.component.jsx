@@ -21,9 +21,9 @@ class TopBar extends Component {
                                           containerElement={<Link to="/auth/login"/>}/>);
 
         const tabs = [
-            {path: "/games", name: "Gry"},
-            {path: "/stats", name: "Statystyki"},
-            {path: "/user", name: "Użytkownik"}
+            {path: "/games", label: "Gry"},
+            {path: "/stats", label: "Statystyki"},
+            {path: "/user", label: "Użytkownik"}
         ];
 
         const currentTabId = tabs.findIndex(tab => tab.path === this.props.pathName);
@@ -32,7 +32,7 @@ class TopBar extends Component {
             <ToolbarGroup>
                 <Tabs value={currentTabId}>
                     {tabs.map((tab, index) =>
-                        <Tab className="tab" label={tab.name} value={index}
+                        <Tab className="tab" label={tab.label} value={index}
                              containerElement={<Link to={tab.path}/>}/>
                     )}
                 </Tabs>
