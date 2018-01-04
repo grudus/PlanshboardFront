@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react"
 import BoardGameList from "./board-games/board-games-list.component";
 import { connect } from "react-redux";
-import { addNewBoardGame, changeCurrentBoardGame, getAllBoardGames } from "./board-games/board-games.actions";
+import { changeCurrentBoardGame, getAllBoardGames } from "./board-games/board-games.actions";
 import "./games.css";
 import AddBoardGame from "./board-games/add-board-game.component";
 
@@ -9,10 +9,6 @@ class Games extends Component {
 
     selectGame = (game) => {
         this.props.changeCurrentGame(game);
-    };
-
-    addNewGame = (name) => {
-        this.props.addNewBoardGame(name);
     };
 
     async componentDidMount() {
@@ -28,7 +24,7 @@ class Games extends Component {
         return (
             <div className="board-game-list-wrapper">
                 <article className="game-list">
-                    <AddBoardGame onAddNewGame={this.addNewGame}/>
+                    <AddBoardGame />
                     {list}
                 </article>
             </div>
@@ -43,7 +39,6 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = {
     changeCurrentGame: changeCurrentBoardGame,
     getAllGames: getAllBoardGames,
-    addNewBoardGame,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Games);

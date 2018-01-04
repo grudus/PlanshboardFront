@@ -1,17 +1,14 @@
 import React, { Component } from "react"
 import { TextField } from "material-ui";
-import PropTypes from "prop-types";
 import { boardNameExistsRequest } from "./board-games.api";
+import { addNewBoardGame } from "./board-games.actions";
+import { connect } from "react-redux";
 
 
 class AddBoardGame extends Component {
     state = {
         name: "",
         error: "",
-    };
-
-    static propTypes = {
-        onAddNewGame: PropTypes.func.isRequired,
     };
 
     onChange = (e) => this.setState({name: e.target.value, error: ""});
@@ -24,7 +21,7 @@ class AddBoardGame extends Component {
             this.setState({error: "Taka gra już istnieje"});
         }
         else {
-            this.props.onAddNewGame(this.state.name);
+            this.props.addNewBoardGame(this.state.name);
             this.setState({name: ""});
         }
     };
@@ -39,4 +36,9 @@ class AddBoardGame extends Component {
     }
 }
 
-export default AddBoardGame;
+const mapStateToProps = () => ({});
+const mapDispatchToProps = {
+    addNewBoardGame
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddBoardGame);
