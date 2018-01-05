@@ -2,7 +2,7 @@ import { ADD_NEW_BOARD_GAME, CHANGE_CURRENT_BOARD_GAME, GET_ALL_BOARD_GAMES } fr
 
 const initialState = {
     allGames: [],
-    currentGame: {},
+    currentGame: null,
 };
 
 export default (state = initialState, action) => {

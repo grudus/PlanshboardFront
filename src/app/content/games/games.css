@@ -12,6 +12,14 @@
 
 .board-game-list-wrapper {
     display: flex;
-    margin-top: 54px;
-    margin-left: 24px;
+    margin: 54px 54px;
+}
+
+.game-not-found-wrapper {
+    flex-grow: 2;
+    text-align: center;
+}
+
+.game-not-found-title {
+    font-weight: 300;
 }

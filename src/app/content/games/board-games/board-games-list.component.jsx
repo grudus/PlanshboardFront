@@ -6,18 +6,18 @@ import { Card, ListItem } from "material-ui";
 const BoardGameList = (props) => {
 
     const children = props.games
-        ? props.games.map((game, index) => (
-            <ListItem primaryText={game.name} value={index} key={index} className="game-list-item"/>))
+        ? props.games.map((game) => (
+            <ListItem primaryText={game.name} value={game.id} key={game.id} className="game-list-item"/>))
         : <Fragment/>;
 
-    const selectItem = (index) => {
-        const game = props.games[index];
+    const selectItem = (id) => {
+        const game = props.games.find(game => game.id === id);
         props.onSelect(game);
     };
 
     return (
         <Card>
-            <SelectableList defaultValue={0} onChange={selectItem}>
+            <SelectableList selectedValue={props.startId} onChange={selectItem}>
                 {children}
             </SelectableList>
         </Card>)
@@ -29,6 +29,7 @@ BoardGameList.propTypes = {
         name: PropTypes.string.isRequired,
     })),
     onSelect: PropTypes.func.isRequired,
+    startId: PropTypes.number,
 };
 
 

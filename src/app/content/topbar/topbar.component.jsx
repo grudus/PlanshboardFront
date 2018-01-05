@@ -28,7 +28,7 @@ class TopBar extends Component {
 
         const currentTabId = tabs.findIndex(tab => tab.path === this.props.pathName);
 
-        return (<AppBar iconElementLeft={
+        return (<AppBar className="app-bar" iconElementLeft={
             <ToolbarGroup>
                 <Tabs value={currentTabId}>
                     {tabs.map((tab, index) =>

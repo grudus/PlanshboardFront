@@ -9,28 +9,18 @@ function wrapState(ComposedComponent) {
     return class SelectableList extends Component {
         static propTypes = {
             children: PropTypes.node.isRequired,
-            defaultValue: PropTypes.number.isRequired,
-            onChange: PropTypes.func,
+            onChange: PropTypes.func.isRequired,
+            selectedValue: PropTypes.number,
         };
 
-        componentWillMount() {
-            this.setState({
-                selectedIndex: this.props.defaultValue,
-            });
-        }
-
         handleRequestChange = (event, index) => {
-            this.setState({
-                selectedIndex: index,
-            });
-            if (this.props.onChange)
-                this.props.onChange(index, event);
+            this.props.onChange(index, event);
         };
 
         render() {
             return (
                 <ComposedComponent
-                    value={this.state.selectedIndex}
+                    value={this.props.selectedValue}
                     onChange={this.handleRequestChange}
                 >
                     {this.props.children}

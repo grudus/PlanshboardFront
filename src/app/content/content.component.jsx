@@ -12,11 +12,13 @@ class Content extends Component {
         return (
             <Fragment>
                 <TopBar pathName={this.props.location.pathname}/>
-                <Switch>
-                    <Route path="/user" component={User}/>
-                    <Route path="/games" component={Games}/>
-                    <Route path="/" render={() => <Redirect to="/games"/>}/>
-                </Switch>
+                <div className="content-wrapper">
+                    <Switch>
+                        <Route path="/user" component={User}/>
+                        <Route path="/games/:gameId?" component={Games}/>
+                        <Route path="/" render={() => <Redirect to="/games"/>}/>
+                    </Switch>
+                </div>
             </Fragment>
         )
     }
