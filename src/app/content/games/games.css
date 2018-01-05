@@ -15,11 +15,15 @@
     margin: 54px 54px;
 }
 
-.game-not-found-wrapper {
+.game-title-wrapper {
+    margin-top: -20px;
     flex-grow: 2;
     text-align: center;
+    color: #424242;
 }
 
-.game-not-found-title {
+.game-title {
+    display: inline-block;
     font-weight: 300;
+    margin-left: -32px;
 }

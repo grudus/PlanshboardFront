@@ -1,6 +1,6 @@
 import {
     ADD_NEW_BOARD_GAME,
-    CHANGE_CURRENT_BOARD_GAME,
+    CHANGE_CURRENT_BOARD_GAME, DELETE_BOARD_GAME,
     GET_ALL_BOARD_GAMES,
     TRY_TO_GET_ALL_BOARD_GAMES
 } from "./board-games.actions.types";
@@ -18,6 +18,13 @@ export const getAllBoardGames = () => (dispatch) => {
 export const addNewBoardGame = (name) => (dispatch) => {
     return addBoardGameRequest(name)
         .then(res => dispatch(doAddNewBoardGame(name, res.id)));
+};
+
+export const deleteBoardGame = (id) => /*(dispatch) =>*/ {
+    return {
+        type: DELETE_BOARD_GAME,
+        id,
+    };
 };
 
 

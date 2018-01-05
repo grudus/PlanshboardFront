@@ -27,7 +27,18 @@ class Games extends Component {
         if (selectedGame && games && games.length > 0) {
             this.selectGame(selectedGame);
         }
+        else if (!selectedGame) {
+            this.selectGame(this.props.currentGame)
+        }
+    }
 
+    componentDidUpdate() {
+        const {currentGame} = this.props;
+        const id = currentGame ? currentGame.id : 0;
+        const urlGameId = parseInt(this.props.match.params.gameId, 10);
+
+        if (id && id !== urlGameId)
+            this.props.history.push(`/games/${id}`);
     }
 
     render() {
@@ -42,7 +53,8 @@ class Games extends Component {
                     <AddBoardGame/>
                     {list}
                 </article>
-                {currentGame ? <SingleGame game={currentGame}/> : (this.state.showGameNotFound ? <GameNotFound/> : <Fragment/>)}
+                {currentGame ? <SingleGame game={currentGame}/> : (this.state.showGameNotFound ? <GameNotFound/> :
+                    <Fragment/>)}
             </div>
         )
     }
