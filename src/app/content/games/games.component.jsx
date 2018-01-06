@@ -24,11 +24,9 @@ class Games extends Component {
 
         const selectedGame = games.find(game => game.id === parseInt(gameId, 10));
 
-        if (selectedGame && games && games.length > 0) {
-            this.selectGame(selectedGame);
-        }
-        else if (!selectedGame) {
-            this.selectGame(this.props.currentGame)
+        if (games && games.length > 0) {
+            if (selectedGame)
+                this.selectGame(selectedGame)
         }
     }
 

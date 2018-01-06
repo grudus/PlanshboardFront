@@ -8,6 +8,8 @@ import muiThemeable from 'material-ui/styles/muiThemeable';
 import { deleteBoardGame } from "../board-games/board-games.actions";
 import { compose } from "redux";
 
+import "./single-game.css"
+
 class SingleGame extends Component {
 
     state = {showDeleteDialog: false};
@@ -38,9 +40,12 @@ class SingleGame extends Component {
         return (
             <div className="game-title-wrapper">
                 <h1 className="game-title">{game.name}</h1>
-                <span style={{marginLeft: '8px', padding: '8px'}}><ClickableIcon name="create"
-                                                                                 hoverColor={this.props.muiTheme.palette.accent1Color}/></span>
-                <span><ClickableIcon hoverColor={red500} name="delete" onClick={this.showDeleteDialog}/></span>
+                <span className="title-icon-wrapper">
+                    <ClickableIcon name="create" hoverColor={this.props.muiTheme.palette.accent1Color}/>
+                </span>
+                <span>
+                    <ClickableIcon hoverColor={red500} name="delete" onClick={this.showDeleteDialog}/>
+                </span>
 
                 <DeleteGameDialog shouldShowModal={this.state.showDeleteDialog} onSubmit={this.submitDeletion}
                                   closePopup={this.hideDeleteDialog}/>

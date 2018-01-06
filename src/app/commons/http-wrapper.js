@@ -16,7 +16,10 @@ export const api = (url, options = {}) => {
     authOptions.headers['Content-Type'] = 'application/json';
     authOptions.headers['Accept'] = 'application/json';
     authOptions.headers[AUTH_HEADER] = window.localStorage.getItem(AUTH_HEADER);
-    return fetchErr(url, authOptions).then(res => res.json())
+    return fetchErr(url, authOptions).then(res => {
+        if (res.status !== 204)
+            return res.json()
+    })
 };
 
 export const postApi = (url, body = {}) => {
