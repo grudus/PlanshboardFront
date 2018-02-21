@@ -1,10 +1,10 @@
-import React, { Component } from "react"
+import React, {Component} from "react"
 import PropTypes from "prop-types";
 
-import { AppBar, FlatButton, Tab, Tabs, ToolbarGroup } from "material-ui";
-import { Link } from "react-router-dom";
-import { logoutAction } from "../../auth/login/login.actions";
-import { connect } from "react-redux";
+import {AppBar, FlatButton, Tab, Tabs, ToolbarGroup} from "material-ui";
+import {Link} from "react-router-dom";
+import {logoutAction} from "../../auth/login/login.actions";
+import {connect} from "react-redux";
 import "./topbar.css"
 
 class TopBar extends Component {
