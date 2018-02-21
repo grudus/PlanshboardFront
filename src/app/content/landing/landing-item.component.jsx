@@ -2,7 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 
 const LandingItem = ({label, path, icon}) => (
-    <div className="landing-item">
+    <div className="landing-item card-shadow pointer anim">
         <h2 className="landing-item-title">
             {label.toUpperCase()}
         </h2>

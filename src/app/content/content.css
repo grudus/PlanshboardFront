@@ -5,3 +5,15 @@ body {
 .content-wrapper {
     padding-top: 64px;
 }
+
+.card-shadow:hover {
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.anim {
+    transition: all 0.3s ease;
+}
