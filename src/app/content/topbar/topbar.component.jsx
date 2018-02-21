@@ -6,6 +6,7 @@ import {Link} from "react-router-dom";
 import {logoutAction} from "../../auth/login/login.actions";
 import {connect} from "react-redux";
 import "./topbar.css"
+import tabs from "../tabs"
 
 class TopBar extends Component {
     static propTypes = {
@@ -19,12 +20,6 @@ class TopBar extends Component {
     render() {
         const logoutButton = (<FlatButton label="Wyloguj" onClick={this.logout}
                                           containerElement={<Link to="/auth/login"/>}/>);
-
-        const tabs = [
-            {path: "/games", label: "Gry"},
-            {path: "/stats", label: "Statystyki"},
-            {path: "/user", label: "Użytkownik"}
-        ];
 
         const currentTabId = tabs.findIndex(tab => tab.path === this.props.pathName);
 

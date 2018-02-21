@@ -1,5 +1,4 @@
-import React, {Component, Fragment} from "react"
-import User from "./users/users.component";
+import React, {Component} from "react"
 import Route from "react-router-dom/es/Route";
 import Games from "./games/games.component";
 import Landing from "./landing/landing.component"
@@ -10,16 +9,10 @@ class Content extends Component {
 
     render() {
         return (
-            <Fragment>
-                {/*<TopBar pathName={this.props.location.pathname}/>*/}
-                <div>
-                    <Switch>
-                        <Route path="/user" component={User}/>
-                        <Route path="/games/:gameId?" component={Games}/>
-                        <Route path="/" component={Landing}/>
-                    </Switch>
-                </div>
-            </Fragment>
+            <Switch>
+                <Route path="/games" component={Games}/>
+                <Route path="/" component={Landing}/>
+            </Switch>
         )
     }
 }

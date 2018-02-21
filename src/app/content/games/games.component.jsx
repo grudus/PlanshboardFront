@@ -1,14 +1,10 @@
-import React, { Component, Fragment } from "react"
-import BoardGameList from "./board-games/board-games-list.component";
-import { connect } from "react-redux";
-import { changeCurrentBoardGame, getAllBoardGames } from "./board-games/board-games.actions";
+import React, {Component} from "react"
+import {connect} from "react-redux";
+import {changeCurrentBoardGame, getAllBoardGames} from "./board-games/board-games.actions";
 import "./games.css";
-import AddBoardGame from "./board-games/add-board-game.component";
-import SingleGame from "./single-game/single-game.component";
-import GameNotFound from "./game-not-found.component";
+import {withTopbar} from "../topbar/with-topbar";
 
 class Games extends Component {
-    state = {showGameNotFound: false};
 
     selectGame = (game) => {
         this.props.changeCurrentGame(game);
@@ -17,50 +13,17 @@ class Games extends Component {
 
     async componentDidMount() {
         await this.props.getAllGames();
-        const {games} = this.props;
-        const {gameId} = this.props.match.params;
-
-        this.setState({showGameNotFound: !!gameId});
-
-        const selectedGame = games.find(game => game.id === parseInt(gameId, 10));
-
-        if (games && games.length > 0) {
-            if (selectedGame)
-                this.selectGame(selectedGame)
-        }
-    }
-
-    componentDidUpdate() {
-        const {currentGame} = this.props;
-        const id = currentGame ? currentGame.id : 0;
-        const urlGameId = parseInt(this.props.match.params.gameId, 10);
-
-        if (id && id !== urlGameId)
-            this.props.history.push(`/games/${id}`);
     }
 
     render() {
-        const {games, currentGame} = this.props;
-        const id = currentGame ? currentGame.id : 0;
-        const list = games && games.length > 0 ?
-            <BoardGameList games={games} onSelect={this.selectGame} startId={id}/> : <Fragment/>;
-
         return (
-            <div className="board-game-list-wrapper">
-                <article className="game-list">
-                    <AddBoardGame/>
-                    {list}
-                </article>
-                {currentGame ? <SingleGame game={currentGame}/> : (this.state.showGameNotFound ? <GameNotFound/> :
-                    <Fragment/>)}
-            </div>
+            <div>Games!</div>
         )
     }
 }
 
 const mapStateToProps = (state) => ({
-    games: state.boardGames.allGames,
-    currentGame: state.boardGames.currentGame
+    games: state.boardGames.allGames
 });
 
 const mapDispatchToProps = {
@@ -68,4 +31,4 @@ const mapDispatchToProps = {
     getAllGames: getAllBoardGames,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Games);
+export default connect(mapStateToProps, mapDispatchToProps)(withTopbar(Games, "/games"));
