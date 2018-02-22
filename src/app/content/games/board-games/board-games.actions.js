@@ -7,10 +7,7 @@ import {
 import { addBoardGameRequest, deleteBoardGameRequest, getBoardGamesRequest } from './board-games.api';
 
 const deleteAction = id => ({ type: DELETE_BOARD_GAME, id });
-
-
 const tryToGetBoardGames = () => ({ type: TRY_TO_GET_ALL_BOARD_GAMES });
-
 const getBoardGames = games => ({ type: GET_ALL_BOARD_GAMES, games });
 const doAddNewBoardGame = (name, id) => ({
   name,
