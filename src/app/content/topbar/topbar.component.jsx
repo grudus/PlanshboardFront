@@ -1,12 +1,13 @@
 import React, {Component} from "react"
 import PropTypes from "prop-types";
-
-import {AppBar, FlatButton, Tab, Tabs, ToolbarGroup} from "material-ui";
-import {Link} from "react-router-dom";
 import {logoutAction} from "../../auth/login/login.actions";
 import {connect} from "react-redux";
 import "./topbar.css"
-import tabs from "../tabs"
+import {compose} from 'redux'
+import muiThemeable from 'material-ui/styles/muiThemeable';
+import tabs from "../tabs";
+import logoutIcon from "../res/logout.png"
+import TopBarItem from "./topbar.item.component";
 
 class TopBar extends Component {
     static propTypes = {
@@ -18,25 +19,19 @@ class TopBar extends Component {
     };
 
     render() {
-        const logoutButton = (<FlatButton label="Wyloguj" onClick={this.logout}
-                                          containerElement={<Link to="/auth/login"/>}/>);
-
-        const currentTabId = tabs.findIndex(tab => tab.path === this.props.pathName);
-
-        return (<AppBar className="app-bar" iconElementLeft={
-            <ToolbarGroup>
-                <Tabs value={currentTabId}>
-                    {tabs.map((tab, index) =>
-                        <Tab className="tab" label={tab.label} value={index} key={index}
-                             containerElement={<Link to={tab.path}/>}/>
-                    )}
-                </Tabs>
-            </ToolbarGroup>
-        }
-                        iconElementRight={logoutButton}
-                        iconStyleLeft={{marginTop: '0', marginLeft: 0}}
-        >
-        </AppBar>)
+        const items = tabs.map(tab =>
+            <TopBarItem key={tab.path} icon={tab.icon} label={tab.label} path={tab.path}/>
+        );
+        return (
+            <section className="top-bar" style={{background: this.props.muiTheme.palette.primary1Color}}>
+                <div className="left-tabs">
+                    {items}
+                </div>
+                <div className="right-tabs">
+                    <TopBarItem label="Wyloguj" icon={logoutIcon} path="/auth/login" onClick={this.logout}/>
+                </div>
+            </section>
+        )
     }
 }
 
@@ -44,4 +39,6 @@ const mapDispatchToProps = {
     logoutAction
 };
 
-export default connect(() => ({}), mapDispatchToProps)(TopBar);
+export default compose(
+    connect(() => ({}), mapDispatchToProps),
+    muiThemeable())(TopBar);

@@ -8,7 +8,7 @@ const LandingItem = ({label, path, icon}) => (
             <h2 className="landing-item-title">
                 {label.toUpperCase()}
             </h2>
-            <img src={icon} className="landing-item-image"/>
+            <img src={icon} className="landing-item-image icon" alt={label}/>
         </div>
     </Link>
 );
