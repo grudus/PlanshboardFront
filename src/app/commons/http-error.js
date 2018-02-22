@@ -1,1 +1,1 @@
-export const HttpError = (code) => ({code: code});
+export const HttpError = code => ({ code });

@@ -1,44 +1,39 @@
-import React, {Component} from "react"
-import PropTypes from "prop-types";
-import {logoutAction} from "../../auth/login/login.actions";
-import {connect} from "react-redux";
-import "./topbar.css"
-import {compose} from 'redux'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
 import muiThemeable from 'material-ui/styles/muiThemeable';
-import tabs from "../tabs";
-import logoutIcon from "../res/logout.png"
-import TopBarItem from "./topbar.item.component";
+import { logoutAction } from '../../auth/login/login.actions';
+import './topbar.css';
+import tabs from '../tabs';
+import logoutIcon from '../res/logout.png';
+import TopBarItem from './topbar.item.component';
 
 class TopBar extends Component {
-    static propTypes = {
-        pathName: PropTypes.string,
-    };
-
     logout = () => {
-        this.props.logoutAction();
+      this.props.logoutAction();
     };
 
     render() {
-        const items = tabs.map(tab =>
-            <TopBarItem key={tab.path} icon={tab.icon} label={tab.label} path={tab.path}/>
-        );
-        return (
-            <section className="top-bar" style={{background: this.props.muiTheme.palette.primary1Color}}>
-                <div className="left-tabs">
-                    {items}
-                </div>
-                <div className="right-tabs">
-                    <TopBarItem label="Wyloguj" icon={logoutIcon} path="/auth/login" onClick={this.logout}/>
-                </div>
-            </section>
-        )
+      const items = tabs.map(tab =>
+        <TopBarItem key={tab.path} icon={tab.icon} label={tab.label} path={tab.path} />);
+      return (
+        <section className="top-bar" style={{ background: this.props.muiTheme.palette.primary1Color }}>
+          <div className="left-tabs">
+            {items}
+          </div>
+          <div className="right-tabs">
+            <TopBarItem label="Wyloguj" icon={logoutIcon} path="/auth/login" onClick={this.logout} />
+          </div>
+        </section>
+      );
     }
 }
 
 const mapDispatchToProps = {
-    logoutAction
+  logoutAction,
 };
 
 export default compose(
-    connect(() => ({}), mapDispatchToProps),
-    muiThemeable())(TopBar);
+  connect(() => ({}), mapDispatchToProps),
+  muiThemeable(),
+)(TopBar);
