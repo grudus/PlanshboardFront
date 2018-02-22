@@ -29,12 +29,14 @@ class TopBar extends Component {
         />));
 
       return (
-        <section className="top-bar" style={{ background: this.props.muiTheme.palette.primary1Color }}>
-          <div className="left-tabs">
-            {items}
-          </div>
-          <div className="right-tabs">
-            <TopBarItem label="Wyloguj" icon={logoutIcon} path="/auth/login" onClick={this.logout} />
+        <section className="top-bar-wrapper" style={{ background: this.props.muiTheme.palette.primary1Color }}>
+          <div className="top-bar content">
+            <div className="left-tabs">
+              {items}
+            </div>
+            <div className="right-tabs">
+              <TopBarItem label="Wyloguj" icon={logoutIcon} path="/auth/login" onClick={this.logout} />
+            </div>
           </div>
         </section>
       );

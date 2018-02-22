@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import muiThemeable from 'material-ui/styles/muiThemeable';
 
 const TopBarItem = (props) => {
-  const style = props.isCurrent ? { borderBottom: `2px solid ${props.muiTheme.palette.accentColor}` } : {};
+  const style = props.isCurrent ? { borderBottom: `3px solid ${props.muiTheme.palette.accentColor}` } : {};
   return (
     <Link
       to={props.path}

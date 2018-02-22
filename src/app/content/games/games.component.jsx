@@ -1,4 +1,7 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
+import { FontIcon } from 'material-ui';
+import { compose } from 'redux';
+import { muiThemeable } from 'material-ui/styles/index';
 import { connect } from 'react-redux';
 import { changeCurrentBoardGame, getAllBoardGames } from './board-games/board-games.actions';
 import './games.css';
@@ -20,12 +23,19 @@ class Games extends Component {
           this.props.games.map(game => <SingleItem key={game.id} name={game.name} />);
 
       return (
-        <Fragment>
-          <div>Games!</div>
-          <ul>
+        <section className="content">
+          <ul className="games-wrapper">
+            <div className="add-single-game pointer anim">
+              <FontIcon
+                className="material-icons add-single-label"
+                color={this.props.muiTheme.palette.accent1Color}
+                style={{ fontSize: '2.5em' }}
+              >add_circle_outline
+              </FontIcon>
+            </div>
             {games}
           </ul>
-        </Fragment>
+        </section>
       );
     }
 }
@@ -39,4 +49,7 @@ const mapDispatchToProps = {
   getAllGames: getAllBoardGames,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(withTopbar(Games, '/games'));
+export default compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  muiThemeable(),
+)(withTopbar(Games, '/games'));
