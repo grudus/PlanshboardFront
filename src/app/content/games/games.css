@@ -61,7 +61,7 @@
 
 @media all and (max-width: 750px) and (min-width: 500px) {
     .games-wrapper {
-        grid-template-columns: repeat(3, auto);
+        grid-template-columns: repeat(3, 1fr);
     }
 
     .game-single-item {
@@ -72,7 +72,7 @@
 
 @media (max-width: 500px) {
     .games-wrapper {
-        grid-template-columns: repeat(2, auto);
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .game-single-label {
