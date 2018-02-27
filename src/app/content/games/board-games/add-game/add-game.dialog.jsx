@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Dialog from 'material-ui/Dialog';
-import { FlatButton, RaisedButton, TextField } from 'material-ui';
+import { FlatButton, RaisedButton } from 'material-ui';
+import { ValidatorForm } from 'react-form-validator-core';
+import { TextValidator } from 'react-material-ui-form-validator';
 
 class AddGameDialog extends Component {
     static propTypes = {
@@ -19,7 +21,8 @@ class AddGameDialog extends Component {
 
     preventAndSubmit = (event) => {
       event.preventDefault();
-      this.props.onSubmit(this.state.name);
+      if (this.state.name)
+        this.props.onSubmit(this.state.name);
     };
 
     handleChange = (event) => {
@@ -48,16 +51,18 @@ class AddGameDialog extends Component {
           open={this.props.show}
           onRequestClose={this.props.onCancel}
         >
-          <form onSubmit={this.preventAndSubmit}>
-            <TextField
+          <ValidatorForm onSubmit={this.preventAndSubmit}>
+            <TextValidator
               autoFocus
               floatingLabelText="Nazwa"
               fullWidth
+              validators={['required']}
+              errorMessages={['Pole jest wymagane']}
               name="name"
               onChange={this.handleChange}
               errorText={this.props.isError && 'Taka gra już istnieje'}
             />
-          </form>
+          </ValidatorForm>
         </Dialog>
       );
     }
