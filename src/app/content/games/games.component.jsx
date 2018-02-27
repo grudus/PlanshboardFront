@@ -10,8 +10,7 @@ import AddGame from './add-game.component';
 
 class Games extends Component {
   async componentDidMount() {
-    await this.props.getAllGames()
-      .catch(err => window.alert(err));
+    await this.props.getAllGames();
   }
 
     selectGame = (game) => {
@@ -21,11 +20,11 @@ class Games extends Component {
 
     render() {
       const games = this.props.games &&
-          this.props.games.map(game => (
-            <li className="no-li">
-              <SingleItem key={game.id} name={game.name} />
-            </li>
-          ));
+            this.props.games.map(game => (
+              <li className="no-li">
+                <SingleItem key={game.id} name={game.name} />
+              </li>
+            ));
 
       return (
         <section className="content">

@@ -20,7 +20,9 @@ class Login extends Component {
       form[event.target.name] = event.target.value;
       this.setState({ form });
 
-      if (this.state.error) { this.setState({ error: '' }); }
+      if (this.state.error) {
+        this.setState({ error: '' });
+      }
     };
 
     loginButton = async (e) => {
@@ -32,10 +34,6 @@ class Login extends Component {
       } catch (exc) {
         if (exc.code === 403) {
           this.setState({ form: { username: '', password: '' }, error: 'Wprowadzono niepoprawne dane' });
-        } else {
-          window.alert(exc);
-          // todo remove when production
-          this.setState({ error: JSON.stringify(exc) });
         }
       }
     };
