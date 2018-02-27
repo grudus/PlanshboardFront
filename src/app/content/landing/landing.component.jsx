@@ -4,9 +4,9 @@ import './landing.component.css';
 import items from '../tabs';
 
 const itemObjects = items.map(item => (
-  <span key={item.path}>
+  <div key={item.path}>
     <Item label={item.label} path={item.path} icon={item.icon} />
-  </span>
+  </div>
 ));
 
 
