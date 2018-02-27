@@ -1,18 +1,17 @@
 import React from 'react';
-import { muiThemeable } from 'material-ui/styles/index';
 import PropTypes from 'prop-types';
 import './single-game.component.css';
 
+const displayName = (name, len = 25) => (name.length > len ? `${name.substring(0, len)}...` : name);
+
 const SingleItem = props => (
-  <li className="no-li">
-    <div className="game-single-item card-shadow card pointer anim" style={{ borderTop: `5px solid ${props.muiTheme.palette.accent1Color}` }}>
-      <p className="game-single-label">{props.name}</p>
-    </div>
-  </li>
+  <div className="game-single-item card-shadow card pointer anim white accent-border">
+    <p className="game-single-label">{displayName(props.name)}</p>
+  </div>
 );
 
 SingleItem.propTypes = {
   name: PropTypes.string.isRequired,
 };
 
-export default muiThemeable()(SingleItem);
+export default SingleItem;

@@ -6,3 +6,12 @@ body {
     margin: 0;
     padding: 0;
 }
+
+/* Will be overwritten by color themes from ./mui-theme.js */
+:root {
+    --primary-color: red;
+    --accent-color: red;
+    --background-color: #fafafa;
+    --dark-background-color: #e0e0e0;
+    --dark-text-color: #424242;
+}

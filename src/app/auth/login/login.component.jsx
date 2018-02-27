@@ -33,6 +33,7 @@ class Login extends Component {
         if (exc.code === 403) {
           this.setState({ form: { username: '', password: '' }, error: 'Wprowadzono niepoprawne dane' });
         } else {
+          window.alert(exc);
           // todo remove when production
           this.setState({ error: JSON.stringify(exc) });
         }

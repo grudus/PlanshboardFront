@@ -1,5 +1,5 @@
 body {
-    background: #e0e0e0;
+    background: var(--background-color);
 }
 
 .content-wrapper {
@@ -29,4 +29,8 @@ body {
 
 .no-li {
     list-style-type: none;
+}
+
+.white {
+    background: white;
 }

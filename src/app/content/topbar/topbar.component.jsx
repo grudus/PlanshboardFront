@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { compose } from 'redux';
 import PropTypes from 'prop-types';
-import muiThemeable from 'material-ui/styles/muiThemeable';
 import { logoutAction } from '../../auth/login/login.actions';
 import './topbar.css';
 import tabs from '../tabs';
@@ -29,7 +27,7 @@ class TopBar extends Component {
         />));
 
       return (
-        <section className="top-bar-wrapper" style={{ background: this.props.muiTheme.palette.primary1Color }}>
+        <section className="top-bar-wrapper">
           <div className="top-bar content">
             <div className="left-tabs">
               {items}
@@ -47,7 +45,4 @@ const mapDispatchToProps = {
   logoutAction,
 };
 
-export default compose(
-  connect(() => ({}), mapDispatchToProps),
-  muiThemeable(),
-)(TopBar);
+export default connect(() => ({}), mapDispatchToProps)(TopBar);

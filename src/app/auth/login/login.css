@@ -1,17 +1,19 @@
+body {
+    background: var(--dark-background-color);
+}
+
 .auth-wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
-    /*position: absolute;*/
     height: 100vh;
-    background: #e0e0e0;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
     flex-direction: column;
     margin-top: -50px;
-    color: #424242;
+    color: var(--dark-text-color);
 }
 
 input:-webkit-autofill {
@@ -35,7 +37,7 @@ input:-webkit-autofill {
 
 .auth-header {
     font-weight: 300;
-    color: #424242;
+    color: var(--dark-text-color);
     font-size: 2em;
     margin-bottom: 64px;
 }

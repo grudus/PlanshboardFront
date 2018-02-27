@@ -1,32 +1,27 @@
+.accent-border {
+    border-top: 5px solid var(--accent-color)
+}
+
 .games-wrapper {
     margin-top: 100px;
     display: grid;
-    grid-template-columns: repeat(4, calc(25% - 23px));
-    grid-auto-columns: auto;
-    grid-column-gap: 30px;
-    grid-row-gap: 30px;
+    grid-template-columns: repeat(5, 1fr);
     padding: 0 16px;
 }
 
 .game-single-item {
-    background: white;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 120px;
-    font-size: 1.5em;
+    flex-direction: column;
+    width: 13vw;
+    height: 13vw;
+    margin: 1.5vw auto;
     font-weight: 300;
     padding: 0 10px;
 }
 
-.add-single-game {
-    height: 120px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid gray;
-    /*border-radius: 10px;*/
-}
 
 .add-single-game:hover {
     background: white;
@@ -34,25 +29,62 @@
 }
 
 .game-single-label {
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
+    padding: 16px;
+    font-size: 1.5em;
+}
+
+.add-game-item {
+    box-shadow: 0 0 0 0;
+    border: 1px solid #646464;
+    font-size: 1.5em;
+    justify-content: space-evenly;
+}
+
+.add-game-item:hover {
+    font-size: 1.5em;
+    justify-content: space-evenly;
+    background: var(--primary-color);
+    color: white;
+    border: 1px solid transparent;
+}
+
+.add-single-label {
+    color: var(--accent-color)
 }
 
 @media all and (max-width: 900px) and (min-width: 750px) {
-    .games-wrapper {
-        grid-template-columns: repeat(3, calc(33% - 15px));
+    .game-single-item {
+        width: 16vw;
+        height: 16vw;
     }
 }
 
 @media all and (max-width: 750px) and (min-width: 500px) {
     .games-wrapper {
-        grid-template-columns: repeat(2, calc(50% - 15px));
+        grid-template-columns: repeat(3, auto);
+    }
+
+    .game-single-item {
+        width: 25vw;
+        height: 25vw;
     }
 }
 
 @media (max-width: 500px) {
     .games-wrapper {
-        grid-template-columns: repeat(1, 100%);
+        grid-template-columns: repeat(2, auto);
+    }
+
+    .game-single-label {
+        padding: 28px;
+    }
+
+    .game-single-item {
+        width: 30vw;
+        height: 30vw;
+    }
+
+    .game-single-label {
+        font-size: 1.2em;
     }
 }

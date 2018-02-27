@@ -3,6 +3,7 @@
     height: 64px;
     width: 100%;
     position: fixed;
+    background: var(--primary-color);
 }
 
 .top-bar {
@@ -33,6 +34,7 @@
 
 .single-item.current {
     color: white;
+    border-bottom: 3px solid var(--accent-color);
 }
 
 .single-item:hover {

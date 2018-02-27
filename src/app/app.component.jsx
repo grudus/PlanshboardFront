@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
+import { MuiThemeProvider } from 'material-ui';
 import { connect } from 'react-redux';
 import { Route, Switch, withRouter } from 'react-router-dom';
-import { MuiThemeProvider } from 'material-ui';
 import muiTheme from './mui-theme';
 import { tryResolveCurrentUser } from './content/users/users.actions';
 import { loginCurrentUser } from './auth/login/login.actions';
@@ -12,12 +12,15 @@ import Registration from './auth/registration/registration.component';
 
 class App extends Component {
   async componentDidMount() {
-    // try {
-    //     await this.props.resolveCurrentUser();
-    //     this.props.loginCurrentUser();
-    // } catch (e) {
-    //     this.props.history.push("/auth/login");
-    // }
+    document.documentElement.style.setProperty('--primary-color', muiTheme.palette.primary1Color);
+    document.documentElement.style.setProperty('--accent-color', muiTheme.palette.accent1Color);
+
+    try {
+      await this.props.resolveCurrentUser();
+      this.props.loginCurrentUser();
+    } catch (e) {
+      this.props.history.push('/auth/login');
+    }
   }
 
   render() {

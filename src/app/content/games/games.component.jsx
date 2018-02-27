@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { FontIcon } from 'material-ui';
 import { compose } from 'redux';
 import { muiThemeable } from 'material-ui/styles/index';
 import { connect } from 'react-redux';
@@ -7,10 +6,12 @@ import { changeCurrentBoardGame, getAllBoardGames } from './board-games/board-ga
 import './games.css';
 import { withTopbar } from '../topbar/with-topbar';
 import SingleItem from './single-game/single-game.component';
+import AddGame from './add-game.component';
 
 class Games extends Component {
   async componentDidMount() {
-    await this.props.getAllGames();
+    await this.props.getAllGames()
+      .catch(err => window.alert(err));
   }
 
     selectGame = (game) => {
@@ -20,19 +21,16 @@ class Games extends Component {
 
     render() {
       const games = this.props.games &&
-          this.props.games.map(game => <SingleItem key={game.id} name={game.name} />);
+          this.props.games.map(game => (
+            <li className="no-li">
+              <SingleItem key={game.id} name={game.name} />
+            </li>
+          ));
 
       return (
         <section className="content">
           <ul className="games-wrapper">
-            <div className="add-single-game pointer anim">
-              <FontIcon
-                className="material-icons add-single-label"
-                color={this.props.muiTheme.palette.accent1Color}
-                style={{ fontSize: '2.5em' }}
-              >add_circle_outline
-              </FontIcon>
-            </div>
+            <AddGame iconColor={this.props.muiTheme.palette.accent1Color} />
             {games}
           </ul>
         </section>

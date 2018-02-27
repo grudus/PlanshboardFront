@@ -1,13 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import muiThemeable from 'material-ui/styles/muiThemeable';
 
 const LandingItem = ({
-  label, path, icon, muiTheme,
+  label, path, icon,
 }) => (
   <Link to={path} style={{ textDecoration: 'none' }}>
-    <div className="landing-item card-shadow pointer anim" style={{ background: muiTheme.palette.primary1Color }}>
+    <div className="landing-item card-shadow pointer anim">
       <h2 className="landing-item-title">
         {label.toUpperCase()}
       </h2>
@@ -23,4 +22,4 @@ LandingItem.propTypes = {
   icon: PropTypes.string.isRequired,
 };
 
-export default muiThemeable()(LandingItem);
+export default LandingItem;
