@@ -8,9 +8,13 @@ import { withTopbar } from '../topbar/with-topbar';
 import SingleItem from './board-games/single-game/single-game.component';
 import AddGame from './board-games/add-game/add-game-item.component';
 import AddGameDialog from './board-games/add-game/add-game.dialog';
+import { boardNameExistsRequest } from './board-games/board-games.api';
 
 class Games extends Component {
-    state = { visibleDialog: false };
+    state = {
+      visibleDialog: false,
+      dialogError: false,
+    };
 
     async componentDidMount() {
       await this.props.getAllGames();
@@ -25,9 +29,16 @@ class Games extends Component {
       this.setState({ visibleDialog: true });
     };
 
-    addGame = (name) => {
-      this.hideDialog();
-      this.props.addGame(name);
+    addGame = async (name) => {
+      const response = await boardNameExistsRequest(name);
+
+      if (response.exists)
+        this.setState({ dialogError: true });
+      else {
+        this.setState({ dialogError: false });
+        this.hideDialog();
+        this.props.addGame(name);
+      }
     };
 
     hideDialog = () => {
@@ -37,11 +48,11 @@ class Games extends Component {
     render() {
       const
         games = this.props.games &&
-        this.props.games.map(game => (
-          <li className="no-li">
-            <SingleItem key={game.id} name={game.name} />
-          </li>
-        ));
+                this.props.games.map(game => (
+                  <li className="no-li">
+                    <SingleItem key={game.id} name={game.name} />
+                  </li>
+                ));
 
       return (
 
@@ -56,6 +67,7 @@ class Games extends Component {
 
           <AddGameDialog
             show={this.state.visibleDialog}
+            isError={this.state.dialogError}
             onSubmit={this.addGame}
             onCancel={this.hideDialog}
           />

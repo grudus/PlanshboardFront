@@ -8,6 +8,11 @@ class AddGameDialog extends Component {
       show: PropTypes.bool.isRequired,
       onSubmit: PropTypes.func.isRequired,
       onCancel: PropTypes.func.isRequired,
+      isError: PropTypes.bool,
+    };
+
+    static defaultProps = {
+      isError: false,
     };
 
     state = { name: '' };
@@ -50,7 +55,7 @@ class AddGameDialog extends Component {
               fullWidth
               name="name"
               onChange={this.handleChange}
-              errorText={this.props.error}
+              errorText={this.props.isError && 'Taka gra już istnieje'}
             />
           </form>
         </Dialog>
