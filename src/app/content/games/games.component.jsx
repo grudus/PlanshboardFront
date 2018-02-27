@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { addNewBoardGame, changeCurrentBoardGame, getAllBoardGames } from './board-games/board-games.actions';
 import './games.css';
 import { withTopbar } from '../topbar/with-topbar';
-import SingleItem from './board-games/single-game/single-game.component';
+import OneGameItem from './board-games/one-game-item.component';
 import AddGame from './board-games/add-game/add-game-item.component';
 import AddGameDialog from './board-games/add-game/add-game.dialog';
 import { boardNameExistsRequest } from './board-games/board-games.api';
@@ -49,8 +49,8 @@ class Games extends Component {
       const
         games = this.props.games &&
                 this.props.games.map(game => (
-                  <li className="no-li">
-                    <SingleItem key={game.id} name={game.name} />
+                  <li className="no-li" key={game.id}>
+                    <OneGameItem key={game.id} game={game} onClick={this.selectGame} />
                   </li>
                 ));
 

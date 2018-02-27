@@ -1,17 +1,15 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import './single-game.component.css';
+import React, { Component } from 'react';
+import { withTopbar } from '../../../topbar/with-topbar';
 
-const displayName = (name, len = 25) => (name.length > len ? `${name.substring(0, len)}...` : name);
+// eslint-disable-next-line react/prefer-stateless-function
+class BoardGame extends Component {
+  render() {
+    return (
+      <div>
+                duuuupa
+      </div>
+    );
+  }
+}
 
-const SingleItem = props => (
-  <div className="game-single-item card-shadow card pointer anim white accent-border">
-    <p className="game-single-label">{displayName(props.name)}</p>
-  </div>
-);
-
-SingleItem.propTypes = {
-  name: PropTypes.string.isRequired,
-};
-
-export default SingleItem;
+export default withTopbar(BoardGame);

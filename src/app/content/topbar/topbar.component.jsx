@@ -8,7 +8,7 @@ import logoutIcon from '../res/logout.png';
 import TopBarItem from './topbar.item.component';
 
 class TopBar extends Component {
-    propTypes = {
+    static propTypes = {
       currentPath: PropTypes.string.isRequired,
     };
 
