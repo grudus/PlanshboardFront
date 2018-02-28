@@ -1,15 +1,39 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { withTopbar } from '../../../topbar/with-topbar';
+import { getSpecificBoardGame } from '../board-games.api';
+import { changeCurrentBoardGame } from '../board-games.actions';
 
-// eslint-disable-next-line react/prefer-stateless-function
+
 class BoardGame extends Component {
+  async componentDidMount() {
+    if (this.props.currentGame)
+      return;
+
+    try {
+      const game = await getSpecificBoardGame(this.props.match.params.gameId);
+      this.props.changeCurrentGame(game);
+    } catch (e) {
+      this.props.history.push('/games');
+    }
+  }
+
   render() {
+    const { games } = this.props;
     return (
       <div>
-                duuuupa
+        {games.currentGame && games.currentGame.name}
       </div>
     );
   }
 }
 
-export default withTopbar(BoardGame);
+const mapStateToProps = state => ({
+  games: state.boardGames,
+});
+
+const mapDispatchToProps = {
+  changeCurrentGame: changeCurrentBoardGame,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(withTopbar(BoardGame, '/games/:id'));
