@@ -1,0 +1,79 @@
+
+.game-table {
+    color: var(--dark-text-color);
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+    margin: 0;
+    padding: 0;
+    max-width: 1200px;
+    width: 90%;
+    table-layout: fixed;
+}
+
+.game-table tr {
+    background: white;
+    border: 1px solid #ddd;
+    padding: .35em;
+}
+
+.game-table tbody tr:hover {
+    background: rgb(245, 245, 245);
+}
+
+.game-table th,
+.game-table td {
+    padding: 1.25em;
+    text-align: center;
+}
+
+.game-table th {
+    color: rgb(158, 158, 158);
+    font-size: .85em;
+    letter-spacing: .1em;
+    font-weight: 500;
+    height: 28px;
+}
+
+.game-table th:hover {
+
+}
+
+@media screen and (max-width: 600px) {
+    .game-table {
+        border: 0;
+    }
+
+    .game-table-head {
+        border: none;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+    }
+
+    .game-table tr {
+        border-bottom: 3px solid #ddd;
+        display: block;
+        margin-bottom: .625em;
+    }
+
+    .game-table td {
+        border-bottom: 1px solid #ddd;
+        display: block;
+        font-size: .8em;
+        text-align: right;
+    }
+
+    .game-table td:before {
+        content: attr(data-label);
+        float: left;
+        /*font-weight: bold;*/
+    }
+
+    .game-table td:last-child {
+        border-bottom: 0;
+    }
+}

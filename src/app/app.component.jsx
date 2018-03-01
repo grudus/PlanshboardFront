@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { MuiThemeProvider } from 'material-ui';
 import { connect } from 'react-redux';
+import 'moment/locale/pl';
+import moment from 'moment';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import muiTheme from './mui-theme';
 import { tryResolveCurrentUser } from './content/users/users.actions';
@@ -14,6 +16,8 @@ class App extends Component {
   async componentDidMount() {
     document.documentElement.style.setProperty('--primary-color', muiTheme.palette.primary1Color);
     document.documentElement.style.setProperty('--accent-color', muiTheme.palette.accent1Color);
+
+    moment.locale('pl');
 
     try {
       await this.props.resolveCurrentUser();

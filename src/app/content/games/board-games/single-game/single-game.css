@@ -1,0 +1,20 @@
+.board-game-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.board-game-header {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.board-game-title {
+    font-weight: 300;
+    font-size: 2em;
+}
