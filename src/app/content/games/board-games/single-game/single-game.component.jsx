@@ -36,8 +36,8 @@ class BoardGame extends Component {
       date: moment().subtract(3, 'hour'),
       info: 'Kleska konkretna',
       opponents: [
-        { position: 1, name: 'grudus' },
-        { position: 2, name: 'madzia' },
+        { position: 2, name: 'grudus' },
+        { position: 1, name: 'madzia' },
       ],
     }, {
       id: 3,
@@ -48,6 +48,8 @@ class BoardGame extends Component {
         { position: 2, name: 'madzia' },
         { position: 3, name: 'golec' },
         { position: 4, name: 'karwat' },
+        { position: 5, name: 'Kozioł' },
+        { position: 6, name: 'Kasia' },
       ],
     },
     {

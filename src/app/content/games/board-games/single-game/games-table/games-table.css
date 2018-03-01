@@ -1,13 +1,14 @@
 
 .game-table {
     color: var(--dark-text-color);
-    border: 1px solid #ccc;
+    /*border: 5px solid var(--primary-color);*/
     border-collapse: collapse;
     margin: 0;
     padding: 0;
     max-width: 1200px;
     width: 90%;
     table-layout: fixed;
+    border: none;
 }
 
 .game-table tr {
@@ -16,31 +17,61 @@
     padding: .35em;
 }
 
-.game-table tbody tr:hover {
-    background: rgb(245, 245, 245);
-}
+/*.game-table tbody tr:hover {*/
+    /*background: rgb(245, 245, 245);*/
+/*}*/
 
 .game-table th,
 .game-table td {
     padding: 1.25em;
     text-align: center;
+    border: 1px solid #ddd;
 }
 
 .game-table th {
-    color: rgb(158, 158, 158);
+    background: var(--primary-color);
+    color: white;
     font-size: .85em;
     letter-spacing: .1em;
-    font-weight: 500;
+    font-weight: bold;
     height: 28px;
+    border-bottom: 2px solid;
 }
 
-.game-table th:hover {
-
+.opponent-wrapper {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
 }
+
+.opponent {
+    display: flex;
+    align-items: center;
+}
+
+.opponent-position {
+    --size: 15px;
+    border-radius: 100%;
+    width: var(--size);
+    height: var(--size);
+    line-height: var(--size);
+    font-size: .7em;
+    color: white;
+    margin-right: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.opponent-name {
+    padding-right: 8px;
+}
+
+
 
 @media screen and (max-width: 600px) {
     .game-table {
         border: 0;
+        box-shadow: 0 0 0 0;
     }
 
     .game-table-head {
@@ -57,7 +88,8 @@
     .game-table tr {
         border-bottom: 3px solid #ddd;
         display: block;
-        margin-bottom: .625em;
+        margin-bottom: 1.825em;
+        box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
     }
 
     .game-table td {
@@ -75,5 +107,10 @@
 
     .game-table td:last-child {
         border-bottom: 0;
+    }
+
+    .opponent-wrapper {
+        display: flex;
+        justify-content: flex-end;
     }
 }
