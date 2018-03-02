@@ -1,17 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './games-table.css';
+import OpponentsCell from './opponents-cell.component';
 
 const GamesTable = ({ games }) => {
-  const colors = ['#EFBE59', '#A8A8A8', '#935250', '#149370', '#9BB6CF', '#60478B'];
-
-  const oppponentsDom = ({ position, name }) => (
-    <span className="opponent">
-      <div className="opponent-position" style={{ background: colors[position - 1] }}>{position}</div>
-      <div className="opponent-name">{name}</div>
-    </span>
-  );
-
   const gamesDom = games.map((game) => {
     const sortedOpponents = game.opponents.sort((a, b) => (a.position > b.position ? 1 : -1));
     return (
@@ -19,10 +11,7 @@ const GamesTable = ({ games }) => {
         <td data-label="Nr">{game.id}.</td>
         <td data-label="Data">{game.date.fromNow()}</td>
         <td data-label="Uczestnicy">
-          <div
-            className="opponent-wrapper"
-          >{sortedOpponents.map(a => oppponentsDom(a))}
-          </div>
+          <OpponentsCell opponents={sortedOpponents} />
         </td>
         <td data-label="Zwycięzca"><b>{sortedOpponents[0].name}</b></td>
         <td data-label="Notatki">{game.info}</td>
