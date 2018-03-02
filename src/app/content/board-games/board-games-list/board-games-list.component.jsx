@@ -2,15 +2,15 @@ import React, { Component } from 'react';
 import { compose } from 'redux';
 import { muiThemeable } from 'material-ui/styles/index';
 import { connect } from 'react-redux';
-import { addNewBoardGame, changeCurrentBoardGame, getAllBoardGames } from './board-games/board-games.actions';
-import './games.css';
-import { withTopbar } from '../topbar/with-topbar';
-import OneGameItem from './board-games/one-game-item.component';
-import AddGame from './board-games/add-game/add-game-item.component';
-import AddGameDialog from './board-games/add-game/add-game.dialog';
-import { boardNameExistsRequest } from './board-games/board-games.api';
+import { addNewBoardGame, changeCurrentBoardGame, getAllBoardGames } from '../board-games.actions';
+import '../board-games.css';
+import { withTopbar } from '../../topbar/with-topbar';
+import OneGameItem from './one-board-game-item.component';
+import AddGame from './../add-board-game/add-board-game-item.component';
+import AddGameDialog from './../add-board-game/add-board-game.dialog';
+import { boardNameExistsRequest } from './../board-games.api';
 
-class Games extends Component {
+class BoardGamesList extends Component {
     state = {
       visibleDialog: false,
       dialogError: false,
@@ -30,9 +30,9 @@ class Games extends Component {
     };
 
     addGame = async (name) => {
-      const response = await boardNameExistsRequest(name);
+      const { exists } = await boardNameExistsRequest(name);
 
-      if (response.exists)
+      if (exists)
         this.setState({ dialogError: true });
       else {
         this.setState({ dialogError: false });
@@ -55,9 +55,8 @@ class Games extends Component {
                 ));
 
       return (
-
         <section className="content">
-          <ul className="games-wrapper">
+          <ul className="board-games-wrapper">
             <AddGame
               iconColor={this.props.muiTheme.palette.accent1Color}
               onClick={this.openDialog}
@@ -89,4 +88,4 @@ const mapDispatchToProps = {
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
   muiThemeable(),
-)(withTopbar(Games, '/games'));
+)(withTopbar(BoardGamesList, '/games'));

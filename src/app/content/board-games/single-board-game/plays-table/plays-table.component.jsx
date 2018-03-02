@@ -1,28 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './games-table.css';
+import './plays-table.css';
 import OpponentsCell from './opponents-cell.component';
 
-const GamesTable = ({ games }) => {
-  const gamesDom = games.map((game) => {
-    const sortedOpponents = game.opponents.sort((a, b) => (a.position > b.position ? 1 : -1));
+const PlaysTable = ({ plays }) => {
+  const playsDom = plays.map((play) => {
+    const sortedOpponents = play.opponents.sort((a, b) => (a.position > b.position ? 1 : -1));
     return (
       <tr>
-        <td data-label="Nr">{game.id}.</td>
-        <td data-label="Data">{game.date.fromNow()}</td>
+        <td data-label="Nr">{play.id}.</td>
+        <td data-label="Data">{play.date.fromNow()}</td>
         <td data-label="Uczestnicy">
           <OpponentsCell opponents={sortedOpponents} />
         </td>
         <td data-label="Zwycięzca"><b>{sortedOpponents[0].name}</b></td>
-        <td data-label="Notatki">{game.info}</td>
+        <td data-label="Notatki">{play.info}</td>
       </tr>
     );
   });
 
 
   return (
-    <table className="game-table card-shadow-always">
-      <thead className="game-table-head">
+    <table className="plays-table card-shadow-always">
+      <thead className="plays-table-head">
         <tr>
           <th scope="col" className="opponent-id">Nr</th>
           <th scope="col">Data</th>
@@ -32,7 +32,7 @@ const GamesTable = ({ games }) => {
         </tr>
       </thead>
       <tbody>
-        {gamesDom}
+        {playsDom}
       </tbody>
     </table>
   );
@@ -42,8 +42,8 @@ const {
   arrayOf, number, object, string, shape,
 } = PropTypes;
 
-GamesTable.propTypes = {
-  games: arrayOf(shape({
+PlaysTable.propTypes = {
+  plays: arrayOf(shape({
     id: number.isRequired,
     date: object.isRequired,
     info: string,
@@ -54,4 +54,4 @@ GamesTable.propTypes = {
   })).isRequired,
 };
 
-export default GamesTable;
+export default PlaysTable;

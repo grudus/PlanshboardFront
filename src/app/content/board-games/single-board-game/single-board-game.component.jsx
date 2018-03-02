@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import moment from 'moment';
 import { connect } from 'react-redux';
-import { withTopbar } from '../../../topbar/with-topbar';
+import { withTopbar } from '../../topbar/with-topbar';
 import { getSpecificBoardGame } from '../board-games.api';
 import { changeCurrentBoardGame } from '../board-games.actions';
-import './single-game.css';
-import GamesTable from './games-table/games-table.component';
+import './single-board-game.css';
+import GamesTable from './plays-table/plays-table.component';
 
 class BoardGame extends Component {
   async componentDidMount() {
@@ -23,7 +23,7 @@ class BoardGame extends Component {
   render() {
     const { boardGames } = this.props;
 
-    const games = [{
+    const plays = [{
       id: 1,
       date: moment(),
       opponents: [
@@ -70,7 +70,9 @@ class BoardGame extends Component {
           <h2 className="board-game-title">{boardGames.currentGame && boardGames.currentGame.name}</h2>
         </div>
 
-        <GamesTable games={games} />
+        <button className="pointer" style={{ padding: '16px', background: 'var(--accent-color)', color: 'white' }}>DODEJ GRE</button>
+
+        <GamesTable plays={plays} />
 
       </article>
     );

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './single-game/single-game.component.css';
+import '../single-board-game/single-board-game.component.css';
 
 const displayName = (name, len = 25) => (name.length > len ? `${name.substring(0, len)}...` : name);
 

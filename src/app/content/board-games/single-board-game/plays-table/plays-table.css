@@ -1,5 +1,5 @@
 
-.game-table {
+.plays-table {
     color: var(--dark-text-color);
     border-collapse: collapse;
     margin: 0;
@@ -10,20 +10,20 @@
     border: none;
 }
 
-.game-table tr {
+.plays-table tr {
     background: white;
     border: 1px solid #ddd;
     padding: .35em;
 }
 
-.game-table th,
-.game-table td {
+.plays-table th,
+.plays-table td {
     padding: 1.25em;
     text-align: center;
     border: 1px solid #ddd;
 }
 
-.game-table th {
+.plays-table th {
     background: var(--primary-color);
     color: white;
     font-size: .85em;
@@ -66,12 +66,12 @@
 }
 
 @media screen and (max-width: 600px) {
-    .game-table {
+    .plays-table {
         border: 0;
         box-shadow: 0 0 0 0;
     }
 
-    .game-table-head {
+    .plays-table-head {
         border: none;
         clip: rect(0 0 0 0);
         height: 1px;
@@ -82,14 +82,14 @@
         width: 1px;
     }
 
-    .game-table tr {
+    .plays-table tr {
         border-bottom: 3px solid #ddd;
         display: block;
         margin-bottom: 1.825em;
         box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
     }
 
-    .game-table td {
+    .plays-table td {
         border-bottom: 1px solid #ddd;
         display: block;
         font-size: .8em;
@@ -97,12 +97,12 @@
         min-height: 12px;
     }
 
-    .game-table td:before {
+    .plays-table td:before {
         content: attr(data-label);
         float: left;
     }
 
-    .game-table td:last-child {
+    .plays-table td:last-child {
         border-bottom: 0;
     }
 

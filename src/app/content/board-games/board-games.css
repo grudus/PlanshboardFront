@@ -2,7 +2,7 @@
     border-top: 5px solid var(--accent-color)
 }
 
-.games-wrapper {
+.board-games-wrapper {
     margin-top: 100px;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -60,7 +60,7 @@
 }
 
 @media all and (max-width: 750px) and (min-width: 500px) {
-    .games-wrapper {
+    .board-games-wrapper {
         grid-template-columns: repeat(3, 1fr);
     }
 
@@ -71,7 +71,7 @@
 }
 
 @media (max-width: 500px) {
-    .games-wrapper {
+    .board-games-wrapper {
         grid-template-columns: repeat(2, 1fr);
     }
 
