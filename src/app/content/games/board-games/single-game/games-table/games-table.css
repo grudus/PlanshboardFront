@@ -1,7 +1,6 @@
 
 .game-table {
     color: var(--dark-text-color);
-    /*border: 5px solid var(--primary-color);*/
     border-collapse: collapse;
     margin: 0;
     padding: 0;
@@ -16,10 +15,6 @@
     border: 1px solid #ddd;
     padding: .35em;
 }
-
-/*.game-table tbody tr:hover {*/
-    /*background: rgb(245, 245, 245);*/
-/*}*/
 
 .game-table th,
 .game-table td {
@@ -105,7 +100,6 @@
     .game-table td:before {
         content: attr(data-label);
         float: left;
-        /*font-weight: bold;*/
     }
 
     .game-table td:last-child {
