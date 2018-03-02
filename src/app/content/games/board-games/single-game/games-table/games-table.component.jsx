@@ -16,6 +16,7 @@ const GamesTable = ({ games }) => {
     const sortedOpponents = game.opponents.sort((a, b) => (a.position > b.position ? 1 : -1));
     return (
       <tr>
+        <td data-label="Nr">{game.id}.</td>
         <td data-label="Data">{game.date.fromNow()}</td>
         <td data-label="Uczestnicy">
           <div
@@ -34,6 +35,7 @@ const GamesTable = ({ games }) => {
     <table className="game-table card-shadow-always">
       <thead className="game-table-head">
         <tr>
+          <th scope="col" className="opponent-id">Nr</th>
           <th scope="col">Data</th>
           <th scope="col">Uczestnicy</th>
           <th scope="col">Zwycięzca</th>

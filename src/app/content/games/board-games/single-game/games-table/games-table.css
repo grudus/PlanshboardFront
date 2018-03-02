@@ -66,7 +66,9 @@
     padding-right: 8px;
 }
 
-
+.opponent-id {
+    width: 15px;
+}
 
 @media screen and (max-width: 600px) {
     .game-table {
@@ -97,6 +99,7 @@
         display: block;
         font-size: .8em;
         text-align: right;
+        min-height: 12px;
     }
 
     .game-table td:before {
