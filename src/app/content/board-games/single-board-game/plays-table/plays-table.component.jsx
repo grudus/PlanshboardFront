@@ -8,7 +8,7 @@ const PlaysTable = ({ plays, onAddPlayClick }) => {
   const playsDom = plays.map((play) => {
     const sortedOpponents = play.opponents.sort((a, b) => (a.position > b.position ? 1 : -1));
     return (
-      <tr>
+      <tr key={play.id}>
         <td data-label="Nr">{play.id}.</td>
         <td data-label="Data">{play.date.fromNow()}</td>
         <td data-label="Uczestnicy">
@@ -57,7 +57,11 @@ PlaysTable.propTypes = {
       position: number.isRequired,
       name: string.isRequired,
     })),
-  })).isRequired,
+  })),
+};
+
+PlaysTable.defaultProps = {
+  plays: [],
 };
 
 export default PlaysTable;
