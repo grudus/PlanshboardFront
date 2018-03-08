@@ -59,6 +59,7 @@ class AddGameDialog extends Component {
               validators={['required']}
               errorMessages={['Pole jest wymagane']}
               name="name"
+              value={this.state.name}
               onChange={this.handleChange}
               errorText={this.props.isError && 'Taka gra już istnieje'}
             />
