@@ -20,11 +20,15 @@ class BoardGame extends Component {
     }
   }
 
+  openDialog = () => {
+    alert('Dodano grę');
+  };
+
   render() {
     const { boardGames } = this.props;
 
     const plays = [{
-      id: 1,
+      id: 4,
       date: moment(),
       opponents: [
         { position: 1, name: 'grudus' },
@@ -32,7 +36,7 @@ class BoardGame extends Component {
         { position: 3, name: 'karwat' },
       ],
     }, {
-      id: 2,
+      id: 3,
       date: moment().subtract(3, 'hour'),
       info: 'Kleska konkretna',
       opponents: [
@@ -40,7 +44,7 @@ class BoardGame extends Component {
         { position: 1, name: 'madzia' },
       ],
     }, {
-      id: 3,
+      id: 2,
       date: moment().subtract(2, 'day'),
       info: 'smiesznie bylo',
       opponents: [
@@ -53,7 +57,7 @@ class BoardGame extends Component {
       ],
     },
     {
-      id: 4,
+      id: 1,
       date: moment().subtract(3, 'day').subtract(2, 'hour'),
       opponents: [
         { position: 1, name: 'grudus' },
@@ -69,11 +73,7 @@ class BoardGame extends Component {
         <div className="board-game-header">
           <h2 className="board-game-title">{boardGames.currentGame && boardGames.currentGame.name}</h2>
         </div>
-
-        <button className="pointer" style={{ padding: '16px', background: 'var(--accent-color)', color: 'white' }}>DODEJ GRE</button>
-
-        <GamesTable plays={plays} />
-
+        <GamesTable plays={plays} onAddPlayClick={this.openDialog} />
       </article>
     );
   }

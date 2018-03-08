@@ -62,7 +62,11 @@
 }
 
 .opponent-id {
-    width: 15px;
+    width: 28px;
+}
+
+.add-play:hover {
+    color: var(--accent-color);
 }
 
 @media screen and (max-width: 600px) {
@@ -109,5 +113,26 @@
     .opponent-wrapper {
         display: flex;
         justify-content: flex-end;
+    }
+
+    .plays-table .add-play-id {
+        display: none;
+    }
+
+    .plays-table .add-play {
+        border: none;
+        text-align: center;
+    }
+
+    .plays-table .add-play:before {
+        content: none;
+    }
+
+    .plays-table .add-play:hover {
+        box-shadow: 0 0 0 0;
+    }
+
+    .plays-table .add-play-wrapper {
+        border: none;
     }
 }

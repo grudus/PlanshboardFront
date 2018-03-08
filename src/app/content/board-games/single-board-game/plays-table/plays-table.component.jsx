@@ -1,9 +1,10 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React from 'react';
 import PropTypes from 'prop-types';
 import './plays-table.css';
 import OpponentsCell from './opponents-cell.component';
 
-const PlaysTable = ({ plays }) => {
+const PlaysTable = ({ plays, onAddPlayClick }) => {
   const playsDom = plays.map((play) => {
     const sortedOpponents = play.opponents.sort((a, b) => (a.position > b.position ? 1 : -1));
     return (
@@ -32,6 +33,10 @@ const PlaysTable = ({ plays }) => {
         </tr>
       </thead>
       <tbody>
+        <tr onClick={onAddPlayClick} className="add-play-wrapper">
+          <td data-label="Nr" className="add-play-id">5.</td>
+          <td data-label="Data" colSpan="4" className="add-play card-shadow pointer anim">Dodaj rozgrywkę</td>
+        </tr>
         {playsDom}
       </tbody>
     </table>
@@ -39,10 +44,11 @@ const PlaysTable = ({ plays }) => {
 };
 
 const {
-  arrayOf, number, object, string, shape,
+  arrayOf, number, object, string, shape, func,
 } = PropTypes;
 
 PlaysTable.propTypes = {
+  onAddPlayClick: func.isRequired,
   plays: arrayOf(shape({
     id: number.isRequired,
     date: object.isRequired,
