@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Dialog from 'material-ui/Dialog';
-import { FlatButton, RaisedButton } from 'material-ui';
 import { ValidatorForm } from 'react-form-validator-core';
 import { TextValidator } from 'react-material-ui-form-validator';
+import YesNoButton from '../../../commons/yes-no-buttons.component';
 
 class AddGameDialog extends Component {
     static propTypes = {
@@ -30,19 +30,11 @@ class AddGameDialog extends Component {
     };
 
     render() {
-      const buttons = [
-        <FlatButton
-          label="Cofnij"
-          primary
-          onClick={this.props.onCancel}
-        />,
-        <RaisedButton
-          type="submit"
-          label="Stwórz"
-          primary
-          onClick={this.preventAndSubmit}
-        />,
-      ];
+      const buttons = (<YesNoButton
+        onCancel={this.props.onCancel}
+        onSubmit={this.preventAndSubmit}
+      />);
+
       return (
         <Dialog
           title="Dodaj nową grę"

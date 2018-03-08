@@ -6,8 +6,11 @@ import { getSpecificBoardGame } from '../board-games.api';
 import { changeCurrentBoardGame } from '../board-games.actions';
 import './single-board-game.css';
 import GamesTable from './plays-table/plays-table.component';
+import { AddPlayDialog } from './add-play/add-play-dialog.component';
 
 class BoardGame extends Component {
+  state = { showAddPlayDialog: false };
+
   async componentDidMount() {
     if (this.props.currentGame)
       return;
@@ -21,7 +24,11 @@ class BoardGame extends Component {
   }
 
   openDialog = () => {
-    alert('Dodano grę');
+    this.setState({ showAddPlayDialog: true });
+  };
+
+  hideDialog = () => {
+    this.setState({ showAddPlayDialog: false });
   };
 
   render() {
@@ -74,6 +81,11 @@ class BoardGame extends Component {
           <h2 className="board-game-title">{boardGames.currentGame && boardGames.currentGame.name}</h2>
         </div>
         <GamesTable plays={plays} onAddPlayClick={this.openDialog} />
+        <AddPlayDialog
+          show={this.state.showAddPlayDialog}
+          onCancel={this.hideDialog}
+          onSubmit={this.hideDialog}
+        />
       </article>
     );
   }
