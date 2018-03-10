@@ -1,8 +1,8 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React from 'react';
 import PropTypes from 'prop-types';
-import './plays-table.css';
-import OpponentsCell from './opponents-cell.component';
+import './playsTable.css';
+import OpponentsCell from './opponentsCellComponent';
 
 const PlaysTable = ({ plays, onAddPlayClick }) => {
   const playsDom = plays.map((play) => {

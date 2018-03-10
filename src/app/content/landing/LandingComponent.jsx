@@ -1,7 +1,7 @@
 import React from 'react';
-import Item from './landing-item.component';
-import './landing.component.css';
-import items from '../tabs';
+import Item from './landingItemComponent';
+import './landing.css';
+import items from '../Tabs';
 
 const itemObjects = items.map(item => (
   <div key={item.path}>

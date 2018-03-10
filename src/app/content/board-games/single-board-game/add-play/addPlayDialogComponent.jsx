@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { Dialog } from 'material-ui';
 import PropTypes from 'prop-types';
 import AutoComplete from 'material-ui/AutoComplete';
-import YesNoButton from '../../../../commons/yes-no-buttons.component';
-import './add-play-dialog.css';
+import YesNoButton from '../../../../commons/YesNoButtonsComponent';
+import './addPlayDialog.css';
 
 export class AddPlayDialog extends Component {
     static propTypes = {

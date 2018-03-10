@@ -4,13 +4,13 @@ import { connect } from 'react-redux';
 import 'moment/locale/pl';
 import moment from 'moment';
 import { Route, Switch, withRouter } from 'react-router-dom';
-import muiTheme from './mui-theme';
-import { tryResolveCurrentUser } from './content/users/users.actions';
-import { loginCurrentUser } from './auth/login/login.actions';
+import muiTheme from './MuiTheme';
+import { tryResolveCurrentUser } from './content/users/userActions';
+import { loginCurrentUser } from './auth/login/loginActions';
 import './app.css';
-import Content from './content/content.component';
-import Login from './auth/login/login.component';
-import Registration from './auth/registration/registration.component';
+import Content from './content/ContentComponent';
+import Login from './auth/login/LoginComponent';
+import Registration from './auth/registration/registrationComponent';
 
 class App extends Component {
   async componentDidMount() {

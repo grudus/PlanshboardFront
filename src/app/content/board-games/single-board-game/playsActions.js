@@ -1,5 +1,5 @@
 import moment from 'moment/moment';
-import { GET_ALL_PLAYS } from './plays.actions.types';
+import { GET_ALL_PLAYS } from './playsActionsTypes';
 
 const mockGames = [{
   id: 4,

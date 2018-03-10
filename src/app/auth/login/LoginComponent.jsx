@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import './login.css';
-import LoginForm from './login.form.component';
-import { tryToLoginAction } from './login.actions';
+import LoginForm from './LoginFormComponent';
+import { tryToLoginAction } from './loginActions';
 
 class Login extends Component {
     state = {

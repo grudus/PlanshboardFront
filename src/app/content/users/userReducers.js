@@ -1,4 +1,4 @@
-import { GET_CURRENT_USER } from './users.actions.types';
+import { GET_CURRENT_USER } from './userActionsTypes';
 
 const initialState = {
   id: undefined,

@@ -1,5 +1,5 @@
 import { AUTH_HEADER } from './constants';
-import { HttpError } from './http-error';
+import { HttpError } from './httpError';
 
 const backendUrl = process.env.REACT_APP_BACKEND_URL;
 

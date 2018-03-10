@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { usernameExists } from './registration.api';
-import RegistrationConfirmDialog from './registration.confirm-dialog.component';
-import { registerUserAction } from './registration.actions';
-import RegistrationForm from './registration.form.component';
+import { usernameExists } from './registrationApi';
+import RegistrationConfirmDialog from './RegistrationConfirmDialogComponent';
+import { registerUserAction } from './registrationActions';
+import RegistrationForm from './RegistrationFormComponent';
 
 class Registration extends Component {
     state = {

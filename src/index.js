@@ -8,8 +8,8 @@ import { BrowserRouter } from 'react-router-dom';
 import { applyMiddleware, compose, createStore } from 'redux';
 
 
-import App from './app/app.component';
-import reducer from './app/reducers/reducer.index';
+import App from './app/AppComponent';
+import reducer from './app/reducers/allReducers';
 
 
 const composeEnhancers =

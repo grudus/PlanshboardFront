@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { logoutAction } from '../../auth/login/login.actions';
+import { logoutAction } from '../../auth/login/loginActions';
 import './topbar.css';
-import tabs from '../tabs';
+import tabs from '../Tabs';
 import logoutIcon from '../res/logout.png';
-import TopBarItem from './topbar.item.component';
+import TopBarItem from './TopbarItemComponent';
 
 class TopBar extends Component {
     static propTypes = {

@@ -1,10 +1,10 @@
 import React from 'react';
 import { Switch } from 'react-router-dom';
 import Route from 'react-router-dom/es/Route';
-import BoardGamesList from './board-games/board-games-list/board-games-list.component';
-import Landing from './landing/landing.component';
+import BoardGamesList from './board-games/board-games-list/BoardGamesListComponent';
+import Landing from './landing/LandingComponent';
 import './content.css';
-import BoardGame from './board-games/single-board-game/single-board-game.component';
+import BoardGame from './board-games/single-board-game/SingleBoardGameComponent';
 
 export default () =>
   (

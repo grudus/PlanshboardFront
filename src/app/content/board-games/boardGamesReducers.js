@@ -1,8 +1,8 @@
 import {
   ADD_NEW_BOARD_GAME, CHANGE_CURRENT_BOARD_GAME, DELETE_BOARD_GAME,
   GET_ALL_BOARD_GAMES,
-} from './board-games.actions.types';
-import { GET_ALL_PLAYS } from './single-board-game/plays.actions.types';
+} from './boardGamesActionsTypes';
+import { GET_ALL_PLAYS } from './single-board-game/playsActionsTypes';
 
 const initialState = {
   allGames: [],

@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { withTopbar } from '../../topbar/with-topbar';
-import { getSpecificBoardGame } from '../board-games.api';
-import { changeCurrentBoardGame } from '../board-games.actions';
-import './single-board-game.css';
-import GamesTable from './plays-table/plays-table.component';
-import { AddPlayDialog } from './add-play/add-play-dialog.component';
-import { getAllPlays } from './plays.actions';
+import { withTopbar } from '../../topbar/withTopbar';
+import { getSpecificBoardGame } from '../boardGamesApi';
+import { changeCurrentBoardGame } from '../boardGamesActions';
+import './singleBoardGame.css';
+import GamesTable from './plays-table/playsTableComponent';
+import { AddPlayDialog } from './add-play/addPlayDialogComponent';
+import { getAllPlays } from './playsActions';
 
 class BoardGame extends Component {
   state = { showAddPlayDialog: false };

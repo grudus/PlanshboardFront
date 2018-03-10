@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import TopBar from './topbar.component';
+import TopBar from './TopbarComponent';
 
 export const withTopbar = (WrappedComponent, currentPath) => props =>
   (

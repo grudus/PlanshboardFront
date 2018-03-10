@@ -1,6 +1,6 @@
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
-const muiTheme = getMuiTheme({
+export default getMuiTheme({
   palette: {
     primary1Color: '#2196F3',
     accent1Color: '#FF9100',
@@ -9,5 +9,3 @@ const muiTheme = getMuiTheme({
     borderColor: 'rgba(0, 0, 0, 0.2)',
   },
 });
-
-export default muiTheme;

@@ -1,5 +1,5 @@
-import { GET_CURRENT_USER, TRY_TO_GET_CURRENT_USER } from './users.actions.types';
-import { api } from '../../commons/http-wrapper';
+import { GET_CURRENT_USER, TRY_TO_GET_CURRENT_USER } from './userActionsTypes';
+import { api } from '../../commons/httpWrapper';
 
 const tryToGetCurrentUser = () => ({ type: TRY_TO_GET_CURRENT_USER });
 

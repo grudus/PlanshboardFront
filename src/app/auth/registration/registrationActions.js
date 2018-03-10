@@ -1,5 +1,5 @@
-import { TRY_TO_REGISTER, USER_REGISTERED } from '../auth.actions.types';
-import { registerUser } from './registration.api';
+import { TRY_TO_REGISTER, USER_REGISTERED } from '../authActionsTypes';
+import { registerUser } from './registrationApi';
 
 const tryToRegister = () => ({ type: TRY_TO_REGISTER });
 const userRegistered = () => ({ type: USER_REGISTERED });

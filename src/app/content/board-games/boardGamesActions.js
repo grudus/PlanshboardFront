@@ -3,8 +3,8 @@ import {
   CHANGE_CURRENT_BOARD_GAME, DELETE_BOARD_GAME,
   GET_ALL_BOARD_GAMES,
   TRY_TO_GET_ALL_BOARD_GAMES,
-} from './board-games.actions.types';
-import { addBoardGameRequest, deleteBoardGameRequest, getBoardGamesRequest } from './board-games.api';
+} from './boardGamesActionsTypes';
+import { addBoardGameRequest, deleteBoardGameRequest, getBoardGamesRequest } from './boardGamesApi';
 
 const deleteAction = id => ({ type: DELETE_BOARD_GAME, id });
 const tryToGetBoardGames = () => ({ type: TRY_TO_GET_ALL_BOARD_GAMES });

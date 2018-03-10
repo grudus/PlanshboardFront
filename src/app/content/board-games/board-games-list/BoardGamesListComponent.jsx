@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import { compose } from 'redux';
 import { muiThemeable } from 'material-ui/styles/index';
 import { connect } from 'react-redux';
-import { addNewBoardGame, changeCurrentBoardGame, getAllBoardGames } from '../board-games.actions';
-import '../board-games.css';
-import { withTopbar } from '../../topbar/with-topbar';
-import OneGameItem from './one-board-game-item.component';
-import AddGame from './../add-board-game/add-board-game-item.component';
-import AddGameDialog from './../add-board-game/add-board-game.dialog';
-import { boardNameExistsRequest } from './../board-games.api';
+import { addNewBoardGame, changeCurrentBoardGame, getAllBoardGames } from '../boardGamesActions';
+import '../boardGames.css';
+import { withTopbar } from '../../topbar/withTopbar';
+import OneGameItem from './OneBoardGameItemComponent';
+import AddGame from '../add-board-game/AddBoardGameItemComponent';
+import AddGameDialog from '../add-board-game/AddBoardGameDialogComponent';
+import { boardNameExistsRequest } from '../boardGamesApi';
 
 class BoardGamesList extends Component {
     state = {

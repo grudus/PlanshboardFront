@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { findColor } from './opponents.colors';
+import { findColor } from './opponentsColors';
 
 const OpponentsCell = ({ opponents }) => {
   const opponentsDom = ({ position, name }) => (

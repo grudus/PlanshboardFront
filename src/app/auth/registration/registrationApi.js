@@ -1,4 +1,4 @@
-import { api, postApi } from '../../commons/http-wrapper';
+import { api, postApi } from '../../commons/httpWrapper';
 
 export const usernameExists = username => api(`/api/auth/register/exists?username=${username}`);
 

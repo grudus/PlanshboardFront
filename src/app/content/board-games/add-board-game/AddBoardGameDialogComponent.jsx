@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Dialog from 'material-ui/Dialog';
 import { ValidatorForm } from 'react-form-validator-core';
 import { TextValidator } from 'react-material-ui-form-validator';
-import YesNoButton from '../../../commons/yes-no-buttons.component';
+import YesNoButton from '../../../commons/YesNoButtonsComponent';
 
 class AddGameDialog extends Component {
     static propTypes = {
