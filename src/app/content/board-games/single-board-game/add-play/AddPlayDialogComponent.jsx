@@ -16,7 +16,7 @@ class AddPlayDialog extends Component {
 
     static initialState = {
       autoCompleteText: '',
-      opponents: [],
+      results: [],
     };
 
     state = { ...AddPlayDialog.initialState };
@@ -30,14 +30,18 @@ class AddPlayDialog extends Component {
       this.props.onCancel();
     };
 
-    onSubmit = () => {
+    onSubmit = async () => {
       this.setState({ ...AddPlayDialog.initialState });
-      this.props.onSubmit(this.state.opponents);
+      await this.props.onSubmit(this.state.results);
+      this.props.getOpponents();
     };
 
-    addOpponent = (value) => {
-      const newOpponent = { name: value, fakeId: this.state.opponents.length + 1 };
-      this.setState(state => ({ ...state, autoCompleteText: '', opponents: [...state.opponents, newOpponent] }));
+    addResult = (value) => {
+      const newResult = { opponentName: value, fakeId: this.state.results.length + 1 };
+      const existingOpponent = this.props.opponents.find(o => o.name === value);
+      if (existingOpponent)
+        newResult.opponentId = existingOpponent.id;
+      this.setState(state => ({ ...state, autoCompleteText: '', results: [...state.results, newResult] }));
     };
 
     updateAutoComplete = (value) => {
@@ -45,10 +49,10 @@ class AddPlayDialog extends Component {
     };
 
     opponentChange = (opponent, position) => {
-      const updatedOpponents = this.state.opponents
+      const updatedOpponents = this.state.results
         .map(opp => (opp.fakeId === opponent.fakeId ? { ...opponent, position } : opp));
 
-      this.setState({ opponents: updatedOpponents });
+      this.setState({ results: updatedOpponents });
     };
 
 
@@ -74,7 +78,7 @@ class AddPlayDialog extends Component {
               <div className="add-play-form-content">
                 <AutoComplete
                   dataSource={dataSource}
-                  onNewRequest={this.addOpponent}
+                  onNewRequest={this.addResult}
                   searchText={this.state.autoCompleteText}
                   onUpdateInput={this.updateAutoComplete}
                   hintText="Dodaj przeciwnika"
@@ -88,18 +92,18 @@ class AddPlayDialog extends Component {
               </div>
               <div className="add-play-form-content">
                 <OpponentsPosition
-                  opponents={this.state.opponents}
+                  results={this.state.results}
                   onPositionChange={this.opponentChange}
                 />
               </div>
             </div>
             <div className="add-play-form-row">
               <div className="add-play-form-label">Liczba punktów:</div>
-              <div className="add-play-form-content">{this.state.opponents.map(a => a.name).join(' ')}</div>
+              <div className="add-play-form-content">{this.state.results.map(a => a.opponentName).join(' ')}</div>
             </div>
             <div className="add-play-form-row">
               <div className="add-play-form-label">Zwycięzca:</div>
-              <div className="add-play-form-content">{this.state.opponents.map(a => a.name).join(' ')}</div>
+              <div className="add-play-form-content">{this.state.results.map(a => a.opponentName).join(' ')}</div>
             </div>
             <div className="add-play-form-row">
               <div className="add-play-form-label">Notatki:</div>

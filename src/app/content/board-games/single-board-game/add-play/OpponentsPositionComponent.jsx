@@ -10,14 +10,14 @@ class OpponentsPosition extends Component {
     };
 
     render() {
-      const { opponents } = this.props;
-      const opponentsDom = opponents.map(opponent => (
-        <li key={opponent.fakeId}>
+      const { results } = this.props;
+      const opponentsDom = results.map(result => (
+        <li key={result.fakeId}>
           <div className="text-center position-item-wrapper ellipsis">
-            {opponent.name}
+            {result.opponentName}
             <PositionItem
-              onSelect={i => this.onSelect(opponent, i)}
-              positionCount={opponents.length}
+              onSelect={i => this.onSelect(result, i)}
+              positionCount={results.length}
             />
           </div>
         </li>
@@ -32,18 +32,12 @@ class OpponentsPosition extends Component {
 }
 
 OpponentsPosition.propTypes = {
-  opponents: PropTypes.arrayOf(PropTypes.shape({
-    name: PropTypes.string,
+  results: PropTypes.arrayOf(PropTypes.shape({
+    opponentName: PropTypes.string,
     id: PropTypes.number,
     fakeId: PropTypes.number,
-  })),
-  onPositionChange: PropTypes.func,
-};
-
-OpponentsPosition.defaultProps = {
-  opponents: [],
-  onPositionChange: () => {
-  },
+  })).isRequired,
+  onPositionChange: PropTypes.func.isRequired,
 };
 
 export default OpponentsPosition;

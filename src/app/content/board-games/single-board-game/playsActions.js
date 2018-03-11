@@ -15,7 +15,7 @@ export const addNewPlay = (boardGameId, play) => (dispatch) => {
   dispatch(tryAddPlay());
 
   return addNewPlayRequest(boardGameId, play)
-    .then(res => dispatch(addPlayDone(play, res)));
+    .then(res => dispatch(addPlayDone(play, res.id)));
 };
 
 export const getAllPlays = boardGameId => (dispatch) => {

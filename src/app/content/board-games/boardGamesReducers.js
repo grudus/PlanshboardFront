@@ -2,7 +2,7 @@ import {
   ADD_NEW_BOARD_GAME, CHANGE_CURRENT_BOARD_GAME, DELETE_BOARD_GAME,
   GET_ALL_BOARD_GAMES,
 } from './boardGamesActionsTypes';
-import { GET_ALL_PLAYS } from './single-board-game/playsActionsTypes';
+import { ADD_NEW_PLAY, GET_ALL_PLAYS } from './single-board-game/playsActionsTypes';
 
 const initialState = {
   allGames: [],
@@ -25,6 +25,17 @@ export default (state = initialState, action) => {
     case GET_ALL_PLAYS: {
       const { currentGame } = state;
       return { ...state, currentGame: { ...currentGame, plays: action.plays } };
+    }
+    case ADD_NEW_PLAY: {
+      const { currentGame } = state;
+      return {
+        ...state,
+        currentGame: {
+          ...currentGame,
+          plays:
+                  [...currentGame.plays, { results: action.play, id: action.id, date: new Date() }],
+        },
+      };
     }
     default:
       return state;
