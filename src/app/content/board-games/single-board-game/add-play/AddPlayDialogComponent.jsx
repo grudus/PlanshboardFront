@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { Dialog } from 'material-ui';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import AutoComplete from 'material-ui/AutoComplete';
 import YesNoButton from '../../../../commons/YesNoButtonsComponent';
 import './addPlayDialog.css';
 import OpponentsPosition from './OpponentsPositionComponent';
+import { getAllOpponents } from '../../../opponents/opponentsActions';
 
-export class AddPlayDialog extends Component {
+class AddPlayDialog extends Component {
     static propTypes = {
       onCancel: PropTypes.func.isRequired,
       onSubmit: PropTypes.func.isRequired,
@@ -14,12 +16,14 @@ export class AddPlayDialog extends Component {
 
     static initialState = {
       autoCompleteText: '',
-      dataSource: ['madzia', 'mama', 'martyna', 'grudus', 'Kozioł', 'Karwat'],
       opponents: [],
     };
 
     state = { ...AddPlayDialog.initialState };
 
+    componentDidMount() {
+      this.props.getOpponents();
+    }
 
     onRequestClose = () => {
       this.setState({ ...AddPlayDialog.initialState });
@@ -50,7 +54,7 @@ export class AddPlayDialog extends Component {
 
     render() {
       const buttons = <YesNoButton onCancel={this.onRequestClose} onSubmit={this.onSubmit} />;
-
+      const dataSource = this.props.opponents && this.props.opponents.map(o => o.name);
 
       return (
         <Dialog
@@ -69,7 +73,7 @@ export class AddPlayDialog extends Component {
               </div>
               <div className="add-play-form-content">
                 <AutoComplete
-                  dataSource={this.state.dataSource}
+                  dataSource={dataSource}
                   onNewRequest={this.addOpponent}
                   searchText={this.state.autoCompleteText}
                   onUpdateInput={this.updateAutoComplete}
@@ -106,3 +110,12 @@ export class AddPlayDialog extends Component {
       );
     }
 }
+
+const mapStateToProps = ({ opponents }) => ({
+  opponents,
+});
+const mapDispatchToProps = {
+  getOpponents: getAllOpponents,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddPlayDialog);

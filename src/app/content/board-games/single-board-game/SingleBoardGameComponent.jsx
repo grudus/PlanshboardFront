@@ -5,8 +5,9 @@ import { getSpecificBoardGame } from '../boardGamesApi';
 import { changeCurrentBoardGame } from '../boardGamesActions';
 import './singleBoardGame.css';
 import GamesTable from './plays-table/playsTableComponent';
-import { AddPlayDialog } from './add-play/AddPlayDialogComponent';
+import AddPlayDialog from './add-play/AddPlayDialogComponent';
 import { addNewPlay, getAllPlays } from './playsActions';
+import { getAllOpponents } from '../../opponents/opponentsActions';
 
 class BoardGame extends Component {
   state = { showAddPlayDialog: false };
@@ -65,6 +66,7 @@ const mapDispatchToProps = {
   changeCurrentGame: changeCurrentBoardGame,
   getPlays: getAllPlays,
   addPlay: addNewPlay,
+  getOpponents: getAllOpponents,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(withTopbar(BoardGame, '/games/:id'));
