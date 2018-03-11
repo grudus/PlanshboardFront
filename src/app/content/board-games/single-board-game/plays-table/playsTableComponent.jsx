@@ -1,20 +1,21 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React from 'react';
 import PropTypes from 'prop-types';
+import moment from 'moment';
 import './playsTable.css';
 import OpponentsCell from './opponentsCellComponent';
 
-const PlaysTable = ({ plays, onAddPlayClick }) => {
+const PlaysTable = ({ plays = [], onAddPlayClick }) => {
   const playsDom = plays.map((play) => {
-    const sortedOpponents = play.opponents.sort((a, b) => (a.position > b.position ? 1 : -1));
+    const sortedResults = play.results.sort((a, b) => (a.position > b.position ? 1 : -1));
     return (
       <tr key={play.id}>
         <td data-label="Nr">{play.id}.</td>
-        <td data-label="Data">{play.date.fromNow()}</td>
+        <td data-label="Data">{moment(play.date).format('DD MMMM')}</td>
         <td data-label="Uczestnicy">
-          <OpponentsCell opponents={sortedOpponents} />
+          <OpponentsCell results={sortedResults} />
         </td>
-        <td data-label="Zwycięzca"><b>{sortedOpponents[0].name}</b></td>
+        <td data-label="Zwycięzca"><b>{sortedResults[0].opponentName}</b></td>
         <td data-label="Notatki">{play.info}</td>
       </tr>
     );
@@ -44,18 +45,20 @@ const PlaysTable = ({ plays, onAddPlayClick }) => {
 };
 
 const {
-  arrayOf, number, object, string, shape, func,
+  arrayOf, number, string, shape, func,
 } = PropTypes;
 
 PlaysTable.propTypes = {
   onAddPlayClick: func.isRequired,
   plays: arrayOf(shape({
     id: number.isRequired,
-    date: object.isRequired,
+    date: string.isRequired,
     info: string,
-    opponents: arrayOf(shape({
+    results: arrayOf(shape({
       position: number.isRequired,
-      name: string.isRequired,
+      opponentName: string.isRequired,
+      id: number,
+      points: number,
     })),
   })),
 };

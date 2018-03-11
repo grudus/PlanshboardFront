@@ -5,8 +5,8 @@ import { getSpecificBoardGame } from '../boardGamesApi';
 import { changeCurrentBoardGame } from '../boardGamesActions';
 import './singleBoardGame.css';
 import GamesTable from './plays-table/playsTableComponent';
-import { AddPlayDialog } from './add-play/addPlayDialogComponent';
-import { getAllPlays } from './playsActions';
+import { AddPlayDialog } from './add-play/AddPlayDialogComponent';
+import { addNewPlay, getAllPlays } from './playsActions';
 
 class BoardGame extends Component {
   state = { showAddPlayDialog: false };
@@ -28,6 +28,11 @@ class BoardGame extends Component {
     this.setState({ showAddPlayDialog: true });
   };
 
+  submitAddPlay = (opponents) => {
+    this.props.addPlay(this.props.match.params.gameId, opponents);
+    this.hideDialog();
+  };
+
   hideDialog = () => {
     this.setState({ showAddPlayDialog: false });
   };
@@ -45,7 +50,7 @@ class BoardGame extends Component {
         <AddPlayDialog
           show={this.state.showAddPlayDialog}
           onCancel={this.hideDialog}
-          onSubmit={this.hideDialog}
+          onSubmit={this.submitAddPlay}
         />
       </article>
     );
@@ -59,6 +64,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = {
   changeCurrentGame: changeCurrentBoardGame,
   getPlays: getAllPlays,
+  addPlay: addNewPlay,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(withTopbar(BoardGame, '/games/:id'));

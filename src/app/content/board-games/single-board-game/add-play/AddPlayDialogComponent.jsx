@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import AutoComplete from 'material-ui/AutoComplete';
 import YesNoButton from '../../../../commons/YesNoButtonsComponent';
 import './addPlayDialog.css';
+import OpponentsPosition from './OpponentsPositionComponent';
 
 export class AddPlayDialog extends Component {
     static propTypes = {
@@ -27,16 +28,23 @@ export class AddPlayDialog extends Component {
 
     onSubmit = () => {
       this.setState({ ...AddPlayDialog.initialState });
-      this.props.onSubmit();
+      this.props.onSubmit(this.state.opponents);
     };
 
     addOpponent = (value) => {
-      const newOpponent = { name: value, position: this.state.opponents.length + 1 };
+      const newOpponent = { name: value, fakeId: this.state.opponents.length + 1 };
       this.setState(state => ({ ...state, autoCompleteText: '', opponents: [...state.opponents, newOpponent] }));
     };
 
     updateAutoComplete = (value) => {
       this.setState({ autoCompleteText: value });
+    };
+
+    opponentChange = (opponent, position) => {
+      const updatedOpponents = this.state.opponents
+        .map(opp => (opp.fakeId === opponent.fakeId ? { ...opponent, position } : opp));
+
+      this.setState({ opponents: updatedOpponents });
     };
 
 
@@ -50,6 +58,8 @@ export class AddPlayDialog extends Component {
           actions={buttons}
           modal={false}
           open={this.props.show}
+          autoScrollBodyContent
+          autoDetectWindowHeight
           onRequestClose={this.onRequestClose}
         >
           <div className="add-play-form">
@@ -72,7 +82,12 @@ export class AddPlayDialog extends Component {
               <div className="add-play-form-label">
                             Miejsce (pozycja):
               </div>
-              <div className="add-play-form-content">{this.state.opponents.map(a => a.name).join(' ')}</div>
+              <div className="add-play-form-content">
+                <OpponentsPosition
+                  opponents={this.state.opponents}
+                  onPositionChange={this.opponentChange}
+                />
+              </div>
             </div>
             <div className="add-play-form-row">
               <div className="add-play-form-label">Liczba punktów:</div>
