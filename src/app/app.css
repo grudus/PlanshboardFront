@@ -15,12 +15,44 @@ li {
     display: flex;
 }
 
-.flex-center {
+.just-center {
     justify-content: center;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-top {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+}
+
+.w100 {
+    width: 100%;
+}
+
+.p-lr-8 {
+    padding: 0 8px;
+}
+
+.border {
+    border: 2px solid red;
 }
 
 .text-center {
     text-align: center;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.table-border {
+    border: 1px solid #dddddd;
 }
 
 .ellipsis {

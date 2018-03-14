@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { Dialog } from 'material-ui';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import AutoComplete from 'material-ui/AutoComplete';
+import AutoComplete from '../../../../commons/AutoCompleteComponent';
 import YesNoButton from '../../../../commons/YesNoButtonsComponent';
 import './addPlayDialog.css';
-import OpponentsPosition from './OpponentsPositionComponent';
 import { getAllOpponents } from '../../../opponents/opponentsActions';
+import ResultRow from './ResultRowComponent';
 
 class AddPlayDialog extends Component {
     static propTypes = {
@@ -15,7 +15,6 @@ class AddPlayDialog extends Component {
     };
 
     static initialState = {
-      autoCompleteText: '',
       results: [],
     };
 
@@ -41,24 +40,40 @@ class AddPlayDialog extends Component {
       const existingOpponent = this.props.opponents.find(o => o.name === value);
       if (existingOpponent)
         newResult.opponentId = existingOpponent.id;
-      this.setState(state => ({ ...state, autoCompleteText: '', results: [...state.results, newResult] }));
+      this.setState(state => ({ ...state, results: [...state.results, newResult] }));
     };
 
-    updateAutoComplete = (value) => {
-      this.setState({ autoCompleteText: value });
+
+    resultChange = (mapper) => {
+      const updatedResults = this.state.results
+        .map(mapper);
+
+      this.setState({ results: updatedResults });
     };
 
-    opponentChange = (opponent, position) => {
-      const updatedOpponents = this.state.results
-        .map(opp => (opp.fakeId === opponent.fakeId ? { ...opponent, position } : opp));
+    positionChange = (result, position) =>
+      this.resultChange(opp => (opp.fakeId === result.fakeId ? { ...result, position } : opp));
 
-      this.setState({ results: updatedOpponents });
-    };
+    pointsChange = (result, points) =>
+      this.resultChange(opp => (opp.fakeId === result.fakeId ? { ...result, points } : opp));
 
 
     render() {
       const buttons = <YesNoButton onCancel={this.onRequestClose} onSubmit={this.onSubmit} />;
       const dataSource = this.props.opponents && this.props.opponents.map(o => o.name);
+
+      const resultsDOM = this.state.results.length ? this.state.results.map(result => (
+        <ResultRow
+          result={result}
+          positionCount={this.state.results.length}
+          onPositionSelect={this.positionChange}
+          onPointsChange={this.pointsChange}
+        />
+      ))
+        : (
+          <tr>
+            <td colSpan={3} className="text-center table-no-results">Brak uczestników</td>
+          </tr>);
 
       return (
         <Dialog
@@ -70,46 +85,37 @@ class AddPlayDialog extends Component {
           autoDetectWindowHeight
           onRequestClose={this.onRequestClose}
         >
-          <div className="add-play-form">
+
+          <section className="add-play-form flex">
+
+            <table className="w100 add-play-table">
+
+              <tr>
+                <th className="p-lr-8">
+                  <AutoComplete
+                    dataSource={dataSource}
+                    onSelect={this.addResult}
+                    hintText="Dodaj uczestnika"
+                  />
+                </th>
+                <th>Pozycja:</th>
+                <th>Liczba punktów:</th>
+              </tr>
+
+              {resultsDOM}
+
+            </table>
+
+
             <div className="add-play-form-row">
-              <div className="add-play-form-label">
-                            Uczestnicy:
-              </div>
-              <div className="add-play-form-content">
-                <AutoComplete
-                  dataSource={dataSource}
-                  onNewRequest={this.addResult}
-                  searchText={this.state.autoCompleteText}
-                  onUpdateInput={this.updateAutoComplete}
-                  hintText="Dodaj przeciwnika"
-                  fullWidth
-                />
-              </div>
+              <div className="add-play-form-header">Data:</div>
+              <div className="add-play-form-content">12 marca</div>
             </div>
             <div className="add-play-form-row">
-              <div className="add-play-form-label">
-                            Miejsce (pozycja):
-              </div>
-              <div className="add-play-form-content">
-                <OpponentsPosition
-                  results={this.state.results}
-                  onPositionChange={this.opponentChange}
-                />
-              </div>
-            </div>
-            <div className="add-play-form-row">
-              <div className="add-play-form-label">Liczba punktów:</div>
-              <div className="add-play-form-content">{this.state.results.map(a => a.opponentName).join(' ')}</div>
-            </div>
-            <div className="add-play-form-row">
-              <div className="add-play-form-label">Zwycięzca:</div>
-              <div className="add-play-form-content">{this.state.results.map(a => a.opponentName).join(' ')}</div>
-            </div>
-            <div className="add-play-form-row">
-              <div className="add-play-form-label">Notatki:</div>
+              <div className="add-play-form-header">Notatki:</div>
               <div className="add-play-form-content">dupa</div>
             </div>
-          </div>
+          </section>
         </Dialog>
       );
     }

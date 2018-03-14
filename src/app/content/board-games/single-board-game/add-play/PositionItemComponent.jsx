@@ -30,7 +30,7 @@ class PositionItem extends Component {
           return (
             <li
               key={i}
-              className={`position-item ${className}`}
+              className={`position-item text-center ${className}`}
               onClick={() => this.select(i)}
             >
               {i}
@@ -39,7 +39,7 @@ class PositionItem extends Component {
         });
 
       return (
-        <ul className="flex flex-center position-item-ul">
+        <ul className="flex just-center position-item-ul">
           {positions}
         </ul>
       );
