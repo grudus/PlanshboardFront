@@ -28,12 +28,12 @@ export default (state = initialState, action) => {
     }
     case ADD_NEW_PLAY: {
       const { currentGame } = state;
+      const { play, id, date } = action;
       return {
         ...state,
         currentGame: {
           ...currentGame,
-          plays:
-                  [...currentGame.plays, { results: action.play, id: action.id, date: new Date() }],
+          plays: [...currentGame.plays, { results: play, id, date }],
         },
       };
     }

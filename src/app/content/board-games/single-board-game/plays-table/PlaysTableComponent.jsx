@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import './playsTable.css';
-import OpponentsCell from './opponentsCellComponent';
+import OpponentsCell from './OpponentsCellComponent';
 
 const PlaysTable = ({ plays = [], onAddPlayClick }) => {
   const playsDom = plays.map((play) => {

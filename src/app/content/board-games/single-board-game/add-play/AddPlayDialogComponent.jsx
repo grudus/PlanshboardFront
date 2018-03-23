@@ -7,6 +7,7 @@ import YesNoButton from '../../../../commons/YesNoButtonsComponent';
 import './addPlayDialog.css';
 import { getAllOpponents } from '../../../opponents/opponentsActions';
 import ResultRow from './ResultRowComponent';
+import DateDialogComponent from '../../../../commons/DateDialogComponent';
 
 class AddPlayDialog extends Component {
     static propTypes = {
@@ -15,6 +16,8 @@ class AddPlayDialog extends Component {
     };
 
     static initialState = {
+      date: null,
+      note: null,
       results: [],
     };
 
@@ -31,7 +34,7 @@ class AddPlayDialog extends Component {
 
     onSubmit = async () => {
       this.setState({ ...AddPlayDialog.initialState });
-      await this.props.onSubmit(this.state.results);
+      await this.props.onSubmit(this.state.results, this.state.date);
       this.props.getOpponents();
     };
 
@@ -57,6 +60,9 @@ class AddPlayDialog extends Component {
     pointsChange = (result, points) =>
       this.resultChange(opp => (opp.fakeId === result.fakeId ? { ...result, points } : opp));
 
+    dateChange = (date) => {
+      this.setState({ date });
+    };
 
     render() {
       const buttons = <YesNoButton onCancel={this.onRequestClose} onSubmit={this.onSubmit} />;
@@ -89,7 +95,7 @@ class AddPlayDialog extends Component {
           <section className="add-play-form flex">
 
             <table className="w100 add-play-table">
-
+              {/* todo: create new component */}
               <tr>
                 <th className="p-lr-8">
                   <AutoComplete
@@ -109,7 +115,8 @@ class AddPlayDialog extends Component {
 
             <div className="add-play-form-row">
               <div className="add-play-form-header">Data:</div>
-              <div className="add-play-form-content">12 marca</div>
+              <div className="add-play-form-content"><DateDialogComponent onDateChange={this.dateChange} />
+              </div>
             </div>
             <div className="add-play-form-row">
               <div className="add-play-form-header">Notatki:</div>
