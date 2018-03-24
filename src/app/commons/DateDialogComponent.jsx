@@ -7,7 +7,7 @@ import 'moment/locale/pl';
 
 const DateDialogComponent = (props) => {
   // why, materialui, why?
-  const onChange = (_null, date) => props.onDateChange(date);
+  const onChange = (_null, date) => props.onDateChange(moment(date).format('YYYY-MM-DDTHH:mm:ss'));
 
   return (
     <DatePicker

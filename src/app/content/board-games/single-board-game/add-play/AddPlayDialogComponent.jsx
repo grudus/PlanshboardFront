@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Dialog } from 'material-ui';
 import { connect } from 'react-redux';
+import moment from 'moment';
 import PropTypes from 'prop-types';
 import AutoComplete from '../../../../commons/AutoCompleteComponent';
 import YesNoButton from '../../../../commons/YesNoButtonsComponent';
@@ -16,7 +17,7 @@ class AddPlayDialog extends Component {
     };
 
     static initialState = {
-      date: null,
+      date: moment().format('YYYY-MM-DDTHH:mm:ss'),
       note: null,
       results: [],
     };
