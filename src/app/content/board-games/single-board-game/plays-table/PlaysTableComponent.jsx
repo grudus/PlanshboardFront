@@ -1,9 +1,9 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React from 'react';
 import PropTypes from 'prop-types';
-import moment from 'moment';
 import './playsTable.css';
 import OpponentsCell from './OpponentsCellComponent';
+import { dayWithMonth } from '../../../../commons/DateUtils';
 
 const PlaysTable = ({ plays = [], onAddPlayClick }) => {
   const playsDom = plays.map((play) => {
@@ -11,7 +11,7 @@ const PlaysTable = ({ plays = [], onAddPlayClick }) => {
     return (
       <tr key={play.id}>
         <td data-label="Nr">{play.id}.</td>
-        <td data-label="Data">{moment(play.date).format('DD MMMM')}</td>
+        <td data-label="Data">{dayWithMonth(play.date)}</td>
         <td data-label="Uczestnicy">
           <OpponentsCell results={sortedResults} />
         </td>

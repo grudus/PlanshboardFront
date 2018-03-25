@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Dialog } from 'material-ui';
 import { connect } from 'react-redux';
-import moment from 'moment';
 import PropTypes from 'prop-types';
 import AutoComplete from '../../../../commons/AutoCompleteComponent';
 import YesNoButton from '../../../../commons/YesNoButtonsComponent';
@@ -9,6 +8,7 @@ import './addPlayDialog.css';
 import { getAllOpponents } from '../../../opponents/opponentsActions';
 import ResultRow from './ResultRowComponent';
 import DateDialogComponent from '../../../../commons/DateDialogComponent';
+import { utcToday } from '../../../../commons/DateUtils';
 
 class AddPlayDialog extends Component {
     static propTypes = {
@@ -17,7 +17,7 @@ class AddPlayDialog extends Component {
     };
 
     static initialState = {
-      date: moment().format('YYYY-MM-DDTHH:mm:ss'),
+      date: null,
       note: null,
       results: [],
     };
@@ -35,7 +35,7 @@ class AddPlayDialog extends Component {
 
     onSubmit = async () => {
       this.setState({ ...AddPlayDialog.initialState });
-      await this.props.onSubmit(this.state.results, this.state.date);
+      await this.props.onSubmit(this.state.results, this.state.date || utcToday());
       this.props.getOpponents();
     };
 
