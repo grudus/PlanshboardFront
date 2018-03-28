@@ -16,6 +16,8 @@ const DateDialogComponent = (props) => {
       okLabel="Ok"
       locale="pl"
       onChange={onChange}
+      style={{ width: '100%' }}
+      textFieldStyle={{ width: '100%' }}
       DateTimeFormat={Intl.DateTimeFormat}
       defaultDate={new Date()}
     />

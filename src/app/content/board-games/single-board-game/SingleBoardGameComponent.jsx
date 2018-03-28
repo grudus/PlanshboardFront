@@ -29,8 +29,8 @@ class BoardGame extends Component {
     this.setState({ showAddPlayDialog: true });
   };
 
-  submitAddPlay = async (results, date) => {
-    await this.props.addPlay(this.props.match.params.gameId, results, date);
+  submitAddPlay = async (results, date, note) => {
+    await this.props.addPlay(this.props.match.params.gameId, results, date, note);
     this.hideDialog();
   };
 

@@ -6,6 +6,7 @@ import AutoComplete from '../../../../commons/AutoCompleteComponent';
 import YesNoButton from '../../../../commons/YesNoButtonsComponent';
 import './addPlayDialog.css';
 import { getAllOpponents } from '../../../opponents/opponentsActions';
+import NoteComponent from './NoteComponent';
 import ResultRow from './ResultRowComponent';
 import DateDialogComponent from '../../../../commons/DateDialogComponent';
 import { utcToday } from '../../../../commons/DateUtils';
@@ -35,7 +36,8 @@ class AddPlayDialog extends Component {
 
     onSubmit = async () => {
       this.setState({ ...AddPlayDialog.initialState });
-      await this.props.onSubmit(this.state.results, this.state.date || utcToday());
+      const { results, date, note } = this.state;
+      await this.props.onSubmit(results, date || utcToday(), note);
       this.props.getOpponents();
     };
 
@@ -64,6 +66,10 @@ class AddPlayDialog extends Component {
     dateChange = (date) => {
       this.setState({ date });
     };
+
+    noteChange = (note) => {
+      this.setState({ note });
+    }
 
     render() {
       const buttons = <YesNoButton onCancel={this.onRequestClose} onSubmit={this.onSubmit} />;
@@ -116,12 +122,15 @@ class AddPlayDialog extends Component {
 
             <div className="add-play-form-row">
               <div className="add-play-form-header">Data:</div>
-              <div className="add-play-form-content"><DateDialogComponent onDateChange={this.dateChange} />
+              <div className="add-play-form-content">
+                <DateDialogComponent onDateChange={this.dateChange} />
               </div>
             </div>
             <div className="add-play-form-row">
               <div className="add-play-form-header">Notatki:</div>
-              <div className="add-play-form-content">dupa</div>
+              <div className="add-play-form-content">
+                <NoteComponent onNoteChange={this.noteChange} />
+              </div>
             </div>
           </section>
         </Dialog>
