@@ -1,43 +1,51 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Dialog from 'material-ui/Dialog';
+import { Dialog } from 'material-ui';
 import { ValidatorForm } from 'react-form-validator-core';
 import { TextValidator } from 'react-material-ui-form-validator';
 import YesNoButton from '../../../commons/YesNoButtonsComponent';
 
-class AddBoardGameDialog extends Component {
+class EditBoardGameDialog extends Component {
     static propTypes = {
       show: PropTypes.bool.isRequired,
       onSubmit: PropTypes.func.isRequired,
       onCancel: PropTypes.func.isRequired,
       isError: PropTypes.bool,
+      name: PropTypes.string,
     };
 
     static defaultProps = {
       isError: false,
+      name: '',
     };
 
-    state = { name: '' };
+    state = { newName: this.props.name };
+
+    componentWillReceiveProps(props) {
+      if (!this.state.newName)
+        this.setState({ newName: props.name });
+    }
 
     preventAndSubmit = (event) => {
       event.preventDefault();
-      if (this.state.name)
-        this.props.onSubmit(this.state.name);
+      if (this.state.newName)
+        this.props.onSubmit(this.state.newName);
     };
 
     handleChange = (event) => {
-      this.setState({ name: event.target.value });
+      this.setState({ newName: event.target.value });
     };
 
     render() {
       const buttons = (<YesNoButton
         onCancel={this.props.onCancel}
         onSubmit={this.preventAndSubmit}
+        submitText="Zmień"
       />);
 
       return (
         <Dialog
-          title="Dodaj nową grę"
+          title="Zmień nazwę"
           actions={buttons}
           modal={false}
           open={this.props.show}
@@ -51,7 +59,7 @@ class AddBoardGameDialog extends Component {
               validators={['required']}
               errorMessages={['Pole jest wymagane']}
               name="name"
-              value={this.state.name}
+              value={this.state.newName}
               onChange={this.handleChange}
               errorText={this.props.isError && 'Taka gra już istnieje'}
             />
@@ -61,4 +69,4 @@ class AddBoardGameDialog extends Component {
     }
 }
 
-export default AddBoardGameDialog;
+export default EditBoardGameDialog;

@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import { compose } from 'redux';
 import { muiThemeable } from 'material-ui/styles/index';
 import { connect } from 'react-redux';
-import { addNewBoardGame, changeCurrentBoardGame, getAllBoardGames, deleteBoardGame } from '../boardGamesActions';
+import {
+  addNewBoardGame, changeCurrentBoardGame, getAllBoardGames, deleteBoardGame,
+  renameBoardGame,
+} from '../boardGamesActions';
 import '../boardGames.css';
 import withTopbar from '../../topbar/withTopbar';
 import OneGameItem from './OneBoardGameItemComponent';
@@ -11,11 +14,12 @@ import AddGameDialog from '../add-board-game/AddBoardGameDialogComponent';
 import { boardNameExistsRequest } from '../boardGamesApi';
 import { addBlur, removeBlur } from '../../../theme/themeActions';
 import DeleteBoardGameDialog from '../delete-board-game/DeleteBoardGameDialogComponent';
+import EditBoardGameDialog from '../edit-board-gam/EditBoardGameDialogComponent';
 
 class BoardGamesList extends Component {
     state = {
       showAddNewDialog: false,
-      // showEditDialog: false,
+      showEditDialog: false,
       showDeleteDialog: false,
       dialogError: false,
       currentModalGame: {},
@@ -33,26 +37,44 @@ class BoardGamesList extends Component {
     openDialog = (dialog, event, currentModalGame) => {
       this.setState({ [dialog]: true, currentModalGame });
       this.props.addBlur();
-      if (event) {
+      if (event)
         event.stopPropagation();
-      }
     };
 
-    addGame = async (name) => {
+    checkGameExistenceAndDo = async (name, callback) => {
       const { exists } = await boardNameExistsRequest(name);
 
       if (exists)
         this.setState({ dialogError: true });
       else {
         this.setState({ dialogError: false });
+        callback();
+      }
+    };
+
+    addGame = async (name) => {
+      await this.checkGameExistenceAndDo(name, () => {
         this.hideDialog('showAddNewDialog');
         this.props.addGame(name);
-      }
+      });
     };
 
     deleteGame = async () => {
       await this.props.deleteGame(this.state.currentModalGame.id);
       this.hideDialog('showDeleteDialog');
+    };
+
+    editGame = async (newName) => {
+      const { currentModalGame } = this.state;
+      if (newName === currentModalGame.name) {
+        this.hideDialog('showEditDialog');
+        return;
+      }
+
+      await this.checkGameExistenceAndDo(newName, () => {
+        this.hideDialog('showEditDialog');
+        this.props.renameGame(newName, currentModalGame.id);
+      });
     };
 
     hideDialog = (dialog) => {
@@ -99,6 +121,13 @@ class BoardGamesList extends Component {
             show={this.state.showDeleteDialog}
             name={currentModalGameName}
           />
+          <EditBoardGameDialog
+            show={this.state.showEditDialog}
+            onSubmit={this.editGame}
+            onCancel={() => this.hideDialog('showEditDialog')}
+            name={currentModalGameName}
+            isError={this.state.dialogError}
+          />
         </section>
       );
     }
@@ -113,6 +142,7 @@ const mapDispatchToProps = {
   getAllGames: getAllBoardGames,
   addGame: addNewBoardGame,
   deleteGame: deleteBoardGame,
+  renameGame: renameBoardGame,
   addBlur,
   removeBlur,
 };

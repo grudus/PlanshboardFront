@@ -1,6 +1,6 @@
 import {
   ADD_NEW_BOARD_GAME, CHANGE_CURRENT_BOARD_GAME, DELETE_BOARD_GAME,
-  GET_ALL_BOARD_GAMES,
+  GET_ALL_BOARD_GAMES, RENAME_BOARD_GAME,
 } from './boardGamesActionsTypes';
 import { ADD_NEW_PLAY, GET_ALL_PLAYS } from './single-board-game/playsActionsTypes';
 
@@ -19,6 +19,12 @@ export default (state = initialState, action) => {
       return { ...state, allGames: [...state.allGames, { name: action.name, id: action.id }] };
     case DELETE_BOARD_GAME: {
       const games = state.allGames.filter(game => game.id !== action.id);
+      return { ...state, allGames: games };
+    }
+    case RENAME_BOARD_GAME: {
+      const games = state.allGames.map(game => ((game.id === action.id)
+        ? ({ ...game, name: action.newName })
+        : game));
       return { ...state, allGames: games };
     }
     case GET_ALL_PLAYS: {

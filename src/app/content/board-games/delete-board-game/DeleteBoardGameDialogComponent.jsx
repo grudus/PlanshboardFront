@@ -28,7 +28,11 @@ DeleteBoardGameDialog.propTypes = {
   onCancel: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
   show: PropTypes.bool.isRequired,
-  name: PropTypes.string.isRequired,
+  name: PropTypes.string,
+};
+
+DeleteBoardGameDialog.defaultProps = {
+  name: '',
 };
 
 export default DeleteBoardGameDialog;

@@ -25,3 +25,11 @@ export const postApi = (url, body = {}) => {
   };
   return api(url, options);
 };
+
+export const putApi = (url, body = {}) => {
+  const options = {
+    method: 'PUT',
+    body: JSON.stringify(body),
+  };
+  return api(url, options);
+};
