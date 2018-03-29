@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { withTopbar } from '../../topbar/withTopbar';
+import withTopbar from '../../topbar/withTopbar';
 import { getSpecificBoardGame } from '../boardGamesApi';
 import { changeCurrentBoardGame } from '../boardGamesActions';
 import './singleBoardGame.css';
@@ -8,6 +8,7 @@ import GamesTable from './plays-table/PlaysTableComponent';
 import AddPlayDialog from './add-play/AddPlayDialogComponent';
 import { addNewPlay, getAllPlays } from './playsActions';
 import { getAllOpponents } from '../../opponents/opponentsActions';
+import { addBlur, removeBlur } from '../../../theme/themeActions';
 
 class BoardGame extends Component {
   state = { showAddPlayDialog: false };
@@ -27,6 +28,7 @@ class BoardGame extends Component {
 
   openDialog = () => {
     this.setState({ showAddPlayDialog: true });
+    this.props.addBlur();
   };
 
   submitAddPlay = async (results, date, note) => {
@@ -36,6 +38,7 @@ class BoardGame extends Component {
 
   hideDialog = () => {
     this.setState({ showAddPlayDialog: false });
+    this.props.removeBlur();
   };
 
   render() {
@@ -67,6 +70,8 @@ const mapDispatchToProps = {
   getPlays: getAllPlays,
   addPlay: addNewPlay,
   getOpponents: getAllOpponents,
+  addBlur,
+  removeBlur,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(withTopbar(BoardGame, '/games/:id'));

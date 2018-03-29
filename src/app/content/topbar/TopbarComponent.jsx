@@ -17,6 +17,7 @@ class TopBar extends Component {
     };
 
     render() {
+      const blur = this.props.theme && this.props.theme.blur;
       const items = tabs.map(tab =>
         (<TopBarItem
           key={tab.path}
@@ -27,7 +28,7 @@ class TopBar extends Component {
         />));
 
       return (
-        <section className="top-bar-wrapper">
+        <section className={`top-bar-wrapper ${blur ? 'blur' : ''}`}>
           <div className="top-bar content">
             <div className="left-tabs">
               {items}
@@ -41,8 +42,9 @@ class TopBar extends Component {
     }
 }
 
+const mapStateToProps = ({ theme }) => ({ theme });
 const mapDispatchToProps = {
   logoutAction,
 };
 
-export default connect(() => ({}), mapDispatchToProps)(TopBar);
+export default connect(mapStateToProps, mapDispatchToProps)(TopBar);

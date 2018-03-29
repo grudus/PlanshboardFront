@@ -55,6 +55,11 @@ li {
     border: 1px solid #dddddd;
 }
 
+.blur {
+    filter: blur(6px);
+    transition: all .1s ease;
+}
+
 .ellipsis {
     white-space: nowrap;
     overflow: hidden;

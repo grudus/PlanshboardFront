@@ -1,13 +1,18 @@
 import React, { Fragment } from 'react';
+import { connect } from 'react-redux';
 import TopBar from './TopbarComponent';
 
-export const withTopbar = (WrappedComponent, currentPath) => props =>
-  (
+const withTopbar = (WrappedComponent, currentPath) => {
+  const Toolbared = props => (
     <Fragment>
       <TopBar currentPath={currentPath} />
-      <div style={{ paddingTop: '64px' }}>
+      <div style={{ paddingTop: '64px' }} className={props.theme.blur ? 'blur' : ''}>
         <WrappedComponent {...props} />
       </div>
     </Fragment>
   );
 
+  const mapStateToProps = ({ theme }) => ({ theme });
+  return connect(mapStateToProps)(Toolbared);
+};
+export default (withTopbar);

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import 'moment/locale/pl';
 import moment from 'moment';
 import { Route, Switch, withRouter } from 'react-router-dom';
-import muiTheme from './MuiTheme';
+import muiTheme from './theme/MuiTheme';
 import { tryResolveCurrentUser } from './content/users/userActions';
 import { loginCurrentUser } from './auth/login/loginActions';
 import './app.css';

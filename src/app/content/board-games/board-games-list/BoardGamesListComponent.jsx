@@ -4,11 +4,12 @@ import { muiThemeable } from 'material-ui/styles/index';
 import { connect } from 'react-redux';
 import { addNewBoardGame, changeCurrentBoardGame, getAllBoardGames } from '../boardGamesActions';
 import '../boardGames.css';
-import { withTopbar } from '../../topbar/withTopbar';
+import withTopbar from '../../topbar/withTopbar';
 import OneGameItem from './OneBoardGameItemComponent';
 import AddGame from '../add-board-game/AddBoardGameItemComponent';
 import AddGameDialog from '../add-board-game/AddBoardGameDialogComponent';
 import { boardNameExistsRequest } from '../boardGamesApi';
+import { addBlur, removeBlur } from '../../../theme/themeActions';
 
 class BoardGamesList extends Component {
     state = {
@@ -27,6 +28,7 @@ class BoardGamesList extends Component {
 
     openDialog = () => {
       this.setState({ visibleDialog: true });
+      this.props.addBlur();
     };
 
     addGame = async (name) => {
@@ -43,6 +45,7 @@ class BoardGamesList extends Component {
 
     hideDialog = () => {
       this.setState({ visibleDialog: false });
+      this.props.removeBlur();
     };
 
     render() {
@@ -83,6 +86,8 @@ const mapDispatchToProps = {
   changeCurrentGame: changeCurrentBoardGame,
   getAllGames: getAllBoardGames,
   addGame: addNewBoardGame,
+  addBlur,
+  removeBlur,
 };
 
 export default compose(
