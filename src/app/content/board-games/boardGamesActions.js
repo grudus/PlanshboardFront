@@ -4,7 +4,7 @@ import {
   GET_ALL_BOARD_GAMES, RENAME_BOARD_GAME,
   TRY_TO_GET_ALL_BOARD_GAMES,
 } from './boardGamesActionsTypes';
-import {addBoardGameRequest, deleteBoardGameRequest, editBoardGameRequest, getBoardGamesRequest} from './boardGamesApi';
+import { addBoardGameRequest, deleteBoardGameRequest, editBoardGameRequest, getBoardGamesRequest } from './boardGamesApi';
 
 const tryToGetBoardGames = () => ({ type: TRY_TO_GET_ALL_BOARD_GAMES });
 const getAllBoardGamesDone = games => ({ type: GET_ALL_BOARD_GAMES, games });

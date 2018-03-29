@@ -22,7 +22,7 @@ class EditBoardGameDialog extends Component {
     state = { newName: this.props.name };
 
     componentWillReceiveProps(props) {
-      if (!this.state.newName)
+      if (!props.isError)
         this.setState({ newName: props.name });
     }
 
