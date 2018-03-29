@@ -59,9 +59,22 @@ li {
     background: var(--light-gray-color);
 }
 
+.relative {
+    position: relative;
+}
+
+.absolute {
+    position: absolute;
+}
+
+.bottom-right {
+    bottom: 10px;
+    right: 5px;
+}
+
 .blur {
     filter: blur(6px);
-    transition: all .1s ease;
+    transition: filter .1s ease;
 }
 
 .ellipsis {
@@ -69,7 +82,8 @@ li {
     overflow: hidden;
     text-overflow: ellipsis;
 }
-/* Will be overwritten by color themes from ./mui-theme.js */
+
+/* Will be overwritten by color themes from ./theme/mui-theme.js */
 :root {
     --primary-color: red;
     --accent-color: red;

@@ -16,6 +16,8 @@ class App extends Component {
   async componentDidMount() {
     document.documentElement.style.setProperty('--primary-color', muiTheme.palette.primary1Color);
     document.documentElement.style.setProperty('--accent-color', muiTheme.palette.accent1Color);
+    document.documentElement.style.setProperty('--light-gray-color', muiTheme.palette.lightGrayColor);
+    document.documentElement.style.setProperty('--dark-text-color', muiTheme.palette.darkTextColor);
 
     moment.locale('pl');
 

@@ -1,7 +1,11 @@
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import { red500 } from 'material-ui/styles/colors';
 
 const theme = getMuiTheme({
   palette: {
+    errorColor: red500,
+    lightGrayColor: '#eeeeee',
+    darkTextColor: '#424242',
     primary1Color: '#2196F3',
     pickerHeaderColor: '#2196F3',
     accent1Color: '#FF9100',

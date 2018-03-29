@@ -7,7 +7,7 @@ const ClickableIcon = props => (
   <FontIcon
     className="material-icons"
     hoverColor={props.hoverColor}
-    color="#424242"
+    color={props.color}
     style={{ cursor: 'pointer' }}
     onClick={props.onClick}
   >
@@ -20,10 +20,12 @@ ClickableIcon.propTypes = {
   hoverColor: PropTypes.string,
   name: PropTypes.string.isRequired,
   onClick: PropTypes.func,
+  color: PropTypes.string,
 };
 
 ClickableIcon.defaultProps = {
   hoverColor: '',
+  color: '#424242',
   onClick: () => {
   },
 };

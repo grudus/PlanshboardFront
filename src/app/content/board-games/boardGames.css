@@ -29,7 +29,6 @@
 }
 
 .game-single-label {
-    padding: 16px;
     font-size: 1.5em;
 }
 
@@ -50,6 +49,11 @@
 
 .add-single-label {
     color: var(--accent-color)
+}
+
+.game-single-icons {
+    justify-content: space-evenly;
+    width: 40%;
 }
 
 @media all and (max-width: 900px) and (min-width: 750px) {
@@ -73,10 +77,6 @@
 @media (max-width: 500px) {
     .board-games-wrapper {
         grid-template-columns: repeat(2, 1fr);
-    }
-
-    .game-single-label {
-        padding: 28px;
     }
 
     .game-single-item {

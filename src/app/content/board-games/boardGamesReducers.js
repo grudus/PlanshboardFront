@@ -19,8 +19,7 @@ export default (state = initialState, action) => {
       return { ...state, allGames: [...state.allGames, { name: action.name, id: action.id }] };
     case DELETE_BOARD_GAME: {
       const games = state.allGames.filter(game => game.id !== action.id);
-      const current = (state.currentGame.id === action.id) ? games[0] : state.currentGame;
-      return { ...state, allGames: games, currentGame: current };
+      return { ...state, allGames: games };
     }
     case GET_ALL_PLAYS: {
       const { currentGame } = state;
