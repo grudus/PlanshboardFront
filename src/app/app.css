@@ -55,6 +55,10 @@ li {
     border: 1px solid #dddddd;
 }
 
+.gray-hover:hover {
+    background: var(--light-gray-color);
+}
+
 .blur {
     filter: blur(6px);
     transition: all .1s ease;
