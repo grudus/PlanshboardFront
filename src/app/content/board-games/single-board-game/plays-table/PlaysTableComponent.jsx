@@ -10,7 +10,7 @@ const PlaysTable = ({ plays = [], onAddPlayClick }) => {
   const playsDom = plays.map((play, index) => {
     const sortedResults = play.results.sort((a, b) => (a.position > b.position ? 1 : -1));
     return (
-      <tr key={play.id} className="gray-hover pointer">
+      <tr key={play.id}>
         <td data-label="Nr">{playsSize - index}.</td>
         <td data-label="Data">{dayWithMonth(play.date)}</td>
         <td data-label="Uczestnicy">
