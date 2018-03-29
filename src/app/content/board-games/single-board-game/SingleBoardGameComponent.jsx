@@ -10,7 +10,7 @@ import { addNewPlay, getAllPlays } from './playsActions';
 import { getAllOpponents } from '../../opponents/opponentsActions';
 
 class BoardGame extends Component {
-  state = { showAddPlayDialog: true };
+  state = { showAddPlayDialog: false };
 
   async componentDidMount() {
     if (this.props.currentGame)
