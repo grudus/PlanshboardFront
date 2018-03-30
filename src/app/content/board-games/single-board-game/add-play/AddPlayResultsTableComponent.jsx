@@ -1,14 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { AutoComplete } from 'material-ui';
+import AutoComplete from '../../../../commons/AutoCompleteComponent';
 import ResultRow from './ResultRowComponent';
+import './addPlayDialog.css';
 
 
 const AddPlayResultsTable = (props) => {
   const size = props.results.length;
-
   const resultsDOM = size ? props.results.map(result => (
     <ResultRow
+      key={result.fakeId}
       result={result}
       positionCount={size}
       onPositionSelect={props.positionChange}
@@ -20,39 +21,46 @@ const AddPlayResultsTable = (props) => {
         <td colSpan={3} className="text-center table-no-results">Brak uczestników</td>
       </tr>);
 
+  const dataSource = props.opponents.map(o => o.name);
+
   return (
+
     <table className="w100 add-play-table">
-      <tr>
-        <th className="p-lr-8">
-          <AutoComplete
-            dataSource={props.autoCompleteTexts}
-            onSelect={props.addResult}
-            hintText="Dodaj uczestnika"
-          />
-        </th>
-        <th>Pozycja:</th>
-        <th>Liczba punktów:</th>
-      </tr>
+      <tbody>
+        <tr>
+          <th className="p-lr-8">
+            <AutoComplete
+              dataSource={dataSource}
+              onSelect={props.addResult}
+              hintText="Dodaj uczestnika"
+            />
+          </th>
+          <th>Pozycja:</th>
+          <th>Liczba punktów:</th>
+        </tr>
 
-      {resultsDOM}
-
+        {resultsDOM}
+      </tbody>
     </table>
   );
 };
 
 AddPlayResultsTable.propTypes = {
-  results: PropTypes.arrayOf(PropTypes.shape({
-    opponentName: PropTypes.string.isRequired,
-  })),
   positionChange: PropTypes.func.isRequired,
   pointsChange: PropTypes.func.isRequired,
   addResult: PropTypes.func.isRequired,
-  autoCompleteTexts: PropTypes.arrayOf(PropTypes.string),
+  results: PropTypes.arrayOf(PropTypes.shape({
+    fakeId: PropTypes.number,
+    opponentName: PropTypes.string.isRequired,
+  })),
+  opponents: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string,
+  })),
 };
 
 AddPlayResultsTable.defaultProps = {
   results: [],
-  autoCompleteTexts: [],
+  opponents: [],
 };
 
 export default AddPlayResultsTable;

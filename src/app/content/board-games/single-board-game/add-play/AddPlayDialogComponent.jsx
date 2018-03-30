@@ -2,14 +2,13 @@ import React, { Component } from 'react';
 import { Dialog } from 'material-ui';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import AutoComplete from '../../../../commons/AutoCompleteComponent';
 import YesNoButton from '../../../../commons/YesNoButtonsComponent';
 import './addPlayDialog.css';
 import { getAllOpponents } from '../../../opponents/opponentsActions';
 import NoteComponent from './NoteComponent';
-import ResultRow from './ResultRowComponent';
 import DateDialogComponent from '../../../../commons/DateDialogComponent';
 import { utcToday } from '../../../../commons/DateUtils';
+import AddPlayResultsTable from './AddPlayResultsTableComponent';
 
 class AddPlayDialog extends Component {
     static propTypes = {
@@ -83,22 +82,6 @@ class AddPlayDialog extends Component {
         isDisabled={!this.state.results.length}
       />);
 
-      const dataSource = this.props.opponents && this.props.opponents.map(o => o.name);
-
-      const resultsDOM = this.state.results.length ? this.state.results.map(result => (
-        <ResultRow
-          key={result.fakeId}
-          result={result}
-          positionCount={this.state.results.length}
-          onPositionSelect={this.positionChange}
-          onPointsChange={this.pointsChange}
-        />
-      ))
-        : (
-          <tr>
-            <td colSpan={3} className="text-center table-no-results">Brak uczestników</td>
-          </tr>);
-
       return (
         <Dialog
           title="Dodaj rozgrywkę"
@@ -112,25 +95,13 @@ class AddPlayDialog extends Component {
 
           <section className="add-play-form flex">
 
-            <table className="w100 add-play-table">
-              {/* todo: create new component */}
-              <tbody>
-                <tr>
-                  <th className="p-lr-8">
-                    <AutoComplete
-                      dataSource={dataSource}
-                      onSelect={this.addResult}
-                      hintText="Dodaj uczestnika"
-                    />
-                  </th>
-                  <th>Pozycja:</th>
-                  <th>Liczba punktów:</th>
-                </tr>
-
-                {resultsDOM}
-              </tbody>
-            </table>
-
+            <AddPlayResultsTable
+              positionChange={this.positionChange}
+              pointsChange={this.pointsChange}
+              addResult={this.addResult}
+              opponents={this.props.opponents}
+              results={this.state.results}
+            />
 
             <div className="add-play-form-row">
               <div className="add-play-form-header">Data:</div>
