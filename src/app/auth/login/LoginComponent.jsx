@@ -33,7 +33,11 @@ class Login extends Component {
         this.props.history.push('/');
       } catch (exc) {
         if (exc.code === 403) {
-          this.setState({ form: { username: '', password: '' }, error: 'Wprowadzono niepoprawne dane' });
+          this.setState(state => (
+            {
+              form: { password: '', username: state.form.username },
+              error: 'Wprowadzono niepoprawne dane',
+            }));
         }
       }
     };
