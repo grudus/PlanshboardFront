@@ -5,12 +5,12 @@ import './playsTable.css';
 import OpponentsCell from './OpponentsCellComponent';
 import { dayWithMonth } from '../../../../commons/DateUtils';
 
-const PlaysTable = ({ plays = [], onAddPlayClick }) => {
+const PlaysTable = ({ plays = [], onAddPlayClick, onPlayRowClick }) => {
   const playsSize = plays.length;
   const playsDom = plays.map((play, index) => {
     const sortedResults = play.results.sort((a, b) => (a.position > b.position ? 1 : -1));
     return (
-      <tr key={play.id}>
+      <tr key={play.id} onClick={() => onPlayRowClick(play)}>
         <td data-label="Nr">{playsSize - index}.</td>
         <td data-label="Data">{dayWithMonth(play.date)}</td>
         <td data-label="Uczestnicy">
@@ -51,6 +51,7 @@ const {
 
 PlaysTable.propTypes = {
   onAddPlayClick: func.isRequired,
+  onPlayRowClick: func.isRequired,
   plays: arrayOf(shape({
     id: number.isRequired,
     date: string.isRequired,
