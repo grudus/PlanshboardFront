@@ -2,12 +2,12 @@
 .plays-table {
     color: var(--dark-text-color);
     border-collapse: collapse;
-    margin: 0;
     padding: 0;
     max-width: 1200px;
     width: 90%;
     table-layout: fixed;
     border: none;
+    margin: 0 0 24px;
 }
 
 .plays-table tr {

@@ -3,7 +3,7 @@ import { TextField } from 'material-ui';
 import PropTypes from 'prop-types';
 
 class NoteComponent extends Component {
-    state = { text: 'dupa' };
+    state = { text: '' };
 
     pointsChange = ({ target }) => {
       const text = target.value;
@@ -16,6 +16,7 @@ class NoteComponent extends Component {
         <TextField
           multiLine
           fullWidth
+          hintText="Brak notatki"
           value={this.state.text}
           onChange={this.pointsChange}
         />

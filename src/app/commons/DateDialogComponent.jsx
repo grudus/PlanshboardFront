@@ -15,6 +15,7 @@ const DateDialogComponent = (props) => {
       cancelLabel="Cofnij"
       okLabel="Ok"
       locale="pl"
+      id="playdate"
       onChange={onChange}
       style={{ width: '100%' }}
       textFieldStyle={{ width: '100%' }}

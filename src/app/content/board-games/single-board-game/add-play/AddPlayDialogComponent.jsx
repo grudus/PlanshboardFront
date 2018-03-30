@@ -21,6 +21,7 @@ class AddPlayDialog extends Component {
       date: null,
       note: null,
       results: [],
+      fakeId: 1,
     };
 
     state = { ...AddPlayDialog.initialState };
@@ -42,11 +43,15 @@ class AddPlayDialog extends Component {
     };
 
     addResult = (value) => {
-      const newResult = { opponentName: value, fakeId: this.state.results.length + 1 };
+      const newResult = { opponentName: value, fakeId: this.state.fakeId };
       const existingOpponent = this.props.opponents.find(o => o.name === value);
       if (existingOpponent)
         newResult.opponentId = existingOpponent.id;
-      this.setState(state => ({ ...state, results: [...state.results, newResult] }));
+      this.setState(state => ({
+        ...state,
+        fakeId: state.fakeId + 1,
+        results: [...state.results, newResult],
+      }));
     };
 
 
@@ -69,14 +74,20 @@ class AddPlayDialog extends Component {
 
     noteChange = (note) => {
       this.setState({ note });
-    }
+    };
 
     render() {
-      const buttons = <YesNoButton onCancel={this.onRequestClose} onSubmit={this.onSubmit} />;
+      const buttons = (<YesNoButton
+        onCancel={this.onRequestClose}
+        onSubmit={this.onSubmit}
+        isDisabled={!this.state.results.length}
+      />);
+
       const dataSource = this.props.opponents && this.props.opponents.map(o => o.name);
 
       const resultsDOM = this.state.results.length ? this.state.results.map(result => (
         <ResultRow
+          key={result.fakeId}
           result={result}
           positionCount={this.state.results.length}
           onPositionSelect={this.positionChange}
@@ -103,20 +114,21 @@ class AddPlayDialog extends Component {
 
             <table className="w100 add-play-table">
               {/* todo: create new component */}
-              <tr>
-                <th className="p-lr-8">
-                  <AutoComplete
-                    dataSource={dataSource}
-                    onSelect={this.addResult}
-                    hintText="Dodaj uczestnika"
-                  />
-                </th>
-                <th>Pozycja:</th>
-                <th>Liczba punktów:</th>
-              </tr>
+              <tbody>
+                <tr>
+                  <th className="p-lr-8">
+                    <AutoComplete
+                      dataSource={dataSource}
+                      onSelect={this.addResult}
+                      hintText="Dodaj uczestnika"
+                    />
+                  </th>
+                  <th>Pozycja:</th>
+                  <th>Liczba punktów:</th>
+                </tr>
 
-              {resultsDOM}
-
+                {resultsDOM}
+              </tbody>
             </table>
 
 

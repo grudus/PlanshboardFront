@@ -3,7 +3,7 @@ import { FlatButton, RaisedButton } from 'material-ui';
 import PropTypes from 'prop-types';
 
 const YesNoButton = ({
-  onSubmit, onCancel, submitText, cancelText,
+  onSubmit, onCancel, submitText, cancelText, isDisabled,
 }) => (
   <Fragment>
     <FlatButton
@@ -14,6 +14,7 @@ const YesNoButton = ({
     <RaisedButton
       type="submit"
       label={submitText}
+      disabled={isDisabled}
       primary
       onClick={onSubmit}
     />
@@ -25,11 +26,13 @@ YesNoButton.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   submitText: PropTypes.string,
   cancelText: PropTypes.string,
+  isDisabled: PropTypes.bool,
 };
 
 YesNoButton.defaultProps = {
   submitText: 'Stwórz',
   cancelText: 'Cofnij',
+  isDisabled: false,
 };
 
 export default YesNoButton;
