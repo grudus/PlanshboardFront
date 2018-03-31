@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { compose } from 'redux';
 import { muiThemeable } from 'material-ui/styles/index';
 import { connect } from 'react-redux';
+import FlipMove from 'react-flip-move';
 import {
   addNewBoardGame, changeCurrentBoardGame, getAllBoardGames, deleteBoardGame,
   renameBoardGame,
@@ -88,7 +89,6 @@ class BoardGamesList extends Component {
                 this.props.games.map(game => (
                   <li className="no-li" key={game.id}>
                     <OneGameItem
-                      key={game.id}
                       game={game}
                       onClick={this.selectGame}
                       onDeleteClick={e => this.openDialog('showDeleteDialog', e, game)}
@@ -106,7 +106,9 @@ class BoardGamesList extends Component {
               iconColor={this.props.muiTheme.palette.accent1Color}
               onClick={() => this.openDialog('showAddNewDialog')}
             />
-            {games}
+            <FlipMove enterAnimation="elevator" leaveAnimation={null} staggerDelayBy={15} easing="linear" typeName={null}>
+              {games}
+            </FlipMove>
           </ul>
 
           <AddGameDialog

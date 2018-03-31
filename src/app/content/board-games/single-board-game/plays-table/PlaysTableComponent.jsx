@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React from 'react';
 import PropTypes from 'prop-types';
+import FlipMove from 'react-flip-move';
 import './playsTable.css';
 import OpponentsCell from './OpponentsCellComponent';
 import { dayWithMonth } from '../../../../commons/DateUtils';
@@ -39,7 +40,9 @@ const PlaysTable = ({ plays = [], onAddPlayClick, onPlayRowClick }) => {
           <td data-label="Nr" className="add-play-id">{playsSize + 1}.</td>
           <td data-label="Data" colSpan="4" className="add-play card-shadow pointer anim">Dodaj rozgrywkę</td>
         </tr>
-        {playsDom}
+        <FlipMove enterAnimation="fade" staggerDelayBy={25} leaveAnimation={null} easing="ease-in" typeName={null}>
+          {playsDom}
+        </FlipMove>
       </tbody>
     </table>
   );

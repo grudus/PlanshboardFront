@@ -18,6 +18,7 @@
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-flip-move": "^3.0.1",
     "react-form-validator-core": "latest",
     "react-material-ui-form-validator": "^1.0.4",
     "react-prop-types": "^0.4.0",
