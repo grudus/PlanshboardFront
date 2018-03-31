@@ -17,6 +17,6 @@ export const setValueWhenAutofilled = (textField) => {
       if (autofillExists) {
         textField.setState(state => ({ ...state, hasValue: true }));
       }
-    }, 100);
+    }, 200);
   }
 };
