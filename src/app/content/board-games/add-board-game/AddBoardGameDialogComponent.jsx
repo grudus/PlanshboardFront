@@ -22,7 +22,7 @@ class AddBoardGameDialog extends Component {
     preventAndSubmit = (event) => {
       event.preventDefault();
       if (this.state.name)
-        this.props.onSubmit(this.state.name);
+        this.props.onSubmit(this.state.name, () => this.setState({ name: '' }));
     };
 
     handleChange = (event) => {

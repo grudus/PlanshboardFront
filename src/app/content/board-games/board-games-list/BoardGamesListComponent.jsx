@@ -53,10 +53,11 @@ class BoardGamesList extends Component {
       }
     };
 
-    addGame = async (name) => {
+    addGame = async (name, callback) => {
       await this.checkGameExistenceAndDo(name, () => {
         this.hideDialog('showAddNewDialog');
         this.props.addGame(name);
+        callback();
       });
     };
 
