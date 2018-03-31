@@ -2,7 +2,7 @@
   "name": "planshboard-front",
   "version": "0.1.0",
   "private": true,
-  "author": "grudus <jakgruda@gmail.com>",
+  "author": "grudus <github.com/grudus>",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
