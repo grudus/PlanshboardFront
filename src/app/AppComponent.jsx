@@ -11,6 +11,7 @@ import './app.css';
 import Content from './content/ContentComponent';
 import Login from './auth/login/LoginComponent';
 import Registration from './auth/registration/registrationComponent';
+import { removeBlur } from './theme/themeActions';
 
 class App extends Component {
   async componentDidMount() {
@@ -20,6 +21,10 @@ class App extends Component {
     document.documentElement.style.setProperty('--dark-text-color', muiTheme.palette.darkTextColor);
 
     moment.locale('pl');
+
+    this.props.history.listen(() => {
+      this.props.removeBlur();
+    });
 
     try {
       await this.props.resolveCurrentUser();
@@ -50,6 +55,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = {
   resolveCurrentUser: tryResolveCurrentUser,
   loginCurrentUser,
+  removeBlur,
 };
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
