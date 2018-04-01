@@ -11,10 +11,11 @@ import './app.css';
 import Content from './content/ContentComponent';
 import Login from './auth/login/LoginComponent';
 import Registration from './auth/registration/registrationComponent';
-import { removeBlur } from './theme/themeActions';
+import { removeBlur, startLoading, stopLoading } from './theme/themeActions';
 
 class App extends Component {
   async componentDidMount() {
+    this.props.startLoading();
     document.documentElement.style.setProperty('--primary-color', muiTheme.palette.primary1Color);
     document.documentElement.style.setProperty('--accent-color', muiTheme.palette.accent1Color);
     document.documentElement.style.setProperty('--light-gray-color', muiTheme.palette.lightGrayColor);
@@ -31,6 +32,8 @@ class App extends Component {
       this.props.loginCurrentUser();
     } catch (e) {
       this.props.history.push('/auth/login');
+    } finally {
+      this.props.stopLoading();
     }
   }
 
@@ -56,6 +59,8 @@ const mapDispatchToProps = {
   resolveCurrentUser: tryResolveCurrentUser,
   loginCurrentUser,
   removeBlur,
+  startLoading,
+  stopLoading,
 };
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
