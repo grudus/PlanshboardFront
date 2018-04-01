@@ -6,6 +6,8 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    opacity: 1;
+    animation: displayAfterTime .5s;
 }
 
 .sk-folding-cube-wrapper {
@@ -80,6 +82,31 @@
     -webkit-animation-delay: 0.9s;
     animation-delay: 0.9s;
 }
+
+@keyframes displayAfterTime {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+@-webkit-keyframes displayAfterTime {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+
 @-webkit-keyframes sk-foldCubeAngle {
     0%, 10% {
         -webkit-transform: perspective(140px) rotateX(-180deg);
