@@ -26,6 +26,7 @@ class ResultRow extends Component {
           </td>
           <td>
             <TextField
+              type="number"
               floatingLabelText="Punkty"
               fullWidth
               value={this.state.text}
