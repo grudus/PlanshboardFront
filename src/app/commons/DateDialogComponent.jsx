@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { DatePicker } from 'material-ui';
 import 'moment/locale/pl';
-import { dayWithMonth, utcDate } from './DateUtils';
+import { dateFormat, utcDate } from './DateUtils';
 
 
 const DateDialogComponent = (props) => {
@@ -11,7 +11,7 @@ const DateDialogComponent = (props) => {
 
   return (
     <DatePicker
-      formatDate={date => dayWithMonth(date)}
+      formatDate={date => dateFormat(date)}
       cancelLabel="Cofnij"
       okLabel="Ok"
       locale="pl"

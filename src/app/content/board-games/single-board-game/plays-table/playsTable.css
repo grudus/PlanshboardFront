@@ -1,5 +1,5 @@
-
 .plays-table {
+    --small-column-width: 120px;
     color: var(--dark-text-color);
     border-collapse: collapse;
     padding: 0;
@@ -8,6 +8,21 @@
     table-layout: fixed;
     border: none;
     margin: 0 0 24px;
+}
+
+.play-table-date {
+    width: var(--small-column-width);
+}
+
+.play-table-winner {
+    width: var(--small-column-width);
+}
+
+.play-table-opponents-wrapper {
+    display: flex;
+    justify-content: center;
+    border: none !important;
+    margin: 0;
 }
 
 .plays-table tr:hover:not(:nth-child(1)) {
@@ -139,5 +154,10 @@
 
     .plays-table .add-play-wrapper {
         border: none;
+    }
+
+    .play-table-opponents-wrapper {
+        border: inherit !important;
+        border-bottom-width: 1px !important;
     }
 }

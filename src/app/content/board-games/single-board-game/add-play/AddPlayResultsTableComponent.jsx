@@ -18,7 +18,9 @@ const AddPlayResultsTable = (props) => {
   ))
     : (
       <tr>
-        <td colSpan={3} className="text-center table-no-results">Brak uczestników</td>
+        <td className="text-center table-no-results">Brak uczestników</td>
+        <td />
+        <td />
       </tr>);
 
   const dataSource = props.opponents.map(o => o.name);

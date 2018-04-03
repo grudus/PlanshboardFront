@@ -83,6 +83,10 @@ li {
     text-overflow: ellipsis;
 }
 
+.add {
+    color: var(--add-tex-color);
+}
+
 /* Will be overwritten by color themes from ./theme/mui-theme.js */
 :root {
     --primary-color: red;
@@ -91,4 +95,5 @@ li {
     --dark-background-color: #fafafa;
     --light-gray-color: #eeeeee;
     --dark-text-color: #424242;
+    --add-tex-color: #A9A9A9
 }
