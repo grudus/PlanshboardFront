@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import TopBar from './TopbarComponent';
-import CubeAnimation from '../../commons/animations/CubeAnimationComponent';
+import CubeAnimation from '../../commons/animations/LoadingAnimationComponent';
 
 const withTopbar = (WrappedComponent, currentPath) => {
   const Toolbared = (props) => {
