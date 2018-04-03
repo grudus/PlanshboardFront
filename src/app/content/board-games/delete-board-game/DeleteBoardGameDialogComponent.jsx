@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import YesNoButton from '../../../commons/YesNoButtonsComponent';
-import MaterialDialog from '../../../commons/dialog/MaterialDialog';
+import MaterialDialog from '../../../commons/material/MaterialDialog';
 
 
 const DeleteBoardGameDialog = (props) => {

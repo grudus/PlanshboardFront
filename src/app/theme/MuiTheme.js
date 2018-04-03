@@ -18,7 +18,7 @@ const themes = {
       canvasColor: '#424242',
       backgroundColor: '#212121',
       cardBackgroundColor: '#424242',
-      darkBackgroundColor: '#fafafa',
+      darkBackgroundColor: '#212121',
       addTextColor: '#A9A9A9',
     },
     raisedButton: {
@@ -46,7 +46,7 @@ const themes = {
 };
 
 // todo get from local storage?
-const theme = themes.light;
+const theme = themes.dark;
 
 theme.datePicker.selectColor = theme.palette.primary1Color;
 

@@ -8,7 +8,7 @@ import NoteComponent from './NoteComponent';
 import DateDialogComponent from '../../../../commons/DateDialogComponent';
 import { utcToday } from '../../../../commons/DateUtils';
 import AddPlayResultsTable from './AddPlayResultsTableComponent';
-import MaterialDialog from '../../../../commons/dialog/MaterialDialog';
+import MaterialDialog from '../../../../commons/material/MaterialDialog';
 
 class AddPlayDialog extends Component {
     static propTypes = {

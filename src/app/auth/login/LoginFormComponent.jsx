@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Card, RaisedButton, TextField } from 'material-ui';
+import { Card, RaisedButton } from 'material-ui';
+import MaterialTextField from '../../commons/material/MaterialTextField';
 import { setValueWhenAutofilled } from '../../commons/BrowserUtils';
 
 class LoginForm extends Component {
@@ -20,8 +21,8 @@ class LoginForm extends Component {
     return (
       <Card className="auth">
         <form onSubmit={this.props.loginButton} className="auth-form">
-          <TextField
-            ref={(ref) => {
+          <MaterialTextField
+            reference={(ref) => {
                             this.textInputRef = ref;
                         }}
             floatingLabelText="Nazwa użytkownika"
@@ -30,8 +31,8 @@ class LoginForm extends Component {
             value={this.props.username}
             onChange={this.props.handleChange}
           />
-          <TextField
-            ref={(ref) => {
+          <MaterialTextField
+            reference={(ref) => {
                             this.passwordInputRef = ref;
                         }}
             floatingLabelText="Hasło"

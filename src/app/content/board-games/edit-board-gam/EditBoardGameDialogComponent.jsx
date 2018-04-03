@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { ValidatorForm } from 'react-form-validator-core';
 import { TextValidator } from 'react-material-ui-form-validator';
 import YesNoButton from '../../../commons/YesNoButtonsComponent';
-import MaterialDialog from '../../../commons/dialog/MaterialDialog';
+import MaterialDialog from '../../../commons/material/MaterialDialog';
 
 class EditBoardGameDialog extends Component {
     static propTypes = {
