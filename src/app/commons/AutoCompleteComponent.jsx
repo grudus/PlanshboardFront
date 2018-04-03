@@ -18,10 +18,13 @@ class AutoCompleteComponent extends Component {
 
 
     render() {
-      const { dataSource, hintText, fullWidth } = this.props;
+      const {
+        dataSource, hintText, fullWidth, filter,
+      } = this.props;
 
       return (
         <AutoComplete
+          filter={filter}
           dataSource={dataSource}
           onNewRequest={this.onEnterAndAddFocus}
           searchText={this.state.text}
@@ -39,11 +42,13 @@ AutoCompleteComponent.propTypes = {
   dataSource: PropTypes.arrayOf(PropTypes.string).isRequired,
   fullWidth: PropTypes.bool,
   hintText: PropTypes.string,
+  filter: PropTypes.func,
 };
 
 AutoCompleteComponent.defaultProps = {
   fullWidth: true,
   hintText: '',
+  filter: (searchText, key) => key.toLowerCase().includes(searchText.toLowerCase()),
 };
 
 export default AutoCompleteComponent;
