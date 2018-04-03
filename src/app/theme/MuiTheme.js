@@ -21,6 +21,9 @@ const themes = {
       darkBackgroundColor: '#fafafa',
       addTextColor: '#A9A9A9',
     },
+    raisedButton: {
+      disabledColor: '#646464',
+    },
   }),
 
   light: getMuiTheme({
@@ -34,7 +37,6 @@ const themes = {
       accentColor: '#FF9100',
       hintColor: 'rgba(0, 0, 0, 0.6);',
       disabledColor: 'rgba(0, 0, 0, 0.6)',
-      borderColor: 'rgba(0, 0, 0, 0.2)',
       backgroundColor: 'white',
       cardBackgroundColor: 'white',
       darkBackgroundColor: '#fafafa',
@@ -44,7 +46,7 @@ const themes = {
 };
 
 // todo get from local storage?
-const theme = themes.dark;
+const theme = themes.light;
 
 theme.datePicker.selectColor = theme.palette.primary1Color;
 
