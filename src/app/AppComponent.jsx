@@ -19,8 +19,12 @@ class App extends Component {
     this.props.startLoading();
     document.documentElement.style.setProperty('--primary-color', muiTheme.palette.primary1Color);
     document.documentElement.style.setProperty('--accent-color', muiTheme.palette.accent1Color);
-    document.documentElement.style.setProperty('--light-gray-color', muiTheme.palette.lightGrayColor);
-    document.documentElement.style.setProperty('--dark-text-color', muiTheme.palette.darkTextColor);
+    document.documentElement.style.setProperty('--background-color', muiTheme.palette.backgroundColor);
+    document.documentElement.style.setProperty('--dark-background-color', muiTheme.palette.darkBackgroundColor);
+    document.documentElement.style.setProperty('--light-text-color', muiTheme.palette.lightTextColor);
+    document.documentElement.style.setProperty('--text-color', muiTheme.palette.textColor);
+    document.documentElement.style.setProperty('--add-text-color', muiTheme.palette.addTextColor);
+    document.documentElement.style.setProperty('--card-background-color', muiTheme.palette.cardBackgroundColor);
 
     moment.locale('pl');
 

@@ -6,12 +6,12 @@ import ClickableIcon from '../../../commons/ClickableIconComponent';
 const displayName = (name, len = 25) => (name.length > len ? `${name.substring(0, len)}...` : name);
 
 const OneGameItem = (props) => {
-  const color = props.muiTheme.palette.lightGrayColor;
-  const hoverColor = props.muiTheme.palette.darkTextColor;
+  const color = props.muiTheme.palette.lightTextColor;
+  const hoverColor = props.muiTheme.palette.textColor;
 
   return (
     <div
-      className="game-single-item card-shadow card pointer anim white accent-border relative"
+      className="game-single-item card-shadow card-background pointer anim accent-border relative"
       onClick={() => props.onClick(props.game)}
     >
       <p className="game-single-label">{displayName(props.game.name)}</p>

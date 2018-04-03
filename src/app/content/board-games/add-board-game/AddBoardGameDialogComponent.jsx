@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Dialog from 'material-ui/Dialog';
 import { ValidatorForm } from 'react-form-validator-core';
 import { TextValidator } from 'react-material-ui-form-validator';
 import YesNoButton from '../../../commons/YesNoButtonsComponent';
+import MaterialDialog from '../../../commons/dialog/MaterialDialog';
 
 class AddBoardGameDialog extends Component {
     static propTypes = {
@@ -36,7 +36,7 @@ class AddBoardGameDialog extends Component {
       />);
 
       return (
-        <Dialog
+        <MaterialDialog
           title="Dodaj nową grę"
           actions={buttons}
           modal={false}
@@ -56,7 +56,7 @@ class AddBoardGameDialog extends Component {
               errorText={this.props.isError && 'Taka gra już istnieje'}
             />
           </ValidatorForm>
-        </Dialog>
+        </MaterialDialog>
       );
     }
 }

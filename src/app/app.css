@@ -5,6 +5,7 @@
 body {
     margin: 0;
     padding: 0;
+    color: var(--text-color)
 }
 
 li {
@@ -56,7 +57,7 @@ li {
 }
 
 .gray-hover:hover {
-    background: var(--light-gray-color);
+    background: var(--light-text-color);
 }
 
 .relative {
@@ -87,9 +88,13 @@ li {
     color: var(--add-tex-color);
 }
 
+.card-background {
+    background: var(--card-background-color);
+}
+
 .absolute-bottom {
-    /*position: absolute;*/
-    /*bottom: 0;*/
+    position: absolute;
+    bottom: 0;
 }
 
 /* Will be overwritten by color themes from ./theme/mui-theme.js */
@@ -98,7 +103,8 @@ li {
     --accent-color: red;
     --background-color: white;
     --dark-background-color: #fafafa;
-    --light-gray-color: #eeeeee;
-    --dark-text-color: #424242;
-    --add-tex-color: #A9A9A9
+    --light-text-color: #eeeeee;
+    --text-color: #424242;
+    --add-tex-color: #A9A9A9;
+    --card-background-color: white;
 }

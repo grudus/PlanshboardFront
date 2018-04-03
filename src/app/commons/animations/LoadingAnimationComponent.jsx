@@ -3,7 +3,7 @@ import 'particles.js';
 import './loadingAnimation.css';
 import conf from '../particles/particlesjs-config';
 
-class CubeAnimation extends Component {
+class LoadingAnimation extends Component {
   componentDidMount() {
     // eslint-disable-next-line no-undef
     particlesJS('loading-animation', conf);
@@ -19,7 +19,7 @@ class CubeAnimation extends Component {
       'Już kończymy, nie martw się',
       'Żartowałem, od nowa!',
     ]
-      .map(a => <span className="loading-animation-header">{a}</span>);
+      .map(a => <span key={a} className="loading-animation-header">{a}</span>);
 
 
     return (
@@ -31,4 +31,4 @@ class CubeAnimation extends Component {
     );
   }
 }
-export default CubeAnimation;
+export default LoadingAnimation;

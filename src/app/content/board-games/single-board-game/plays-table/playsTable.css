@@ -1,6 +1,6 @@
 .plays-table {
     --small-column-width: 120px;
-    color: var(--dark-text-color);
+    color: var(--text-color);
     border-collapse: collapse;
     padding: 0;
     max-width: 1200px;
@@ -26,7 +26,7 @@
 }
 
 .plays-table tr:hover:not(:nth-child(1)) {
-    background: var(--light-gray-color);
+    background: var(--light-text-color);
     cursor: pointer;
 }
 

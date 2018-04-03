@@ -1,12 +1,12 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import TopBar from './TopbarComponent';
-import CubeAnimation from '../../commons/animations/LoadingAnimationComponent';
+import LoadingAnimation from '../../commons/animations/LoadingAnimationComponent';
 
 const withTopbar = (WrappedComponent, currentPath) => {
   const Toolbared = (props) => {
     const content = props.theme.loading
-      ? (<CubeAnimation />)
+      ? (<LoadingAnimation />)
       : (
         <Fragment>
           <TopBar currentPath={currentPath} />
