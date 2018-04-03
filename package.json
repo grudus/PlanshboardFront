@@ -6,8 +6,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "deploy": "npm run build && firebase deploy",
-    "deploy:push": "git push && npm run build && firebase deploy",
+    "deploy": "npm run build && firebase deploy && rm -rf build",
+    "deploy:push": "git push && npm run deploy",
     "deploy:patch": "npm version patch && npm run deploy:push",
     "deploy:minor": "npm version minor && npm run deploy:push",
     "deploy:major": "npm version major && npm run deploy:push",
