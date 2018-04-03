@@ -31,8 +31,8 @@
 }
 
 .plays-table tr {
-    background: white;
-    border: 1px solid #ddd;
+    background: var(--card-background-color);
+    border: 1px solid var(--border-color);
     padding: .35em;
 }
 
@@ -40,7 +40,7 @@
 .plays-table td {
     padding: 1.25em;
     text-align: center;
-    border: 1px solid #ddd;
+    border: 1px solid var(--border-color);
 }
 
 .plays-table th {
@@ -107,14 +107,14 @@
     }
 
     .plays-table tr {
-        border-bottom: 3px solid #ddd;
+        border-bottom: 3px solid var(--border-color);
         display: block;
         margin-bottom: 1.825em;
         box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
     }
 
     .plays-table td {
-        border-bottom: 1px solid #ddd;
+        border-bottom: 1px solid var(--border-color);
         display: block;
         font-size: .8em;
         text-align: right;

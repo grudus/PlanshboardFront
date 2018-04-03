@@ -13,7 +13,7 @@ import PlayDetailsDialog from './play-details/PlayDetailsDialogComponent';
 
 class BoardGame extends Component {
     state = {
-      showAddPlayDialog: false,
+      showAddPlayDialog: true,
       showPlayDetailsDialog: false,
       selectedPlay: null,
     };

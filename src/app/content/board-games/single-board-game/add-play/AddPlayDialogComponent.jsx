@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Dialog } from 'material-ui';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import YesNoButton from '../../../../commons/YesNoButtonsComponent';
@@ -9,6 +8,7 @@ import NoteComponent from './NoteComponent';
 import DateDialogComponent from '../../../../commons/DateDialogComponent';
 import { utcToday } from '../../../../commons/DateUtils';
 import AddPlayResultsTable from './AddPlayResultsTableComponent';
+import MaterialDialog from '../../../../commons/dialog/MaterialDialog';
 
 class AddPlayDialog extends Component {
     static propTypes = {
@@ -83,7 +83,7 @@ class AddPlayDialog extends Component {
       />);
 
       return (
-        <Dialog
+        <MaterialDialog
           title="Dodaj rozgrywkę"
           actions={buttons}
           modal={false}
@@ -119,7 +119,7 @@ class AddPlayDialog extends Component {
               </div>
             </div>
           </section>
-        </Dialog>
+        </MaterialDialog>
       );
     }
 }

@@ -97,6 +97,10 @@ li {
     bottom: 0;
 }
 
+.text {
+    color: var(--text-color)
+}
+
 /* Will be overwritten by color themes from ./theme/mui-theme.js */
 :root {
     --primary-color: red;
@@ -104,6 +108,7 @@ li {
     --background-color: white;
     --dark-background-color: #fafafa;
     --light-text-color: #eeeeee;
+    --border-color: #ddd;
     --text-color: #424242;
     --add-tex-color: #A9A9A9;
     --card-background-color: white;

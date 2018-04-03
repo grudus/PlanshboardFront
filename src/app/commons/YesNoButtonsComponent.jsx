@@ -1,9 +1,10 @@
 import React, { Fragment } from 'react';
 import { FlatButton, RaisedButton } from 'material-ui';
 import PropTypes from 'prop-types';
+import { muiThemeable } from 'material-ui/styles/index';
 
 const YesNoButton = ({
-  onSubmit, onCancel, submitText, cancelText, isDisabled,
+  onSubmit, onCancel, submitText, cancelText, isDisabled, muiTheme
 }) => (
   <Fragment>
     <FlatButton
@@ -16,6 +17,7 @@ const YesNoButton = ({
       label={submitText}
       disabled={isDisabled}
       primary
+      disabledBackgroundColor={muiTheme.palette.borderColor}
       onClick={onSubmit}
     />
   </Fragment>
@@ -35,4 +37,4 @@ YesNoButton.defaultProps = {
   isDisabled: false,
 };
 
-export default YesNoButton;
+export default muiThemeable()(YesNoButton);

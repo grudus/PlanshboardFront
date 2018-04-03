@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { muiThemeable } from 'material-ui/styles/index';
 import AutoComplete from '../../../../commons/AutoCompleteComponent';
 import ResultRow from './ResultRowComponent';
 import './addPlayDialog.css';
@@ -28,7 +29,7 @@ const AddPlayResultsTable = (props) => {
   return (
 
     <table className="w100 add-play-table">
-      <tbody>
+      <tbody className="text">
         <tr className="add-play-table-header">
           <th className="p-lr-8">
             <AutoComplete
@@ -65,4 +66,4 @@ AddPlayResultsTable.defaultProps = {
   opponents: [],
 };
 
-export default AddPlayResultsTable;
+export default muiThemeable()(AddPlayResultsTable);

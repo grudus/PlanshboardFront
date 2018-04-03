@@ -25,6 +25,7 @@ class App extends Component {
     document.documentElement.style.setProperty('--text-color', muiTheme.palette.textColor);
     document.documentElement.style.setProperty('--add-text-color', muiTheme.palette.addTextColor);
     document.documentElement.style.setProperty('--card-background-color', muiTheme.palette.cardBackgroundColor);
+    document.documentElement.style.setProperty('--border-color', muiTheme.palette.borderColor);
 
     moment.locale('pl');
 
