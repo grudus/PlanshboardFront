@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { MuiThemeProvider } from 'material-ui';
 import { connect } from 'react-redux';
 import 'moment/locale/pl';
+import Mousetrap from 'mousetrap';
 import moment from 'moment';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import muiTheme from './theme/MuiTheme';
@@ -22,6 +23,14 @@ class App extends Component {
     document.documentElement.style.setProperty('--dark-text-color', muiTheme.palette.darkTextColor);
 
     moment.locale('pl');
+
+    Mousetrap.bind('up up b u b a', () => {
+      this.props.startLoading();
+    });
+
+    Mousetrap.bind('down down b u b a', () => {
+      this.props.stopLoading();
+    });
 
     this.props.history.listen(() => {
       this.props.removeBlur();

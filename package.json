@@ -19,6 +19,7 @@
   "dependencies": {
     "material-ui": "^0.20.0",
     "moment": "^2.20.1",
+    "mousetrap": "^1.6.1",
     "particles.js": "^2.0.0",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
