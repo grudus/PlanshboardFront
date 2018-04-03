@@ -88,8 +88,11 @@ class AddPlayDialog extends Component {
           actions={buttons}
           modal={false}
           open={this.props.show}
+          bodyClassName="global--modal-body"
+          contentClassName="global--modal-content"
+          paperClassName="global--modal-paper"
           autoScrollBodyContent
-          autoDetectWindowHeight
+          autoDetectWindowHeight={false}
           onRequestClose={this.onRequestClose}
         >
 

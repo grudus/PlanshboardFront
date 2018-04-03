@@ -29,7 +29,7 @@ const AddPlayResultsTable = (props) => {
 
     <table className="w100 add-play-table">
       <tbody>
-        <tr>
+        <tr className="add-play-table-header">
           <th className="p-lr-8">
             <AutoComplete
               dataSource={dataSource}

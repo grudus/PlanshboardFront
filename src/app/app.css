@@ -87,6 +87,11 @@ li {
     color: var(--add-tex-color);
 }
 
+.absolute-bottom {
+    /*position: absolute;*/
+    /*bottom: 0;*/
+}
+
 /* Will be overwritten by color themes from ./theme/mui-theme.js */
 :root {
     --primary-color: red;
