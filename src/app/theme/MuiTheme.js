@@ -1,9 +1,10 @@
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import { red500 } from 'material-ui/styles/colors';
+import { DARK, LIGHT } from './themeTypes';
 
 const themes = {
 
-  dark: getMuiTheme({
+  [DARK]: getMuiTheme({
     palette: {
       errorColor: red500,
       lightTextColor: '#888888',
@@ -26,7 +27,7 @@ const themes = {
     },
   }),
 
-  light: getMuiTheme({
+  [LIGHT]: getMuiTheme({
     palette: {
       errorColor: red500,
       lightTextColor: '#eeeeee',
@@ -35,7 +36,7 @@ const themes = {
       pickerHeaderColor: '#2196F3',
       accent1Color: '#FF9100',
       accentColor: '#FF9100',
-      hintColor: 'rgba(0, 0, 0, 0.6);',
+      hintColor: 'rgba(0, 0, 0, 0.6)',
       disabledColor: 'rgba(0, 0, 0, 0.6)',
       backgroundColor: 'white',
       cardBackgroundColor: 'white',
@@ -46,8 +47,9 @@ const themes = {
 };
 
 // todo get from local storage?
-const theme = themes.dark;
+export default (theme) => {
+  const newTheme = themes[theme];
+  newTheme.datePicker.selectColor = newTheme.palette.primary1Color;
+  return newTheme;
+};
 
-theme.datePicker.selectColor = theme.palette.primary1Color;
-
-export default theme;
