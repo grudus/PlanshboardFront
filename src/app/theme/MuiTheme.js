@@ -49,7 +49,6 @@ const themes = {
   }),
 };
 
-// todo get from local storage?
 export default (theme) => {
   const newTheme = themes[theme];
   newTheme.datePicker.selectColor = newTheme.palette.primary1Color;
