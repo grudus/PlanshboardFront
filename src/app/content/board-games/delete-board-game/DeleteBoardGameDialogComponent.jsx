@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Dialog } from 'material-ui';
 import YesNoButton from '../../../commons/YesNoButtonsComponent';
-import MaterialDialog from '../../../commons/material/MaterialDialog';
 
 
 const DeleteBoardGameDialog = (props) => {
@@ -12,7 +12,7 @@ const DeleteBoardGameDialog = (props) => {
   />);
 
   return (
-    <MaterialDialog
+    <Dialog
       title="Usunięcie gry"
       actions={buttons}
       modal={false}
@@ -20,7 +20,7 @@ const DeleteBoardGameDialog = (props) => {
       onRequestClose={props.onCancel}
     >
       {`Czy na pewno chcesz usunąć grę "${props.name}" i wszystkie związane z nią elementy?`}
-    </MaterialDialog>
+    </Dialog>
   );
 };
 

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { ValidatorForm } from 'react-form-validator-core';
+import { Dialog } from 'material-ui';
 import { TextValidator } from 'react-material-ui-form-validator';
 import YesNoButton from '../../../commons/YesNoButtonsComponent';
-import MaterialDialog from '../../../commons/material/MaterialDialog';
 
 class EditBoardGameDialog extends Component {
     static propTypes = {
@@ -44,7 +44,7 @@ class EditBoardGameDialog extends Component {
       />);
 
       return (
-        <MaterialDialog
+        <Dialog
           title="Zmień nazwę"
           actions={buttons}
           modal={false}
@@ -64,7 +64,7 @@ class EditBoardGameDialog extends Component {
               errorText={this.props.isError && 'Taka gra już istnieje'}
             />
           </ValidatorForm>
-        </MaterialDialog>
+        </Dialog>
       );
     }
 }
