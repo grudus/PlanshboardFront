@@ -25,6 +25,9 @@ const themes = {
     raisedButton: {
       disabledColor: '#646464',
     },
+    textField: {
+      floatingLabelColor: '#888888',
+    },
   }),
 
   [LIGHT]: getMuiTheme({

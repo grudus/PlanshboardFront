@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import { muiThemeable } from 'material-ui/styles/index';
 import { TextField } from 'material-ui';
 import PositionItem from './PositionItemComponent';
 
@@ -15,7 +14,6 @@ class ResultRow extends Component {
 
     render() {
       const { result, positionCount, onPositionSelect } = this.props;
-      const colors = this.props.muiTheme.palette;
       return (
         <tr>
           <td className="text-center ellipsis">{result.opponentName}</td>
@@ -33,7 +31,7 @@ class ResultRow extends Component {
               value={this.state.text}
               // ugly af, but needs to fit to the row
               style={{ height: '35px', marginTop: '5px' }}
-              floatingLabelStyle={{ marginTop: '-35px', color: colors.hintColor }}
+              floatingLabelStyle={{ marginTop: '-35px' }}
               inputStyle={{ marginTop: '-35px' }}
               onChange={this.pointsChange}
             />
@@ -52,4 +50,4 @@ ResultRow.propTypes = {
   onPointsChange: PropTypes.func.isRequired,
 };
 
-export default muiThemeable()(ResultRow);
+export default ResultRow;
