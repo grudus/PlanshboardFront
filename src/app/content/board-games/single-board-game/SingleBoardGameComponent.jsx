@@ -19,9 +19,6 @@ class BoardGame extends Component {
     };
 
     async componentDidMount() {
-      if (this.props.currentGame)
-        return;
-
       try {
         const game = await getSpecificBoardGame(this.props.match.params.gameId);
         this.props.changeCurrentGame(game);
