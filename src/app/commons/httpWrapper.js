@@ -33,3 +33,10 @@ export const putApi = (url, body = {}) => {
   };
   return api(url, options);
 };
+
+export const deleteApi = (url) => {
+  const options = {
+    method: 'DELETE',
+  };
+  return api(url, options);
+};
