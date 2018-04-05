@@ -5,7 +5,7 @@ import { findColor } from './opponentsColors';
 const OpponentsCell = ({ results }) => {
   const opponentsDom = ({ position, opponentName }) => (
     <span className="opponent" key={opponentName}>
-      <div className="opponent-position" style={{ background: findColor(position) }}>{position}</div>
+      {position > 0 && <div className="opponent-position" style={{ background: findColor(position) }}>{position}</div> }
       <div className="opponent-name">{opponentName}</div>
     </span>
   );
