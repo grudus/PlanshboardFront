@@ -15,7 +15,6 @@ const themes = {
       accentColor: '#FF9100',
       disabledColor: 'rgba(0, 0, 0, 0.6)',
       borderColor: '#646464',
-      hintColor: '#888888',
       canvasColor: '#424242',
       backgroundColor: '#212121',
       cardBackgroundColor: '#424242',
@@ -27,6 +26,7 @@ const themes = {
     },
     textField: {
       floatingLabelColor: '#888888',
+      hintColor: '#888888',
     },
   }),
 
@@ -39,7 +39,6 @@ const themes = {
       pickerHeaderColor: '#2196F3',
       accent1Color: '#FF9100',
       accentColor: '#FF9100',
-      hintColor: 'rgba(0, 0, 0, 0.6)',
       disabledColor: 'rgba(0, 0, 0, 0.6)',
       backgroundColor: 'white',
       cardBackgroundColor: 'white',

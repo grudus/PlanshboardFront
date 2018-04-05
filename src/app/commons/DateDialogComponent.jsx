@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { DatePicker } from 'material-ui';
-import { muiThemeable } from 'material-ui/styles/index';
 import 'moment/locale/pl';
 import { dateFormat, utcDate } from './DateUtils';
 
@@ -30,4 +29,4 @@ DateDialogComponent.propTypes = {
   onDateChange: PropTypes.func.isRequired,
 };
 
-export default muiThemeable()(DateDialogComponent);
+export default DateDialogComponent;

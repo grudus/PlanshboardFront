@@ -2,7 +2,6 @@
 import React, { Component } from 'react';
 import { AutoComplete } from 'material-ui';
 import PropTypes from 'prop-types';
-import { muiThemeable } from 'material-ui/styles/index';
 
 class AutoCompleteComponent extends Component {
     state = { text: '' };
@@ -24,8 +23,6 @@ class AutoCompleteComponent extends Component {
         dataSource, hintText, fullWidth, filter,
       } = this.props;
 
-      const colors = this.props.muiTheme.palette;
-
       return (
         <AutoComplete
           filter={filter}
@@ -35,9 +32,7 @@ class AutoCompleteComponent extends Component {
           onUpdateInput={this.updateAutoComplete}
           ref={(input) => { this.autoCompleteInput = input; }}
           hintText={hintText}
-          hintStyle={{ color: colors.hintColor }}
           fullWidth={fullWidth}
-          listStyle={{ background: colors.cardBackgroundColor }}
         />
       );
     }
@@ -57,4 +52,4 @@ AutoCompleteComponent.defaultProps = {
   filter: (searchText, key) => key.toLowerCase().includes(searchText.toLowerCase()),
 };
 
-export default muiThemeable()(AutoCompleteComponent);
+export default AutoCompleteComponent;

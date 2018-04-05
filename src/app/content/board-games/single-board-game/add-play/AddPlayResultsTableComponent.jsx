@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { muiThemeable } from 'material-ui/styles/index';
 import AutoComplete from '../../../../commons/AutoCompleteComponent';
 import ResultRow from './ResultRowComponent';
 import './addPlayDialog.css';
@@ -66,4 +65,4 @@ AddPlayResultsTable.defaultProps = {
   opponents: [],
 };
 
-export default muiThemeable()(AddPlayResultsTable);
+export default AddPlayResultsTable;
