@@ -64,19 +64,6 @@
     align-items: center;
 }
 
-.opponent-position {
-    --size: 15px;
-    border-radius: 100%;
-    width: var(--size);
-    height: var(--size);
-    line-height: var(--size);
-    font-size: .7em;
-    color: white;
-    margin-right: 4px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 .opponent-name {
     padding-right: 8px;
 }
