@@ -1,6 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { muiThemeable } from 'material-ui/styles/index';
+import { shape, number, string, func } from '../../../commons/ExtractedPropTypes';
 import ClickableIcon from '../../../commons/ClickableIconComponent';
 
 const displayName = (name, len = 25) => (name.length > len ? `${name.substring(0, len)}...` : name);
@@ -25,13 +25,13 @@ const OneGameItem = (props) => {
 };
 
 OneGameItem.propTypes = {
-  game: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
+  game: shape({
+    id: number.isRequired,
+    name: string.isRequired,
   }).isRequired,
-  onClick: PropTypes.func.isRequired,
-  onEditClick: PropTypes.func.isRequired,
-  onDeleteClick: PropTypes.func.isRequired,
+  onClick: func.isRequired,
+  onEditClick: func.isRequired,
+  onDeleteClick: func.isRequired,
 };
 
 export default muiThemeable()(OneGameItem);

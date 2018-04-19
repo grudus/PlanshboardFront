@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { Card, RaisedButton, TextField } from 'material-ui';
+import { func, string } from '../../commons/ExtractedPropTypes';
 import { setValueWhenAutofilled } from '../../commons/BrowserUtils';
 
 class LoginForm extends Component {
@@ -57,11 +57,11 @@ class LoginForm extends Component {
 }
 
 LoginForm.propTypes = {
-  loginButton: PropTypes.func.isRequired,
-  username: PropTypes.string.isRequired,
-  handleChange: PropTypes.func.isRequired,
-  password: PropTypes.string.isRequired,
-  error: PropTypes.string.isRequired,
+  loginButton: func.isRequired,
+  username: string.isRequired,
+  handleChange: func.isRequired,
+  password: string.isRequired,
+  error: string.isRequired,
 };
 
 export default LoginForm;

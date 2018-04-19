@@ -1,7 +1,7 @@
-import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { TextField } from 'material-ui';
 import PositionItem from './PositionItemComponent';
+import { shape, string, number, func } from '../../../../commons/ExtractedPropTypes';
 
 class ResultRow extends Component {
     state = { text: '' };
@@ -42,12 +42,12 @@ class ResultRow extends Component {
 }
 
 ResultRow.propTypes = {
-  result: PropTypes.shape({
-    opponentName: PropTypes.string.isRequired,
+  result: shape({
+    opponentName: string.isRequired,
   }).isRequired,
-  positionCount: PropTypes.number.isRequired,
-  onPositionSelect: PropTypes.func.isRequired,
-  onPointsChange: PropTypes.func.isRequired,
+  positionCount: number.isRequired,
+  onPositionSelect: func.isRequired,
+  onPointsChange: func.isRequired,
 };
 
 export default ResultRow;

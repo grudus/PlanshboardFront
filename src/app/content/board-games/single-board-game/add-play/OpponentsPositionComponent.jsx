@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import { arrayOf, string, number, func, shape } from '../../../../commons/ExtractedPropTypes';
 import PositionItem from './PositionItemComponent';
 
 class OpponentsPosition extends Component {
@@ -32,12 +32,12 @@ class OpponentsPosition extends Component {
 }
 
 OpponentsPosition.propTypes = {
-  results: PropTypes.arrayOf(PropTypes.shape({
-    opponentName: PropTypes.string,
-    id: PropTypes.number,
-    fakeId: PropTypes.number,
+  results: arrayOf(shape({
+    opponentName: string,
+    id: number,
+    fakeId: number,
   })).isRequired,
-  onPositionChange: PropTypes.func.isRequired,
+  onPositionChange: func.isRequired,
 };
 
 export default OpponentsPosition;

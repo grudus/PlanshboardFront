@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { shape, number, string, func, arrayOf } from '../../../../commons/ExtractedPropTypes';
 import AutoComplete from '../../../../commons/AutoCompleteComponent';
 import ResultRow from './ResultRowComponent';
 import './addPlayDialog.css';
@@ -48,15 +48,15 @@ const AddPlayResultsTable = (props) => {
 };
 
 AddPlayResultsTable.propTypes = {
-  positionChange: PropTypes.func.isRequired,
-  pointsChange: PropTypes.func.isRequired,
-  addResult: PropTypes.func.isRequired,
-  results: PropTypes.arrayOf(PropTypes.shape({
-    fakeId: PropTypes.number,
-    opponentName: PropTypes.string.isRequired,
+  positionChange: func.isRequired,
+  pointsChange: func.isRequired,
+  addResult: func.isRequired,
+  results: arrayOf(shape({
+    fakeId: number,
+    opponentName: string.isRequired,
   })),
-  opponents: PropTypes.arrayOf(PropTypes.shape({
-    name: PropTypes.string,
+  opponents: arrayOf(shape({
+    name: string,
   })),
 };
 

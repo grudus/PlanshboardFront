@@ -1,6 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { findColor } from './opponentsColors';
+import { arrayOf, shape, number, string } from '../../../../commons/ExtractedPropTypes';
 
 const OpponentsCell = ({ results }) => {
   const opponentsDom = ({ position, opponentName }) => (
@@ -18,10 +18,10 @@ const OpponentsCell = ({ results }) => {
 };
 
 OpponentsCell.propTypes = {
-  results: PropTypes.arrayOf(PropTypes.shape({
-    position: PropTypes.number.isRequired,
-    points: PropTypes.number,
-    opponentName: PropTypes.string.isRequired,
+  results: arrayOf(shape({
+    position: number.isRequired,
+    points: number,
+    opponentName: string.isRequired,
   })).isRequired,
 };
 
