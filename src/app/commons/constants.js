@@ -1,1 +1,1 @@
-export const AUTH_HEADER = 'X-AUTH-TOKEN';
+export const AUTH_HEADER = 'Authorization';
