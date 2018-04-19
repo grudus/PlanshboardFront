@@ -1,11 +1,11 @@
 import React from 'react';
-import { findColor } from './opponentsColors';
 import { arrayOf, shape, number, string } from '../../../../commons/ExtractedPropTypes';
+import PositionMedal from '../../position/PositionMedalComponent';
 
 const OpponentsCell = ({ results }) => {
   const opponentsDom = ({ position, opponentName }) => (
     <span className="opponent" key={opponentName}>
-      {position > 0 && <div className="opponent-position" style={{ background: findColor(position) }}>{position}</div> }
+      <PositionMedal position={position} />
       <div className="opponent-name">{opponentName}</div>
     </span>
   );
