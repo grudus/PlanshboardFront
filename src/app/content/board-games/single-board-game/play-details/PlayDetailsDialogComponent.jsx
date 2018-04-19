@@ -1,6 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Dialog, FlatButton } from 'material-ui';
+import { func, bool, shape, number, string, arrayOf } from './../../../../commons/ExtractedPropTypes';
 
 const PlayDetailsDialog = (props) => {
   const buttons = (
@@ -28,10 +28,6 @@ const PlayDetailsDialog = (props) => {
       </Dialog>
   );
 };
-
-const {
-  arrayOf, number, string, shape, func, bool,
-} = PropTypes;
 
 
 PlayDetailsDialog.propTypes = {

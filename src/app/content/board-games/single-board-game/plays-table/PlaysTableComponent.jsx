@@ -1,8 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import FlipMove from 'react-flip-move';
 import './playsTable.css';
 import OpponentsCell from './OpponentsCellComponent';
+import { arrayOf, number, string, shape, func } from '../../../../commons/ExtractedPropTypes';
 import { dateFormat } from '../../../../commons/DateUtils';
 
 const PlaysTable = ({ plays = [], onAddPlayClick, onPlayRowClick }) => {
@@ -46,10 +46,6 @@ const PlaysTable = ({ plays = [], onAddPlayClick, onPlayRowClick }) => {
     </table>
   );
 };
-
-const {
-  arrayOf, number, string, shape, func,
-} = PropTypes;
 
 PlaysTable.propTypes = {
   onAddPlayClick: func.isRequired,
