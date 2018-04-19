@@ -86,7 +86,7 @@ class AddPlayDialog extends Component {
         <Dialog
           title="Dodaj rozgrywkę"
           actions={buttons}
-          modal={false}
+          modal
           open={this.props.show}
           bodyClassName="global--modal-body"
           contentClassName="global--modal-content"
