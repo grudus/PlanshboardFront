@@ -2,6 +2,7 @@ import { AUTH_HEADER } from './constants';
 import { HttpError } from './httpError';
 
 const backendUrl = process.env.REACT_APP_BACKEND_URL;
+const NO_CONTENT = 204;
 
 export const fetchErr = (url, options = {}) => fetch(`${backendUrl}${url}`, options)
   .then((res) => {
@@ -15,7 +16,7 @@ export const api = (url, options = {}) => {
   authOptions.headers['Content-Type'] = 'application/json';
   authOptions.headers.Accept = 'application/json';
   authOptions.headers[AUTH_HEADER] = window.localStorage.getItem(AUTH_HEADER);
-  return fetchErr(url, authOptions).then(res => (res.status !== 204 ? res.json() : res));
+  return fetchErr(url, authOptions).then(res => (res.status !== NO_CONTENT ? res.json() : res));
 };
 
 export const postApi = (url, body = {}) => {
