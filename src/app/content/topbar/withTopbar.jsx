@@ -4,19 +4,16 @@ import TopBar from './TopbarComponent';
 import LoadingAnimation from '../../commons/animations/LoadingAnimationComponent';
 
 const withTopbar = (WrappedComponent, currentPath) => {
-  const Toolbared = (props) => {
-    const content = props.theme.loading
-      ? (<LoadingAnimation />)
-      : (
-        <Fragment>
-          <TopBar currentPath={currentPath} />
-          <div style={{ paddingTop: '64px' }} className={props.theme.blur ? 'blur' : ''}>
-            <WrappedComponent {...props} />
-          </div>
-        </Fragment>
-      );
-    return content;
-  };
+  const Toolbared = props => (props.theme.loading
+    ? (<LoadingAnimation />)
+    : (
+      <Fragment>
+        <TopBar currentPath={currentPath} />
+        <div style={{ paddingTop: '64px' }} className={props.theme.blur ? 'blur' : ''}>
+          <WrappedComponent {...props} />
+        </div>
+      </Fragment>
+    ));
 
   const mapStateToProps = ({ theme }) => ({ theme });
   return connect(mapStateToProps)(Toolbared);

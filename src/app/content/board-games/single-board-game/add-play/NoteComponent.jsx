@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 class NoteComponent extends Component {
     state = { text: '' };
 
-    pointsChange = ({ target }) => {
+    onChange = ({ target }) => {
       const text = target.value;
       this.setState({ text });
       this.props.onNoteChange(text);
@@ -18,7 +18,7 @@ class NoteComponent extends Component {
           fullWidth
           hintText="Brak notatki"
           value={this.state.text}
-          onChange={this.pointsChange}
+          onChange={this.onChange}
         />
       );
     }
