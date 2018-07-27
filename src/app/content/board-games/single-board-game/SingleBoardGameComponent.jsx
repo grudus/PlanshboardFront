@@ -52,7 +52,7 @@ class BoardGame extends Component {
           <GamesTable
             plays={plays}
             onAddPlayClick={() => this.openDialog()}
-            onPlayRowClick={this.openPlayDetailsDialog}
+            onPlayRowClick={() => {}}
           />
           <AddPlayDialog
             show={this.state.showAddPlayDialog}

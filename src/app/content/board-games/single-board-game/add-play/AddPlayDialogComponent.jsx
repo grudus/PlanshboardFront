@@ -96,7 +96,7 @@ class AddPlayDialog extends Component {
           onRequestClose={this.onRequestClose}
         >
 
-          <section className="add-play-form flex">
+          <article className="add-play-form flex">
 
             <AddPlayResultsTable
               positionChange={this.positionChange}
@@ -106,19 +106,22 @@ class AddPlayDialog extends Component {
               results={this.state.results}
             />
 
-            <div className="add-play-form-row">
-              <div className="add-play-form-header">Data:</div>
-              <div className="add-play-form-content">
-                <DateDialogComponent onDateChange={this.dateChange} />
-              </div>
-            </div>
-            <div className="add-play-form-row">
+            <section className="add-play-form-row">
               <div className="add-play-form-header">Notatki:</div>
               <div className="add-play-form-content">
                 <NoteComponent onNoteChange={this.noteChange} />
               </div>
-            </div>
-          </section>
+            </section>
+
+
+            <section className="add-play-form-row">
+              <div className="add-play-form-header">Data:</div>
+              <div className="add-play-form-content">
+                <DateDialogComponent onDateChange={this.dateChange} />
+              </div>
+            </section>
+
+          </article>
         </Dialog>
       );
     }
