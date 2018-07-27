@@ -7,9 +7,8 @@ export const startLoading = () => ({ type: START_LOADING });
 export const stopLoading = () => ({ type: STOP_LOADING });
 
 export const changeTheme = theme => (dispatch) => {
-  // noinspection JSUnresolvedVariable
   const storage = window.localStorage;
-  // noinspection JSUnresolvedFunction
+
   storage.setItem(LOCAL_STORAGE_THEME_KEY, theme);
   dispatch({ type: CHANGE_THEME, theme });
 };

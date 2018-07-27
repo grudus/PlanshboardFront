@@ -10,7 +10,7 @@ import { applyMiddleware, compose, createStore } from 'redux';
 
 import App from './app/AppComponent';
 import reducer from './app/reducers/allReducers';
-
+/** @namespace window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ */
 
 const composeEnhancers =
     typeof window === 'object' &&

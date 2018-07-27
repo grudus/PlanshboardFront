@@ -10,6 +10,8 @@ import { addNewPlay, getAllPlays } from './playsActions';
 import { getAllOpponents } from '../../opponents/opponentsActions';
 import { addBlur, removeBlur } from '../../../theme/themeActions';
 
+/** @namespace params.gameId */
+
 class BoardGame extends Component {
     state = {
       showAddPlayDialog: false,

@@ -1,7 +1,7 @@
 import { AUTH_HEADER } from './constants';
 import { HttpError } from './httpError';
+import { backendUrl } from '../environment';
 
-const backendUrl = process.env.REACT_APP_BACKEND_URL;
 const NO_CONTENT = 204;
 
 export const fetchErr = (url, options = {}) => fetch(`${backendUrl}${url}`, options)
