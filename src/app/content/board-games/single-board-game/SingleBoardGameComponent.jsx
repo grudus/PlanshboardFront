@@ -9,13 +9,10 @@ import AddPlayDialog from './add-play/AddPlayDialogComponent';
 import { addNewPlay, getAllPlays } from './playsActions';
 import { getAllOpponents } from '../../opponents/opponentsActions';
 import { addBlur, removeBlur } from '../../../theme/themeActions';
-import PlayDetailsDialog from './play-details/PlayDetailsDialogComponent';
 
 class BoardGame extends Component {
     state = {
       showAddPlayDialog: false,
-      showPlayDetailsDialog: false,
-      selectedPlay: null,
     };
 
     async componentDidMount() {
@@ -31,11 +28,6 @@ class BoardGame extends Component {
     submitAddPlay = async (results, date, note) => {
       await this.props.addPlay(this.props.match.params.gameId, results, date, note);
       this.hideDialog();
-    };
-
-    openPlayDetailsDialog = (selectedPlay) => {
-      this.setState({ selectedPlay });
-      this.openDialog('showPlayDetailsDialog');
     };
 
     openDialog = (dialog = 'showAddPlayDialog') => {
@@ -66,12 +58,6 @@ class BoardGame extends Component {
             show={this.state.showAddPlayDialog}
             onCancel={() => this.hideDialog()}
             onSubmit={this.submitAddPlay}
-          />
-
-          <PlayDetailsDialog
-            play={this.state.selectedPlay}
-            onCancel={() => this.hideDialog('showPlayDetailsDialog')}
-            show={this.state.showPlayDetailsDialog}
           />
         </article>
       );
