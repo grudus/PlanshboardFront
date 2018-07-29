@@ -2,9 +2,7 @@ import { CHANGE_THEME, REMOVE_BLUR, SET_BLUR, START_LOADING, STOP_LOADING } from
 import { LIGHT, LOCAL_STORAGE_THEME_KEY } from './themeTypes';
 
 const getThemeType = () => {
-  // noinspection JSUnresolvedVariable
   const storage = window.localStorage;
-  // noinspection JSCheckFunctionSignatures
   return storage.getItem(LOCAL_STORAGE_THEME_KEY) || LIGHT;
 };
 

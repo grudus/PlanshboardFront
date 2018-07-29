@@ -105,6 +105,14 @@ li {
     color: var(--text-color)
 }
 
+.thin {
+    font-weight: 300;
+}
+
+.t-2-em {
+    font-size: 2em;
+}
+
 /* Will be overwritten by color themes from ./theme/mui-theme.js */
 :root {
     --primary-color: red;

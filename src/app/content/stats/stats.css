@@ -1,0 +1,43 @@
+.stats {
+    border: 1px solid #dddddd;
+    padding: 64px;
+    grid-row-gap: 32px;
+    display: grid;
+    grid-template-areas: 'a b c';
+}
+
+.stats-card {
+    --size: 35vh;
+    padding: 16px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    justify-self: center;
+    text-align: center;
+    width: var(--size);
+    height: var(--size);
+    display: flex;
+    align-items: center;
+}
+
+.grid-area-a {
+    grid-area: a;
+}
+
+.grid-area-b {
+    grid-area: b;
+}
+
+.grid-area-c {
+    grid-area: c;
+}
+
+@media (max-width: 900px) {
+    .stats {
+        grid-template-areas: 'a b' 'c .';
+    }
+}
+
+@media (max-width: 750px) {
+    .stats {
+        grid-template-areas: 'a' 'b' 'c';
+    }
+}
