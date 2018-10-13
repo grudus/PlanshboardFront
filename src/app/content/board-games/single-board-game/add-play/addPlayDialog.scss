@@ -1,3 +1,5 @@
+@import "../../../../variables";
+
 .add-play-form {
     flex-direction: column;
 }
@@ -84,7 +86,7 @@
 }
 
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: $width-phones) {
     .global--modal-content {
         width: 100% !important;
         transform: translate(0, 0) !important;

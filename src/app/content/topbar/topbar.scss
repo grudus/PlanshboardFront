@@ -1,3 +1,5 @@
+@import "../../variables";
+
 .top-bar-wrapper {
     z-index: 2;
     height: 64px;
@@ -52,13 +54,13 @@
     font-size: 0.7em;
 }
 
-@media all and (max-width: 600px) and (min-width: 400px) {
+@media all and (max-width: $width-phones) {
     .single-item {
         width: 100px;
     }
 }
 
-@media (max-width: 400px) {
+@media (max-width: $width-small-phones) {
     .single-item {
         width: 75px;
     }

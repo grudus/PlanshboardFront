@@ -1,3 +1,5 @@
+@import "../../variables";
+
 .accent-border {
     border-top: 5px solid var(--accent-color)
 }
@@ -67,14 +69,14 @@
     width: 40%;
 }
 
-@media all and (max-width: 900px)  {
+@media all and (max-width: $width-big)  {
     .game-single-item {
         width: 16vw;
         height: 16vw;
     }
 }
 
-@media all and (max-width: 750px)  {
+@media all and (max-width: $width-phones)  {
     .board-games-wrapper {
         grid-template-columns: repeat(3, 1fr);
     }
@@ -89,7 +91,7 @@
     }
 }
 
-@media (max-width: 500px) {
+@media (max-width: $width-small-phones) {
     .board-games-wrapper {
         grid-template-columns: repeat(2, 1fr);
     }
