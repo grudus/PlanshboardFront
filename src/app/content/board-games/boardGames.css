@@ -2,8 +2,18 @@
     border-top: 5px solid var(--accent-color)
 }
 
-.board-games-wrapper {
+.search-wrapper {
     margin-top: 100px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.search {
+    width: 50%;
+}
+
+.board-games-wrapper {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     padding: 0 16px;

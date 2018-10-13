@@ -1,21 +1,26 @@
-import React, { Component } from 'react';
-import { compose } from 'redux';
 import { muiThemeable } from 'material-ui/styles/index';
-import { connect } from 'react-redux';
+import React, { Component } from 'react';
 import FlipMove from 'react-flip-move';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
+import SearchInput from '../../../commons/SearchInputComponent';
+import { addBlur, removeBlur } from '../../../theme/themeActions';
+import withTopbar from '../../topbar/withTopbar';
+import AddGameDialog from '../add-board-game/AddBoardGameDialogComponent';
+import AddGame from '../add-board-game/AddBoardGameItemComponent';
+import '../boardGames.css';
 import {
-  addNewBoardGame, changeCurrentBoardGame, getAllBoardGames, deleteBoardGame,
+  addNewBoardGame,
+  changeCurrentBoardGame,
+  deleteBoardGame,
+  getAllBoardGames,
   renameBoardGame,
 } from '../boardGamesActions';
-import '../boardGames.css';
-import withTopbar from '../../topbar/withTopbar';
-import OneGameItem from './OneBoardGameItemComponent';
-import AddGame from '../add-board-game/AddBoardGameItemComponent';
-import AddGameDialog from '../add-board-game/AddBoardGameDialogComponent';
 import { boardNameExistsRequest } from '../boardGamesApi';
-import { addBlur, removeBlur } from '../../../theme/themeActions';
 import DeleteBoardGameDialog from '../delete-board-game/DeleteBoardGameDialogComponent';
 import EditBoardGameDialog from '../edit-board-gam/EditBoardGameDialogComponent';
+import OneGameItem from './OneBoardGameItemComponent';
+
 
 class BoardGamesList extends Component {
     state = {
@@ -24,6 +29,7 @@ class BoardGamesList extends Component {
       showDeleteDialog: false,
       dialogError: false,
       currentModalGame: {},
+      searchText: '',
     };
 
     async componentDidMount() {
@@ -84,30 +90,52 @@ class BoardGamesList extends Component {
       this.props.removeBlur();
     };
 
+    searchGames = (searchText) => {
+      this.setState({ searchText });
+    };
+
     render() {
+      const isSearched = ({ name }) =>
+        name.toLowerCase().includes(this.state.searchText.toLowerCase());
       const
         games = this.props.games &&
-                this.props.games.map(game => (
-                  <li className="no-li" key={game.id}>
-                    <OneGameItem
-                      game={game}
-                      onClick={this.selectGame}
-                      onDeleteClick={e => this.openDialog('showDeleteDialog', e, game)}
-                      onEditClick={e => this.openDialog('showEditDialog', e, game)}
-                    />
-                  </li>
-                ));
+                this.props.games
+                  .filter(isSearched)
+                  .sort((a, b) => a.name.localeCompare(b.name))
+                  .map(game => (
+                    <li className="no-li" key={game.id}>
+                      <OneGameItem
+                        game={game}
+                        onClick={this.selectGame}
+                        onDeleteClick={e => this.openDialog('showDeleteDialog', e, game)}
+                        onEditClick={e => this.openDialog('showEditDialog', e, game)}
+                      />
+                    </li>
+                  ));
 
       const currentModalGameName = this.state.currentModalGame && this.state.currentModalGame.name;
 
       return (
         <section className="content">
+
+          <div className="search-wrapper">
+            <div className="search">
+              <SearchInput onSearchChange={this.searchGames} />
+            </div>
+          </div>
+
           <ul className="board-games-wrapper">
             <AddGame
               iconColor={this.props.muiTheme.palette.accent1Color}
               onClick={() => this.openDialog('showAddNewDialog')}
             />
-            <FlipMove enterAnimation="elevator" leaveAnimation={null} staggerDelayBy={15} easing="linear" typeName={null}>
+            <FlipMove
+              enterAnimation="elevator"
+              leaveAnimation={null}
+              staggerDelayBy={15}
+              easing="linear"
+              typeName={null}
+            >
               {games}
             </FlipMove>
           </ul>
