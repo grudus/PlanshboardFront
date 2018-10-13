@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 
 export const { arrayOf } = PropTypes;
+export const { array } = PropTypes;
 export const { number } = PropTypes;
 export const { string } = PropTypes;
 export const { shape } = PropTypes;

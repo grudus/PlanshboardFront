@@ -1,9 +1,15 @@
 .stats {
     border: 1px solid #dddddd;
-    padding: 64px;
-    grid-row-gap: 32px;
-    display: grid;
-    grid-template-areas: 'a b c';
+    max-width: 1000px;
+    margin: 64px auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.stats-card-wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 64px;
 }
 
 .stats-card {
@@ -18,26 +24,32 @@
     align-items: center;
 }
 
-.grid-area-a {
-    grid-area: a;
+
+.stats-plays-wrapper {
+    display: flex;
 }
 
-.grid-area-b {
-    grid-area: b;
+.stats-plays-wrapper > .chart-wrapper {
+    flex: 2;
 }
 
-.grid-area-c {
-    grid-area: c;
+.stats-plays-wrapper > .stats-plays-title {
+    flex: 1;
 }
+
+.chart-wrapper {
+    /*width: 400px;*/
+}
+
 
 @media (max-width: 900px) {
     .stats {
-        grid-template-areas: 'a b' 'c .';
+        grid-template-areas: 'a b' 'c d';
     }
 }
 
 @media (max-width: 750px) {
     .stats {
-        grid-template-areas: 'a' 'b' 'c';
+        grid-template-areas: 'a' 'b' 'c' 'd';
     }
 }

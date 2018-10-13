@@ -17,6 +17,7 @@
     "precommit": "npm run lint:fix"
   },
   "dependencies": {
+    "chart.js": "^2.7.2",
     "material-ui": "^0.20.0",
     "moment": "^2.20.1",
     "mousetrap": "^1.6.1",

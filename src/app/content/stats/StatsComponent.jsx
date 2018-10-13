@@ -1,10 +1,12 @@
-import React, { Component } from 'react';
-import { compose } from 'redux';
-import connect from 'react-redux/es/connect/connect';
 import { muiThemeable } from 'material-ui/styles/index';
+/* eslint-disable class-methods-use-this */
+import React, { Component } from 'react';
+import connect from 'react-redux/es/connect/connect';
+import { compose } from 'redux';
 import withTopbar from '../topbar/withTopbar';
-import { getStats } from './statsActions';
+import BoardGamesPlaysChart from './charts/BoardGamesPlaysChartComponent';
 import './stats.css';
+import { getStats } from './statsActions';
 import StatsCard from './StatsCardComponent';
 
 class Stats extends Component {
@@ -14,31 +16,46 @@ class Stats extends Component {
       this.props.getStats();
     }
 
+    winCount({ playPositionsPerOpponentCount }, userName) {
+      if (!playPositionsPerOpponentCount.length) {
+        return 0;
+      }
+      const x = playPositionsPerOpponentCount.find(position => position.opponent.name === userName);
+      return x ? x.count : 0;
+    }
 
     render() {
       const { stats, userName } = this.props;
-      const { playPositionsPerOpponentCount } = stats;
-      const winCount = playPositionsPerOpponentCount.length
-        ? playPositionsPerOpponentCount.find(position => position.opponent.name === userName).count
-        : 0;
+      const winCount = this.winCount(stats, userName);
       return (
         <article className="stats">
-          <StatsCard
-            className="grid-area-a"
-            title="Liczba Twoich gier"
-            text={stats.boardGamesCount}
-          />
-          <StatsCard
-            className="grid-area-b"
-            title="Liczba rozgrywek"
-            text={stats.allPlaysCount}
-          />
+          <div className="stats-card-wrapper">
+            <StatsCard
+              title="Liczba Twoich gier"
+              text={stats.boardGamesCount}
+            />
+            <StatsCard
+              title="Liczba rozgrywek"
+              text={stats.allPlaysCount}
+            />
 
-          <StatsCard
-            className="grid-area-c"
-            title="Liczba wygranych rozgrywek"
-            text={winCount}
-          />
+            <StatsCard
+              title="Liczba wygranych rozgrywek"
+              text={winCount}
+            />
+          </div>
+
+          <section className="stats-plays-wrapper">
+            <div className="chart-wrapper">
+              <BoardGamesPlaysChart
+                playsPerBoardGameCount={stats.playsPerBoardGameCount}
+                backgroundColor={this.props.muiTheme.palette.accent1Color}
+              />
+            </div>
+            <h2 className="stats-plays-title">Rozgrywki w poszczególnych grach</h2>
+          </section>
+
+
         </article>
       );
     }
