@@ -1,8 +1,7 @@
 /* eslint-disable no-undef */
 
 // noinspection PointlessBooleanExpressionJS
-const isOpera = () =>
-  (!!window.opr && !!opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
+const isOpera = () => (!!window.opr && !!opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
 
 const isChrome = () => !!window.chrome && !!window.chrome.webstore;
 

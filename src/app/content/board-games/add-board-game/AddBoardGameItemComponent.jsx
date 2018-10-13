@@ -12,7 +12,8 @@ const AddGame = props => (
       className="material-icons add-single-label"
       color={props.iconColor}
       style={{ fontSize: '1.5em' }}
-    >add_circle_outline
+    >
+add_circle_outline
     </FontIcon>
   </div>
 );

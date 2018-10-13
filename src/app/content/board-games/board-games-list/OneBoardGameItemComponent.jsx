@@ -1,6 +1,8 @@
 import React from 'react';
 import { muiThemeable } from 'material-ui/styles/index';
-import { shape, number, string, func } from '../../../commons/ExtractedPropTypes';
+import {
+  shape, number, string, func,
+} from '../../../commons/ExtractedPropTypes';
 import ClickableIcon from '../../../commons/ClickableIconComponent';
 
 const displayName = (name, len = 25) => (name.length > len ? `${name.substring(0, len)}...` : name);

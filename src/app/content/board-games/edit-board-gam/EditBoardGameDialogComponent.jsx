@@ -22,14 +22,12 @@ class EditBoardGameDialog extends Component {
     state = { newName: this.props.name };
 
     componentWillReceiveProps(props) {
-      if (!props.isError)
-        this.setState({ newName: props.name });
+      if (!props.isError) this.setState({ newName: props.name });
     }
 
     preventAndSubmit = (event) => {
       event.preventDefault();
-      if (this.state.newName)
-        this.props.onSubmit(this.state.newName);
+      if (this.state.newName) this.props.onSubmit(this.state.newName);
     };
 
     handleChange = (event) => {
@@ -37,11 +35,13 @@ class EditBoardGameDialog extends Component {
     };
 
     render() {
-      const buttons = (<YesNoButton
-        onCancel={this.props.onCancel}
-        onSubmit={this.preventAndSubmit}
-        submitText="Zmień"
-      />);
+      const buttons = (
+        <YesNoButton
+          onCancel={this.props.onCancel}
+          onSubmit={this.preventAndSubmit}
+          submitText="Zmień"
+        />
+      );
 
       return (
         <Dialog

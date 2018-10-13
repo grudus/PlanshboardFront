@@ -44,8 +44,7 @@ class AddPlayDialog extends Component {
     addResult = (value) => {
       const newResult = { opponentName: value, fakeId: this.state.fakeId };
       const existingOpponent = this.props.opponents.find(o => o.name === value);
-      if (existingOpponent)
-        newResult.opponentId = existingOpponent.id;
+      if (existingOpponent) newResult.opponentId = existingOpponent.id;
       this.setState(state => ({
         ...state,
         fakeId: state.fakeId + 1,
@@ -55,17 +54,22 @@ class AddPlayDialog extends Component {
 
 
     resultChange = (mapper) => {
-      const updatedResults = this.state.results
-        .map(mapper);
-
-      this.setState({ results: updatedResults });
+      this.setState((state) => {
+        const results = state.results
+          .map(mapper);
+        return ({ results });
+      });
     };
 
-    positionChange = (result, position) =>
-      this.resultChange(opp => (opp.fakeId === result.fakeId ? { ...result, position } : opp));
+    positionChange = (result, position) => this.resultChange(opp => (opp.fakeId === result.fakeId ? {
+      ...result,
+      position,
+    } : opp));
 
-    pointsChange = (result, points) =>
-      this.resultChange(opp => (opp.fakeId === result.fakeId ? { ...result, points } : opp));
+    pointsChange = (result, points) => this.resultChange(opp => (opp.fakeId === result.fakeId ? {
+      ...result,
+      points,
+    } : opp));
 
     dateChange = (date) => {
       this.setState({ date });
@@ -76,11 +80,13 @@ class AddPlayDialog extends Component {
     };
 
     render() {
-      const buttons = (<YesNoButton
-        onCancel={this.onRequestClose}
-        onSubmit={this.onSubmit}
-        isDisabled={!this.state.results.length}
-      />);
+      const buttons = (
+        <YesNoButton
+          onCancel={this.onRequestClose}
+          onSubmit={this.onSubmit}
+          isDisabled={!this.state.results.length}
+        />
+      );
 
       return (
         <Dialog

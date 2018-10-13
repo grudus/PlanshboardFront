@@ -1,5 +1,7 @@
 import React from 'react';
-import { shape, number, string, func, arrayOf } from '../../../../commons/ExtractedPropTypes';
+import {
+  shape, number, string, func, arrayOf,
+} from '../../../../commons/ExtractedPropTypes';
 import AutoComplete from '../../../../commons/AutoCompleteComponent';
 import ResultRow from './ResultRowComponent';
 import './addPlayDialog.css';

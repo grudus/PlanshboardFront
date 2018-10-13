@@ -22,8 +22,8 @@ class LoginForm extends Component {
         <form onSubmit={this.props.loginButton} className="auth-form">
           <TextField
             ref={(ref) => {
-                            this.textInputRef = ref;
-                        }}
+              this.textInputRef = ref;
+            }}
             floatingLabelText="Nazwa użytkownika"
             fullWidth
             name="username"
@@ -32,8 +32,8 @@ class LoginForm extends Component {
           />
           <TextField
             ref={(ref) => {
-                            this.passwordInputRef = ref;
-                        }}
+              this.passwordInputRef = ref;
+            }}
             floatingLabelText="Hasło"
             fullWidth
             type="password"

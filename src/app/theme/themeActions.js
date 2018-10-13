@@ -1,4 +1,6 @@
-import { CHANGE_THEME, REMOVE_BLUR, SET_BLUR, START_LOADING, STOP_LOADING } from './themeActionTypes';
+import {
+  CHANGE_THEME, REMOVE_BLUR, SET_BLUR, START_LOADING, STOP_LOADING,
+} from './themeActionTypes';
 import { DARK, LIGHT, LOCAL_STORAGE_THEME_KEY } from './themeTypes';
 
 export const addBlur = () => ({ type: SET_BLUR });

@@ -2,7 +2,9 @@ import React from 'react';
 import FlipMove from 'react-flip-move';
 import './playsTable.css';
 import OpponentsCell from './OpponentsCellComponent';
-import { arrayOf, number, string, shape, func } from '../../../../commons/ExtractedPropTypes';
+import {
+  arrayOf, number, string, shape, func,
+} from '../../../../commons/ExtractedPropTypes';
 import { dateFormat } from '../../../../commons/DateUtils';
 
 const PlaysTable = ({ plays = [], onAddPlayClick, onPlayRowClick }) => {
@@ -11,7 +13,10 @@ const PlaysTable = ({ plays = [], onAddPlayClick, onPlayRowClick }) => {
     const sortedResults = play.results.sort((a, b) => (a.position > b.position ? 1 : -1));
     return (
       <tr key={play.id} onClick={() => onPlayRowClick(play)}>
-        <td data-label="Nr">{playsSize - index}.</td>
+        <td data-label="Nr">
+          {playsSize - index}
+.
+        </td>
         <td data-label="Data">{dateFormat(play.date)}</td>
         <td data-label="Uczestnicy" className="play-table-opponents-wrapper">
           <OpponentsCell results={sortedResults} />
@@ -36,7 +41,10 @@ const PlaysTable = ({ plays = [], onAddPlayClick, onPlayRowClick }) => {
       </thead>
       <tbody>
         <tr onClick={onAddPlayClick} className="add-play-wrapper">
-          <td data-label="Nr" className="add-play-id">{playsSize + 1}.</td>
+          <td data-label="Nr" className="add-play-id">
+            {playsSize + 1}
+.
+          </td>
           <td data-label="Data" colSpan="4" className="add-play card-shadow pointer anim add">Dodaj rozgrywkę</td>
         </tr>
         <FlipMove enterAnimation="fade" staggerDelayBy={25} leaveAnimation={null} easing="ease-in" typeName={null}>

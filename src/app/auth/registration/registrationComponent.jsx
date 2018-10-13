@@ -20,6 +20,7 @@ class Registration extends Component {
     };
 
     usernameExists = 'Nazwa użytkownika zajęta';
+
     passwordMismatch = 'Hasła muszą się zgadzać';
 
 
@@ -56,6 +57,11 @@ class Registration extends Component {
       this.updateError(password !== confirmPassword, this.passwordMismatch, 'confirmPasswordError');
     };
 
+    closePopup = () => {
+      this.setState({ shouldShowModal: false });
+      this.props.history.push('/auth/login');
+    };
+
     updateError(isError, errorText, errorProperty) {
       const error = isError ? errorText : '';
       this.setState((prev) => {
@@ -64,11 +70,6 @@ class Registration extends Component {
         return { form: prevForm };
       });
     }
-
-    closePopup = () => {
-      this.setState({ shouldShowModal: false });
-      this.props.history.push('/auth/login');
-    };
 
     render() {
       const { form, submitted } = this.state;

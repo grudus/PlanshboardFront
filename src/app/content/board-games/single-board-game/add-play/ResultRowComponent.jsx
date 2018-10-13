@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { TextField } from 'material-ui';
 import PositionItem from './PositionItemComponent';
-import { shape, string, number, func } from '../../../../commons/ExtractedPropTypes';
+import {
+  shape, string, number, func,
+} from '../../../../commons/ExtractedPropTypes';
 
 class ResultRow extends Component {
     state = { text: '' };

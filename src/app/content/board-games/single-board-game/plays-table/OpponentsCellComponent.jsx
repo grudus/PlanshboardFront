@@ -1,5 +1,7 @@
 import React from 'react';
-import { arrayOf, shape, number, string } from '../../../../commons/ExtractedPropTypes';
+import {
+  arrayOf, shape, number, string,
+} from '../../../../commons/ExtractedPropTypes';
 import PositionMedal from '../../position/PositionMedalComponent';
 
 const OpponentsCell = ({ results }) => {

@@ -21,7 +21,8 @@ class SearchInput extends Component {
           <FontIcon
             style={{ left: `${iconWidth}px` }}
             className="material-icons"
-          >search
+          >
+search
           </FontIcon>
           <TextField
             label="Search field"

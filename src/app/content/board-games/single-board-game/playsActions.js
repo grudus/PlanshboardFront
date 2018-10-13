@@ -1,4 +1,6 @@
-import { ADD_NEW_PLAY, DELETE_PLAY, GET_ALL_PLAYS, TRY_TO_ADD_PLAY, TRY_TO_GET_ALL_PLAYS } from './playsActionsTypes';
+import {
+  ADD_NEW_PLAY, DELETE_PLAY, GET_ALL_PLAYS, TRY_TO_ADD_PLAY, TRY_TO_GET_ALL_PLAYS,
+} from './playsActionsTypes';
 import { addNewPlayRequest, deletePlayRequest, getAllPlayResultsRequest } from './playsApi';
 
 const tryGetAllPlays = () => ({ type: TRY_TO_GET_ALL_PLAYS });
@@ -28,6 +30,5 @@ export const getAllPlays = boardGameId => (dispatch) => {
     .then(res => dispatch(getAllPlaysDone(res)));
 };
 
-export const deletePlay = (boardGameId, playId) => dispatch =>
-  deletePlayRequest(boardGameId, playId)
-    .then(() => dispatch(deletePlayDone(playId)));
+export const deletePlay = (boardGameId, playId) => dispatch => deletePlayRequest(boardGameId, playId)
+  .then(() => dispatch(deletePlayDone(playId)));

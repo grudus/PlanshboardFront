@@ -44,15 +44,13 @@ class BoardGamesList extends Component {
     openDialog = (dialog, event, currentModalGame) => {
       this.setState({ [dialog]: true, currentModalGame });
       this.props.addBlur();
-      if (event)
-        event.stopPropagation();
+      if (event) event.stopPropagation();
     };
 
     checkGameExistenceAndDo = async (name, callback) => {
       const { exists } = await boardNameExistsRequest(name);
 
-      if (exists)
-        this.setState({ dialogError: true });
+      if (exists) this.setState({ dialogError: true });
       else {
         this.setState({ dialogError: false });
         callback();
@@ -95,11 +93,12 @@ class BoardGamesList extends Component {
     };
 
     render() {
-      const isSearched = ({ name }) =>
-        name.toLowerCase().includes(this.state.searchText.toLowerCase());
+      const isSearched = ({ name }) => name.toLowerCase()
+        .includes(this.state.searchText.toLowerCase());
+
       const
-        games = this.props.games &&
-                this.props.games
+        games = this.props.games
+                && this.props.games
                   .filter(isSearched)
                   .sort((a, b) => a.name.localeCompare(b.name))
                   .map(game => (
