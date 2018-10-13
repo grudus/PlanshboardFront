@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import 'particles.js';
-import './loadingAnimation.css';
+import './loadingAnimation.scss';
 import conf from '../particles/particlesjs-config';
 
 class LoadingAnimation extends Component {

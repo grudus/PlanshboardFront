@@ -8,7 +8,7 @@ import { Route, Switch, withRouter } from 'react-router-dom';
 import getTheme from './theme/MuiTheme';
 import { tryResolveCurrentUser } from './content/users/userActions';
 import { loginCurrentUser } from './auth/login/loginActions';
-import './app.css';
+import './app.scss';
 import Content from './content/ContentComponent';
 import Login from './auth/login/LoginComponent';
 import Registration from './auth/registration/registrationComponent';

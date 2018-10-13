@@ -8,7 +8,7 @@ import { addBlur, removeBlur } from '../../../theme/themeActions';
 import withTopbar from '../../topbar/withTopbar';
 import AddGameDialog from '../add-board-game/AddBoardGameDialogComponent';
 import AddGame from '../add-board-game/AddBoardGameItemComponent';
-import '../boardGames.css';
+import '../boardGames.scss';
 import {
   addNewBoardGame,
   changeCurrentBoardGame,

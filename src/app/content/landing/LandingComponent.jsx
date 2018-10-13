@@ -1,6 +1,6 @@
 import React from 'react';
 import Item from './landingItemComponent';
-import './landing.css';
+import './landing.scss';
 import items from '../Tabs';
 
 const itemObjects = items.map(item => (

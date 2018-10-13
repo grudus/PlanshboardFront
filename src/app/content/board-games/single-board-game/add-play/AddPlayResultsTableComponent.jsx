@@ -4,7 +4,7 @@ import {
 } from '../../../../commons/ExtractedPropTypes';
 import AutoComplete from '../../../../commons/AutoCompleteComponent';
 import ResultRow from './ResultRowComponent';
-import './addPlayDialog.css';
+import './addPlayDialog.scss';
 
 
 const AddPlayResultsTable = (props) => {

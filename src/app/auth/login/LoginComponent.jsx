@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import './login.css';
+import './login.scss';
 import LoginForm from './LoginFormComponent';
 import { tryToLoginAction } from './loginActions';
 

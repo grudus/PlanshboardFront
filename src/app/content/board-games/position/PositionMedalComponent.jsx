@@ -1,7 +1,7 @@
 import React from 'react';
 import { findColor } from '../single-board-game/plays-table/opponentsColors';
 import { number } from '../../../commons/ExtractedPropTypes';
-import './position.css';
+import './position.scss';
 
 const PositionMedal = ({ position }) => (
   position > 0

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import withTopbar from '../../topbar/withTopbar';
 import { getSpecificBoardGame } from '../boardGamesApi';
 import { changeCurrentBoardGame } from '../boardGamesActions';
-import './singleBoardGame.css';
+import './singleBoardGame.scss';
 import GamesTable from './plays-table/PlaysTableComponent';
 import AddPlayDialog from './add-play/AddPlayDialogComponent';
 import { addNewPlay, getAllPlays } from './playsActions';

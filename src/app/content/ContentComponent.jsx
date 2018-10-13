@@ -3,7 +3,7 @@ import { Switch } from 'react-router-dom';
 import Route from 'react-router-dom/es/Route';
 import BoardGamesList from './board-games/board-games-list/BoardGamesListComponent';
 import Landing from './landing/LandingComponent';
-import './content.css';
+import './content.scss';
 import BoardGame from './board-games/single-board-game/SingleBoardGameComponent';
 
 export default () => (

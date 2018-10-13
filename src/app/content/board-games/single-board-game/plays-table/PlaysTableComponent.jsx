@@ -1,6 +1,6 @@
 import React from 'react';
 import FlipMove from 'react-flip-move';
-import './playsTable.css';
+import './playsTable.scss';
 import OpponentsCell from './OpponentsCellComponent';
 import {
   arrayOf, number, string, shape, func,

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Dialog } from 'material-ui';
 import PropTypes from 'prop-types';
 import YesNoButton from '../../../../commons/YesNoButtonsComponent';
-import './addPlayDialog.css';
+import './addPlayDialog.scss';
 import { getAllOpponents } from '../../../opponents/opponentsActions';
 import NoteComponent from './NoteComponent';
 import DateDialogComponent from '../../../../commons/DateDialogComponent';
