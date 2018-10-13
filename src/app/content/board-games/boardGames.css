@@ -67,14 +67,14 @@
     width: 40%;
 }
 
-@media all and (max-width: 900px) and (min-width: 750px) {
+@media all and (max-width: 900px)  {
     .game-single-item {
         width: 16vw;
         height: 16vw;
     }
 }
 
-@media all and (max-width: 750px) and (min-width: 500px) {
+@media all and (max-width: 750px)  {
     .board-games-wrapper {
         grid-template-columns: repeat(3, 1fr);
     }
@@ -82,6 +82,10 @@
     .game-single-item {
         width: 25vw;
         height: 25vw;
+    }
+
+    .search {
+        width: 90%;
     }
 }
 
