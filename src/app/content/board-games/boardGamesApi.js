@@ -1,4 +1,6 @@
-import { api, deleteApi, postApi, putApi } from '../../commons/httpWrapper';
+import {
+  api, deleteApi, postApi, putApi,
+} from '../../commons/httpWrapper';
 
 export const getSpecificBoardGame = id => api(`/api/board-games/${id}`);
 export const boardNameExistsRequest = name => api(`/api/board-games/exists?name=${name}`);

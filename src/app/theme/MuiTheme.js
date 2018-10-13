@@ -53,4 +53,3 @@ export default (theme) => {
   newTheme.datePicker.selectColor = newTheme.palette.primary1Color;
   return newTheme;
 };
-

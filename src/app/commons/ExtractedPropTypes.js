@@ -6,4 +6,3 @@ export const { string } = PropTypes;
 export const { shape } = PropTypes;
 export const { func } = PropTypes;
 export const { bool } = PropTypes;
-

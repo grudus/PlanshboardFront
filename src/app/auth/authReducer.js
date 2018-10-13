@@ -1,4 +1,6 @@
-import { LOGIN, LOGIN_CURRENT_USER, LOGOUT, TRY_TO_LOGIN } from './authActionsTypes';
+import {
+  LOGIN, LOGIN_CURRENT_USER, LOGOUT, TRY_TO_LOGIN,
+} from './authActionsTypes';
 
 const initialState = {
   token: '',

@@ -4,10 +4,12 @@ import { number } from '../../../commons/ExtractedPropTypes';
 import './position.css';
 
 const PositionMedal = ({ position }) => (
-  position > 0 &&
+  position > 0
+  && (
   <div className="position" style={{ background: findColor(position) }}>
-      {position}
+    {position}
   </div>
+  )
 );
 
 PositionMedal.propTypes = {

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { arrayOf, string, number, func, shape } from '../../../../commons/ExtractedPropTypes';
+import {
+  arrayOf, string, number, func, shape,
+} from '../../../../commons/ExtractedPropTypes';
 import PositionItem from './PositionItemComponent';
 
 class OpponentsPosition extends Component {

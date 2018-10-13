@@ -18,14 +18,15 @@ class TopBar extends Component {
 
     render() {
       const blur = this.props.theme && this.props.theme.blur;
-      const items = tabs.map(tab =>
-        (<TopBarItem
+      const items = tabs.map(tab => (
+        <TopBarItem
           key={tab.path}
           icon={tab.icon}
           label={tab.label}
           path={tab.path}
           isCurrent={this.props.currentPath === tab.path}
-        />));
+        />
+      ));
 
       return (
         <section className={`top-bar-wrapper ${blur ? 'blur' : ''}`}>

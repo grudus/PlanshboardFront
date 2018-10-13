@@ -2,11 +2,13 @@ import React from 'react';
 import { Dialog, FlatButton } from 'material-ui';
 
 const RegistrationConfirmDialog = (props) => {
-  const button = (<FlatButton
-    label="Ok"
-    primary
-    onClick={props.closePopup}
-  />);
+  const button = (
+    <FlatButton
+      label="Ok"
+      primary
+      onClick={props.closePopup}
+    />
+  );
 
   return (
     <Dialog

@@ -5,11 +5,13 @@ import YesNoButton from '../../../commons/YesNoButtonsComponent';
 
 
 const DeleteBoardGameDialog = (props) => {
-  const buttons = (<YesNoButton
-    submitText="Usuń"
-    onCancel={props.onCancel}
-    onSubmit={props.onSubmit}
-  />);
+  const buttons = (
+    <YesNoButton
+      submitText="Usuń"
+      onCancel={props.onCancel}
+      onSubmit={props.onSubmit}
+    />
+  );
 
   return (
     <Dialog

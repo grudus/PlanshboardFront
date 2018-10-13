@@ -21,8 +21,7 @@ class AddBoardGameDialog extends Component {
 
     preventAndSubmit = (event) => {
       event.preventDefault();
-      if (this.state.name)
-        this.props.onSubmit(this.state.name, () => this.setState({ name: '' }));
+      if (this.state.name) this.props.onSubmit(this.state.name, () => this.setState({ name: '' }));
     };
 
     handleChange = (event) => {
@@ -30,10 +29,12 @@ class AddBoardGameDialog extends Component {
     };
 
     render() {
-      const buttons = (<YesNoButton
-        onCancel={this.props.onCancel}
-        onSubmit={this.preventAndSubmit}
-      />);
+      const buttons = (
+        <YesNoButton
+          onCancel={this.props.onCancel}
+          onSubmit={this.preventAndSubmit}
+        />
+      );
 
       return (
         <Dialog

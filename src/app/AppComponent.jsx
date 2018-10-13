@@ -12,7 +12,9 @@ import './app.css';
 import Content from './content/ContentComponent';
 import Login from './auth/login/LoginComponent';
 import Registration from './auth/registration/registrationComponent';
-import { darkTheme, lightTheme, removeBlur, startLoading, stopLoading } from './theme/themeActions';
+import {
+  darkTheme, lightTheme, removeBlur, startLoading, stopLoading,
+} from './theme/themeActions';
 
 class App extends Component {
   state = { theme: null };
@@ -55,8 +57,7 @@ class App extends Component {
   }
 
   componentWillReceiveProps(newProps) {
-    if (newProps.theme !== this.props.theme)
-      this.resetThemeColors(newProps.theme);
+    if (newProps.theme !== this.props.theme) this.resetThemeColors(newProps.theme);
   }
 
 
@@ -105,4 +106,3 @@ const mapDispatchToProps = {
 };
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
-
